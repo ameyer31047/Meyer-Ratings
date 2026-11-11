@@ -19,7 +19,7 @@ const server = http.createServer((req, res) => { const f = path.join(ROOT, decod
   while (Date.now() - start < LIMIT) {
     await page.waitForTimeout(5000);
     st = await page.evaluate(() => { const j = k => { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }, r = j('cbb26_run'), f = j('cfb26_agg');
-      return { cbb: r && r.meta ? Date.parse(r.meta.at) : 0, cfb: f && f.agg ? Date.parse(f.agg.at) : 0, cbbS: document.getElementById('status').textContent, cfbS: document.getElementById('fb-status').textContent }; });
+      return { cbb: r && r.meta ? Date.parse(r.meta.at) : 0, cfb: f && f.agg ? Date.parse(f.agg.at) : 0, cbbS: document.getElementById('status').textContent, cfbS: document.getElementById('fb-status').textContent, cbbP: document.getElementById('paste-msg').textContent.slice(0, 200) }; });
     if (process.env.VERBOSE) console.log(Math.round((Date.now() - start) / 1000) + 's', JSON.stringify(st));
     if (st.cbb > start && st.cfb > start) break;
     // football pull failed (ESPN throttling while basketball pulls): wait until basketball is done, then retry, up to 3 times
