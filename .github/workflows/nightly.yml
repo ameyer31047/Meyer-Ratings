@@ -1,0 +1,39 @@
+name: Nightly ratings refresh
+on:
+  schedule:
+    - cron: '5 7 * * *'   # 12:05 AM Pacific during daylight time
+    - cron: '5 8 * * *'   # 12:05 AM Pacific during standard time
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: nightly
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Only run at midnight Pacific
+        id: when
+        run: |
+          h=$(TZ=America/Los_Angeles date +%H)
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$h" = "00" ]; then echo "go=1" >> "$GITHUB_OUTPUT"; else echo "Pacific hour is $h, skipping"; fi
+      - uses: actions/checkout@v4
+        if: steps.when.outputs.go == '1'
+      - uses: actions/setup-node@v4
+        if: steps.when.outputs.go == '1'
+        with:
+          node-version: 20
+      - name: Install headless browser
+        if: steps.when.outputs.go == '1'
+        run: npm install --no-save playwright@1.48.2 && npx playwright install --with-deps chromium
+      - name: Pull ESPN and run sims
+        if: steps.when.outputs.go == '1'
+        run: node scripts/nightly.js
+      - name: Save data.json
+        if: steps.when.outputs.go == '1'
+        run: |
+          git config user.name "nightly-refresh"
+          git config user.email "nightly-refresh@users.noreply.github.com"
+          git add data.json
+          git diff --cached --quiet || git commit -m "Nightly refresh $(TZ=America/Los_Angeles date +'%Y-%m-%d')"
+          git push
