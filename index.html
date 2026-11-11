@@ -2499,7 +2499,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
   $('auto-upd').addEventListener('change', () => { try { localStorage.setItem('cbb26_auto', $('auto-upd').checked ? '1' : '0'); } catch (e) {} });
   async function autoUpdate() {
     if (window.MEYER_HOST && !window.MEYER_NIGHTLY && window.MEYER_SNAP_AT && Date.now() - window.MEYER_SNAP_AT < 30 * 3600e3) { $('auto-note').textContent = 'Updated nightly at ' + new Date(window.MEYER_SNAP_AT).toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + '.'; return; }
-    if (window.MEYER_HOST && (window.MEYER_NIGHTLY || !gameDate.size)) { loadLogos(); await loadEspn('2026-11-01', '2027-03-15', 'Full season'); run(); return; }
+    if (window.MEYER_HOST && (window.MEYER_NIGHTLY || !gameDate.size)) { loadLogos(); let ok = false; for (let t = 0; t < 3 && !ok; t++) { if (t) await new Promise(r => setTimeout(r, 60000 * t)); ok = (await loadEspn('2026-11-01', '2027-03-15', 'Full season')) !== false; } if (ok || !window.MEYER_NIGHTLY) run(); return; }
     if (!autoPref() || !(window.MEYER_HOST || /^file:|^https?:\/\/(localhost|127\.)/.test(location.href))) { $('auto-note').textContent = autoPref() ? 'Auto-update works when the page is opened as a file on your computer.' : 'Auto-update is off.'; return; }
     const before = scoresKey(), a0 = new Date(), b0 = new Date(); a0.setDate(a0.getDate() - 3); b0.setDate(b0.getDate() + 3);
     $('auto-note').textContent = 'Updating scores and lines from ESPN…';
@@ -2741,6 +2741,9 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     const events = [], failed = []; let done = 0;
     const one = async d => { try { const r = await fetch(espnUrl(d), { cache: 'no-store' }); if (!r.ok) throw new Error(r.status); const j = await r.json(); (j.events || []).forEach(e => events.push(e)); } catch (e) { failed.push(d); } done++; $('paste-msg').textContent = `${label}: ${done} of ${days.length} days loaded…`; };
     const q = days.slice(); await Promise.all([...Array(6)].map(async () => { while (q.length) await one(q.shift()); }));
+    // retry days ESPN refused (throttling), slower each round
+    for (let round = 1; round <= 4 && failed.length; round++) { await new Promise(r => setTimeout(r, 3000 * round * round)); const again = failed.splice(0); done -= again.length; const q2 = again.slice(); await Promise.all([...Array(2)].map(async () => { while (q2.length) { await one(q2.shift()); await new Promise(r => setTimeout(r, 300)); } })); }
+    if (failed.length) console.log('ESPN days still failing after retries: ' + failed.length);
     // Lines for upcoming games: the scoreboard often leaves odds off, so ask ESPN's odds feed for each game in the next 4 days
     const now = Date.now(), soon = now + 4 * 864e5, need = events.filter(e => { const t = Date.parse(e.date || ''), c = (e.competitions || [])[0]; return c && !(c.odds && c.odds.length) && t >= now - 6 * 36e5 && t <= soon && !((c.status || e.status || {}).type || {}).completed; });
     let fed = 0, oddsFail = 0;
@@ -2759,7 +2762,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     const sample = events.find(e => ((e.competitions || [])[0] || {}).odds && e.competitions[0].odds.length);
     oddsSample = sample ? JSON.stringify(sample.competitions[0].odds[0]).slice(0, 600) : '';
     btns.forEach(b => (b.disabled = false));
-    if (failed.length === days.length) { $('paste-msg').textContent = 'Couldn’t reach ESPN from this page. Open the ESPN week link, copy the page and paste it below instead.'; return; }
+    if (failed.length === days.length) { $('paste-msg').textContent = 'Couldn’t reach ESPN from this page. Open the ESPN week link, copy the page and paste it below instead.'; btns.forEach(b => (b.disabled = false)); return false; }
     const msg = applyPaste(JSON.stringify({ events })); $('odds-diag').textContent = oddsDiag + (oddsSample ? ' Sample: ' + oddsSample : ''); $('paste-msg').textContent = `${label}: ${msg}` + (failed.length ? ` ${failed.length} day${failed.length === 1 ? '' : 's'} didn’t load (${failed.slice(0, 5).join(', ')}${failed.length > 5 ? '…' : ''}); run it again to retry.` : ''); aliasUI();
     const keep = $('paste-msg').textContent; await new Promise(r => setTimeout(r, 300)); const nb = await loadBox(); if (nb) $('paste-msg').textContent = keep + ` ${nb} box score${nb === 1 ? '' : 's'} loaded.`; else $('paste-msg').textContent = keep;
   }
