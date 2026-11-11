@@ -4679,7 +4679,7 @@ if (typeof module !== 'undefined') module.exports = EngineCFB;
 
   // ---------- ESPN pull (runs in the browser) ----------
   const API = 'https://site.api.espn.com/apis/site/v2/sports/football/college-football';
-  const getJ = async u => { const r = await fetch(u, { cache: 'no-store' }); if (!r.ok) throw new Error(r.status + ' ' + u); return r.json(); };
+  const getJ = async u => { let err; for (let a = 0; a < 4; a++) { if (a) await new Promise(r => setTimeout(r, 1500 * a * a)); try { const r = await fetch(u, { cache: 'no-store' }); if (r.ok) return await r.json(); err = new Error(r.status + ' ' + u); if (r.status === 404) break; } catch (e) { err = e; } } throw err; };
   const FBS_CONF_FALLBACK = { 1: 'ACC', 4: 'Big 12', 5: 'Big Ten', 8: 'SEC', 9: 'Pac-12', 12: 'Conference USA', 15: 'Mid-American', 17: 'Mountain West', 18: 'FBS Independents', 37: 'Sun Belt', 151: 'American Athletic' };
   function collectGroups(o, out) { if (!o || typeof o !== 'object') return out; if (Array.isArray(o)) { o.forEach(x => collectGroups(x, out)); return out; } const id = o.groupId || o.id, nm = o.shortName || o.abbreviation || o.name; if (id != null && nm && (o.isConference || o.parentGroupId || o.children == null)) out[id] = nm; for (const k in o) if (typeof o[k] === 'object') collectGroups(o[k], out); return out; }
   function teamsFrom(j) { const out = []; ((((j.sports || [])[0] || {}).leagues || [])[0] || {}).teams?.forEach(x => { const t = x.team || x; out.push({ id: String(t.id), loc: t.location, name: t.name, disp: t.displayName, short: t.shortDisplayName, abbr: t.abbreviation, color: t.color, alt: t.alternateColor, logo: ((t.logos || [])[0] || {}).href }); }); return out; }
@@ -4711,10 +4711,10 @@ if (typeof module !== 'undefined') module.exports = EngineCFB;
     const confNames = Object.assign({}, FBS_CONF_FALLBACK, grp ? collectGroups(grp, {}) : {});
     const teamConf = {}; await Promise.all([81, 80].map(gp => getJ(`https://site.api.espn.com/apis/v2/sports/football/college-football/standings?group=${gp}&season=${SEASON}`).then(j => confFromStandings(j, teamConf)).catch(() => null)));
     const jobs = []; for (const gpid of [80, 81]) { for (let w = 1; w <= 16; w++) jobs.push([gpid, 2, w]); jobs.push([gpid, 3, 1]); }
-    const ev = new Map(); let done = 0, fails = 0;
-    const run = async ([gpid, st, w]) => { try { const j = await getJ(`${API}/scoreboard?dates=${SEASON}&seasontype=${st}&week=${w}&groups=${gpid}&limit=500`); for (const e of j.events || []) { const x = parseEvent(e, st === 3); if (x) ev.set(x.id, x); } } catch (e) { fails++; } done++; say(`Schedule ${done} of ${jobs.length}`); };
+    const ev = new Map(); let done = 0, fails = 0, lastErr = '';
+    const run = async ([gpid, st, w]) => { try { const j = await getJ(`${API}/scoreboard?dates=${SEASON}&seasontype=${st}&week=${w}&groups=${gpid}&limit=500`); for (const e of j.events || []) { const x = parseEvent(e, st === 3); if (x) ev.set(x.id, x); } } catch (e) { fails++; lastErr = String(e && e.message || e).slice(0, 120); } done++; say(`Schedule ${done} of ${jobs.length}`); };
     for (let q = 0; q < jobs.length; q += 6) await Promise.all(jobs.slice(q, q + 6).map(run));
-    if (!ev.size) throw new Error('ESPN returned no games');
+    if (!ev.size) throw new Error('ESPN returned no games' + (lastErr ? '; ' + fails + ' requests failed, last: ' + lastErr : ''));
     const games = [...ev.values()].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
     return { at: new Date().toISOString(), fbs: fbsT, fcs: fcsT, confNames, teamConf, games, fails };
   }
