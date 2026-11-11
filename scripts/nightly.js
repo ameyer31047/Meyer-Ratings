@@ -10,6 +10,9 @@ const server = http.createServer((req, res) => { const f = path.join(ROOT, decod
   await new Promise(r => server.listen(PORT, r));
   const browser = await chromium.launch(), page = await browser.newPage(), start = Date.now();
   page.on('pageerror', e => console.log('page error:', e.message));
+  const bad = {}; page.on('response', r => { if (r.status() >= 400 && /espn/.test(r.url())) { const k = r.status() + ' ' + r.url().split('?')[0]; if ((bad[k] = (bad[k] || 0) + 1) <= 2) console.log('ESPN', k); } });
+  page.on('requestfailed', r => { if (/espn/.test(r.url())) { const k = 'fail ' + r.url().split('?')[0]; if ((bad[k] = (bad[k] || 0) + 1) <= 2) console.log('ESPN', k, (r.failure() || {}).errorText); } });
+  let fbTries = 0;
   if (process.env.MOCK) await require(path.resolve(process.env.MOCK))(page);
   await page.goto(`http://localhost:${PORT}/index.html?nightly#fb`);
   let st = {};
@@ -19,12 +22,17 @@ const server = http.createServer((req, res) => { const f = path.join(ROOT, decod
       return { cbb: r && r.meta ? Date.parse(r.meta.at) : 0, cfb: f && f.agg ? Date.parse(f.agg.at) : 0, cbbS: document.getElementById('status').textContent, cfbS: document.getElementById('fb-status').textContent }; });
     if (process.env.VERBOSE) console.log(Math.round((Date.now() - start) / 1000) + 's', JSON.stringify(st));
     if (st.cbb > start && st.cfb > start) break;
+    // football pull failed (ESPN throttling while basketball pulls): wait until basketball is done, then retry, up to 3 times
+    if (!(st.cfb > start) && /failed/i.test(st.cfbS) && st.cbb > start && fbTries < 3) { fbTries++; console.log('football retry ' + fbTries + ': ' + st.cfbS); await page.waitForTimeout(30000 * fbTries); await page.evaluate(() => document.getElementById('fb-refresh').click()); }
   }
   console.log('status', JSON.stringify(st));
-  if (!(st.cbb > start && st.cfb > start)) { console.error('Timed out: ' + (st.cbb > start ? '' : 'basketball ') + (st.cfb > start ? '' : 'football ') + 'did not finish'); await browser.close(); server.close(); process.exit(1); }
+  const partial = !(st.cbb > start && st.cfb > start);
+  if (partial) console.error('Warning: ' + (st.cbb > start ? '' : 'basketball ') + (st.cfb > start ? '' : 'football ') + 'did not finish');
+  if (!(st.cbb > start) && !(st.cfb > start)) { await browser.close(); server.close(); process.exit(1); }
   const ls = await page.evaluate(() => { const o = {}; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.indexOf('__snap') !== 0) o[k] = localStorage.getItem(k); } return o; });
   const out = JSON.stringify({ v: 1, at: Date.now(), ls });
   fs.writeFileSync(path.join(ROOT, 'data.json'), out);
   console.log(`data.json: ${Object.keys(ls).length} items, ${(out.length / 1048576).toFixed(2)} MB`);
   await browser.close(); server.close();
+  if (partial) console.log('Saved what finished; the rest keeps its previous data.');
 })().catch(e => { console.error(e); process.exit(1); });
