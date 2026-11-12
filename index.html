@@ -442,7 +442,24 @@ td.hot{color:var(--gold);font-weight:600}
 .h2hn{white-space:normal;min-width:9em;font-size:.82rem}.h2w{color:var(--good);font-weight:600}.h2l{color:var(--bad);font-weight:600}
 .rp{padding:4px 16px 14px}.rp a{color:inherit;text-decoration:none}.rp a:hover{text-decoration:underline}.rp h4{margin:14px 0 4px}.rp .two{gap:16px}.rp-head{display:flex;align-items:center;gap:14px;padding:10px 12px;border-left:6px solid var(--tc);border-radius:10px;background:var(--panel);margin-bottom:10px}.rp-head h3{margin:0}.rpl{margin:4px 0 10px;padding-left:18px;display:grid;gap:3px}
 .rpb{padding:3px 8px;font-size:.75rem}
+/* mobile brackets: football shows logo + record only; basketball stacks the four regions (each left to right) with the Final Four below */
+@media (max-width:640px){
+.bk2.fbbk,.bk2.fbbk.b24{min-width:0!important;gap:8px 6px;padding:6px 0 8px}.fbbk .bcell.l::after{right:-6px;width:6px}.fbbk .bcell.r::before{left:-6px;width:6px}
+.fbbk .bslot{display:flex;flex-direction:column;align-items:center;gap:1px;padding:4px 1px}.fbbk .bslot .sd,.fbbk .bslot .nm b,.fbbk .bslot .p:not(.sc){display:none}
+.fbbk .bslot .lg,.fbbk .bslot img.bl{width:24px;height:24px}.fbbk .bslot .nm{align-items:center}.fbbk .bslot .nm small{font-size:.6rem;white-space:nowrap;opacity:.9}.fbbk .bslot .p.sc{font-size:.66rem}
+.fbbk .bgame{border-radius:7px}.fbbk .bgame .bh{justify-content:center;padding:2px}.fbbk .bgame .bh span{display:none}.fbbk .bgame .bh .pvb{width:16px;height:16px;font-size:10px;min-width:0;padding:0}.fbbk .rhead{font-size:.52rem;letter-spacing:0}
+.fbbk .bchamp{padding:6px 2px;border-radius:10px;gap:2px}.fbbk .bchamp img.bl{width:40px;height:40px}.fbbk .bchamp b,.fbbk .bchamp .note{display:none}.fbbk .bchamp .bct{font-size:.5rem;letter-spacing:.02em}.fbbk .bctr{gap:8px}
+.bk.mob{display:flex;flex-direction:column;gap:12px;min-width:0;width:100%;padding:6px;box-sizing:border-box}.bk.mob .reg{grid-column:auto;min-height:520px;grid-template-columns:1.3fr 1fr .9fr .85fr!important}
+.bk.mob .slot{font-size:.68rem;padding:2px 1px;gap:2px}.bk.mob .reg>*,.bk.mob .col,.bk.mob .pair{min-width:0}.bk.mob .col-wrap:not(:first-child) .slot .rc{display:none}.bk.mob .reg{padding:2px}.bk.mob .reg .pair>.pvb{width:15px;height:15px;font-size:9px;right:-9px}.bk.mob .slot .s{min-width:1.1em;font-size:.6rem}.bk.mob .col{padding:0 2px}.bk.mob .rhead{font-size:.56rem;letter-spacing:.02em}.bk.mob .rtitle b{font-size:1.05rem}.bk.mob .rtitle span{font-size:.68rem}
+.bk.mob>.mid.ff3{flex-direction:column;flex-wrap:nowrap;margin:0;padding:10px 4px;gap:10px}.bk.mob .ff3 .ffpair,.bk.mob .ff3 .semi,.bk.mob .ff3 .ffmid{min-width:0;width:100%}
+}
+.themed a:not([class]),.thead .meta a,.bars .br a{color:inherit;text-decoration:none}.themed a:not([class]):hover,.thead .meta a:hover,.bars .br a:hover{text-decoration:underline}
+.schsum{float:right;font:500 .75rem var(--body);text-transform:none;letter-spacing:0;margin-left:8px}.schsum[aria-pressed="true"]{color:var(--ink);border-color:var(--ink)}.sumhide{display:none!important}table.sumv td,table.sumv th{white-space:nowrap}
+@media (max-width:640px){.gcards{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.gcard{padding:7px 7px;gap:4px;border-radius:8px;min-width:0}.gcard .gh{font-size:.62rem;letter-spacing:0;gap:4px;flex-wrap:wrap}.gcard .grow{gap:4px}.gcard .gt{gap:4px}.gcard .gt img{width:22px!important;height:22px!important}.gcard .gt b{font-size:.78rem}.gcard .gt small,.gcard .gt .note{font-size:.62rem}.gcard .gs{font-size:1rem}.gcard .gf{font-size:.64rem;gap:2px 6px}.gcard .gh .pvb{margin-right:2px}}
+header .controls{flex-wrap:wrap}
 .schconf select{padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:500 .85rem var(--body)}
+.schconf,.schconf select,.schconf select option{color:var(--ink)!important;-webkit-text-fill-color:var(--ink)}.schconf select{-webkit-appearance:none;appearance:none;padding-right:28px;background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(100% - 15px) 50%,calc(100% - 10px) 50%;background-size:5px 5px;background-repeat:no-repeat}.schconf select:focus{outline:2px solid var(--line);outline-offset:1px}
+#set-importl{padding:3px 8px;font-size:.8rem;font-weight:400;color:var(--muted);border-radius:var(--r,6px)}#set-importl:hover{color:var(--accent);border-color:var(--accent)}
 </style>
 
 <div class="wrap">
@@ -1994,6 +2011,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     return { dist, won, best: q => [res[q], dist[q].get(res[q])] };
   }
   let bkAutoFit = () => {};
+  try { window.matchMedia('(max-width:640px)').addEventListener('change', () => { try { if (currentView() === 'bracket') bracket(); } catch (e) {} }); } catch (e) {}
   function bracket() {
     $('bk-note').textContent = bkMode === 'current' ? 'Current: field and seeds from today\u2019s Rank (games played so far only), with auto bids to the best-ranked team in each conference. Each slot advances the team most likely to win it. Click any team to pick it to win that game.' : bkMode === 'base' ? 'Base: field and seeds from average Rank across the sims, with auto bids going to the most frequent conference champion. Each slot advances the team most likely to win it. Click any team to pick it to win that game, and the odds table below updates with your picks.'
       : bkMode === 'sim' ? 'Simulate: the Base bracket played out once at random, with your picks locked in. Click Simulate again for another draw.'
@@ -2077,18 +2095,20 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     bkPlayins = () => { const grp = ks => `<div class="pis-grid">${ks.map(k => { const inf = piInfo(k); return piGame(k, `${esc(inf.reg)} · ${inf.seed} seed · ${esc(city(piSite.get(k)))}`); }).join('')}</div>`;
       return `<p class="note">${modeNote} The favorite shows the model spread and the underdog the model total (neutral site).</p><h3 class="sub3">At-large play-ins</h3>${grp([0, 1, 2, 3, 4, 5])}<h3 class="sub3">Auto-bid play-ins</h3>${grp(autoOrd())}`; };
     const regs = [1, 2, 3, 4].map(r => B.L[r]);
-    const tl_ = region(regs[0], false), tr_ = region(regs[1], true), bl_ = region(regs[3], false), br_ = region(regs[2], true);
+    const MOB = window.matchMedia('(max-width:640px)').matches; $('bk').classList.toggle('mob', MOB); if (MOB) $('bk').style.zoom = 1;
+    const tl_ = region(regs[0], false), tr_ = region(regs[1], !MOB), bl_ = region(regs[3], false), br_ = region(regs[2], !MOB);
     const semiL = parent[tl_.e8], semiR = parent[tr_.e8], fin = parent[semiL];
     const [fl, flp] = D.best(semiL), [fr, frp] = D.best(semiR), [cw, cwp] = D.best(fin);
     const rc = (t, p) => `${slotHtml(t, p, '', '', fin)}`;
     // regional champions sit beside the Final Four: left regions' champions in the column left of the title game, right regions' to its right
     const rch = (x, side) => `<div class="ffreg ${side}"><span class="note"><b>${esc(x.reg)}</b> champion · ${esc(city(SITES[x.reg] || ''))}</span>${slotHtml(x.ch, x.cp, '', '', parent[x.e8])}</div>`;
     // band between the top and bottom quadrants: the four regional champions, the two semifinal winners and the national champion, reading inward
-    $('bk').innerHTML = `<div style="grid-column:1/2;grid-row:1">${tl_.html}</div><div style="grid-column:3/4;grid-row:1">${tr_.html}</div>
-      <div style="grid-column:1/2;grid-row:3">${bl_.html}</div><div style="grid-column:3/4;grid-row:3">${br_.html}</div>
-      <div class="mid ff3"><div class="ffpair">${rch(tl_, 'top')}${rch(bl_, 'bot')}</div><div class="semi"><span class="note">Semifinal: ${regs[0]} vs ${regs[3]} ${pvb(D.best(tl_.e8)[0], D.best(bl_.e8)[0])}</span>${rc(fl, flp)}</div>
+    const ffHtml = `<div class="mid ff3"><div class="ffpair">${rch(tl_, 'top')}${rch(bl_, 'bot')}</div><div class="semi"><span class="note">Semifinal: ${regs[0]} vs ${regs[3]} ${pvb(D.best(tl_.e8)[0], D.best(bl_.e8)[0])}</span>${rc(fl, flp)}</div>
         <div class="ffmid"><h3>Final Four</h3><div class="champ">${cw != null ? logoImg(teams[cw].name, 'bl', 56) : ''}<span class="note">Champion</span><b>${cw != null ? `<a class="tlink" href="#${slug(teams[cw].name)}">${esc(teams[cw].name)}</a>` : ''}</b><span class="note">${seedOf.get(cw) ?? ''} seed · ${recStr(cw)}</span></div><div class="tgpv">${pvb(fl, fr) ? `Title game ${pvb(fl, fr)}` : ''}</div></div>
         <div class="semi"><span class="note">Semifinal: ${regs[1]} vs ${regs[2]} ${pvb(D.best(tr_.e8)[0], D.best(br_.e8)[0])}</span>${rc(fr, frp)}</div><div class="ffpair">${rch(tr_, 'top')}${rch(br_, 'bot')}</div></div>`;
+    $('bk').innerHTML = MOB ? `<div class="mreg">${tl_.html}</div><div class="mreg">${bl_.html}</div><div class="mreg">${tr_.html}</div><div class="mreg">${br_.html}</div>${ffHtml}` : `<div style="grid-column:1/2;grid-row:1">${tl_.html}</div><div style="grid-column:3/4;grid-row:1">${tr_.html}</div>
+      <div style="grid-column:1/2;grid-row:3">${bl_.html}</div><div style="grid-column:3/4;grid-row:3">${br_.html}</div>
+      ${ffHtml}`;
     // play-ins
     const piBox = (k, lab) => { const v = { pi: k }, [x, y] = piPair(v); const node = det.T.playinOrder[k], d = D.dist[node]; let slotSeed = '', slotReg = '';
       for (let r = 1; r <= 16; r++) for (const c of ['O', 'P']) { const s = B[c][r]; if (s && typeof s === 'object' && s.pi === k) { slotSeed = c === 'O' ? 8 + Math.ceil(r / 4) : 17 - Math.ceil(r / 4); slotReg = B.L[r]; } }
@@ -2161,7 +2181,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     $('bk-zfit').addEventListener('click', () => { const sc = document.querySelector('.bk-scroll'); $('bk').style.zoom = 1; setZ((sc.clientWidth - 4) / $('bk').scrollWidth); });
     let saved = false; try { saved = localStorage.getItem('cbb26_bkzoom') != null; } catch (e) {}
     $('bk').style.zoom = zoom; $('bk-zv').textContent = Math.round(zoom * 100) + '%';
-    const autoFit = () => { if (saved || currentView() !== 'bracket') return; const sc = document.querySelector('.bk-scroll'); if (!sc.clientWidth || !$('bk').querySelector('.reg')) return; $('bk').style.zoom = 1; const w = $('bk').scrollWidth; zoom = Math.min(1, Math.max(0.4, (sc.clientWidth - 4) / w)); $('bk').style.zoom = zoom; $('bk-zv').textContent = Math.round(zoom * 100) + '%'; };
+    const autoFit = () => { if ($('bk').classList.contains('mob')) { $('bk').style.zoom = 1; $('bk-zv').textContent = '100%'; return; } if (saved || currentView() !== 'bracket') return; const sc = document.querySelector('.bk-scroll'); if (!sc.clientWidth || !$('bk').querySelector('.reg')) return; $('bk').style.zoom = 1; const w = $('bk').scrollWidth; zoom = Math.min(1, Math.max(0.4, (sc.clientWidth - 4) / w)); $('bk').style.zoom = zoom; $('bk-zv').textContent = Math.round(zoom * 100) + '%'; };
     bkAutoFit = autoFit; window.addEventListener('resize', autoFit); window.addEventListener('load', autoFit);
     ['bk-zin', 'bk-zout', 'bk-zfit'].forEach(id => $(id).addEventListener('click', () => (saved = true)));
     const sc = document.querySelector('.bk-scroll'); let drag = null;
@@ -2256,7 +2276,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
       if (!done && snap && !isNaN(snap.va[j]) && !isNaN(snap.ha[j])) { const sm = home ? snap.ha[j] : snap.va[j], st = home ? snap.va[j] : snap.ha[j]; simRes = `<span class="note">${sm > st ? 'W' : 'L'} ${sm}-${st} sim</span>`; }
       const gd = gameDate.get(j), dk = gd ? gd.d + (gd.t || '') : '9999';
       rows.push([dk, `<tr data-j="${j}" data-home="${home ? 1 : 0}" class="${g.neu[j] ? 'neu' : home ? '' : 'away'}${!done && LIVE.has(j) ? ' lvr' : ''}"><td class="m">${gd ? new Date(gd.d + 'T12:00:00').toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' }) : 'TBA'}</td><td class="c">${site}</td><td class="t">${loc} ${opp >= 0 ? tl(opp) : esc(oppName)}${g.conf[j] ? ' <small class="note">conf</small>' : ''}${injTag(j, DAYS)}</td><td class="m">${my}</td><td class="m">${vCell}</td><td class="m">${tot}</td><td class="m">${vT == null ? '' : vT.toFixed(1)}</td><td class="m">${psc}</td><td class="m">${wp}</td>`
-        + `<td class="res ${res === 'W' ? 'w' : res === 'L' ? 'l' : ''}">${res}${!done && LIVE.has(j) ? liveCellB(j, i) : simRes}</td><td class="c">${atsC}</td><td class="c">${ouC}</td>`
+        + `<td class="res ${res === 'W' ? 'w' : res === 'L' ? 'l' : ''}">${res}${done ? ` ${mine}-${theirs}` : ''}${!done && LIVE.has(j) ? liveCellB(j, i) : simRes}</td><td class="c">${atsC}</td><td class="c">${ouC}</td>`
         + `<td><input class="sc" type="number" min="0" max="250" inputmode="numeric" aria-label="${esc(t.name)} score" value="${mine}"${base ? ' disabled' : ''}></td><td><input class="sc" type="number" min="0" max="250" inputmode="numeric" aria-label="${esc(oppName)} score" value="${theirs}"${base ? ' disabled' : ''}></td>`
         + `<td><input type="checkbox" class="ot" aria-label="Overtime"${(entered.get(j) || [])[2] || G[j][5] ? ' checked' : ''}${base ? ' disabled' : ''}></td><td>${entered.has(j) ? '<button class="ghost clr" type="button">Clear</button>' : ''}</td><td>${opp >= 0 ? `<button type="button" class="pvb" data-pvj="${j}" title="Game preview" aria-label="Preview">&#9432;</button>` : ''}</td></tr>`]);
     }
@@ -2793,7 +2813,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
   }
   const netOf = j => { const v = gameDate.get(j); return v && v.n ? v.n : ''; }, netTag = j => netOf(j) ? ` <small class="net">${esc(netOf(j))}</small>` : '';
   const gqiBadge = q => isNaN(q) ? '' : `<span class="gqi ${q >= 7 ? 'g3' : q >= 5 ? 'g2' : q >= 3 ? 'g1' : ''}">${q.toFixed(1)}</span>`;
-  let schedDate = null, schedSort = 'time', schedMode = (() => { try { return localStorage.getItem('cbb26_schedmode') || 'table'; } catch (e) { return 'table'; } })();
+  let schedDate = null, schedSort = 'time', schedMode = 'cards';
   BKUI.schTopWire('sched-top', () => scheduleView()); $('sched-conf').addEventListener('confchange', () => scheduleView());
   $('sched-mode').addEventListener('click', e => { const b = e.target.closest('button[data-m]'); if (!b) return; schedMode = b.dataset.m; try { localStorage.setItem('cbb26_schedmode', schedMode); } catch (e) {} scheduleView(); });
   document.getElementById('sched-sort').addEventListener('click', e => { const b = e.target.closest('button[data-s]'); if (!b) return; schedSort = b.dataset.s; scheduleView(); });
@@ -3802,7 +3822,7 @@ if (typeof module !== 'undefined') module.exports = TourneyBB;
   const gqiBadge = q => isNaN(q) ? '' : `<span class="gqi ${q >= 7 ? 'g3' : q >= 5 ? 'g2' : q >= 3 ? 'g1' : ''}">${q.toFixed(1)}</span>`;
   const DATES = [...new Set(G.map(g => g[5]))].sort(), perDay = {}; G.forEach(g => (perDay[g[5]] = (perDay[g[5]] || 0) + 1)); let sDate = DATES.find(d => perDay[d] > 50) || DATES[0];
   const dayLab = { Friday: 'Game 1 (Fri ace)', Saturday: 'Game 2', Sunday: 'Game 3', Midweek: 'Midweek' };
-  let schSort = LS.get('bb27_schsort') === 'gqi' ? 'gqi' : 'time', schMode = LS.get('bb27_schmode') === 'cards' ? 'cards' : 'table';
+  let schSort = LS.get('bb27_schsort') === 'gqi' ? 'gqi' : 'time', schMode = 'cards';
   const allDates = () => SNAP && SNAP.ps ? [...new Set([...DATES, ...SNAP.ps.map(x => x.date)])].sort() : DATES;
   function schedule() {
     const DS = allDates(); if (!DS.includes(sDate)) sDate = DATES.find(d => perDay[d] > 50) || DATES[0];
@@ -4849,7 +4869,7 @@ if (typeof module !== 'undefined') module.exports = EngineCFB;
   // ---------- views ----------
   const VIEWS = ['fb', 'fb-rankings', 'fb-schedule', 'fb-cfp', 'fb-matchup', 'fb-conferences', 'fb-data'];
   function view() { const h = location.hash.slice(1); if (!h.startsWith('fb')) return null; if (h === 'fb-data' || !MODEL) return h === 'fb-data' ? 'fb-data' : 'fb-empty'; if (MODEL.bySlug.has(h)) return 'team'; if (MODEL.byC.has(h)) return 'conf'; return VIEWS.includes(h) ? (h === 'fb' ? 'fb-home' : h) : 'fb-home'; }
-  let curWeek = null, curDay = null, schSort = 'time', schMode = LS.get('cfb26_schmode') === 'cards' ? 'cards' : 'table';
+  let curWeek = null, curDay = null, schSort = 'time', schMode = 'cards';
   // Game quality (0-10): both teams' ratings and how close the line is
   // Game Quality Index: raw quality (average rating, closeness) for every game of the season, ranked and spread evenly from 0 (worst game of the season) to 10 (best), 10% of games per point
   const gqiBell = raw => { const out = new Float64Array(raw.length).fill(NaN), idx = []; for (let j = 0; j < raw.length; j++) if (!isNaN(raw[j])) idx.push(j); idx.sort((a, b) => raw[a] - raw[b]); const N = idx.length; let r = 0; while (r < N) { let e = r; while (e + 1 < N && raw[idx[e + 1]] === raw[idx[r]]) e++; const s = N > 1 ? Math.round(100 * ((r + e) / 2) / (N - 1)) / 10 : 10; for (let k = r; k <= e; k++) out[idx[k]] = s; r = e + 1; } return out; };
@@ -5529,13 +5549,13 @@ onmessage = e => { if (e.data.rbt) return recBacktest(e.data); if (e.data.sdbt) 
     // right-hand number: the final score when the game has been played (Season Sim), otherwise the model spread on the favorite and the total on the underdog
     const num = (t, x, txt) => { if (typeof txt === 'number') return txt; if (x.h == null) return ''; const o = t === x.a ? x.b : x.a, L = MODEL.S.lineFor(x.h, x.h === x.a ? x.b : x.a, !!x.neu), mine = t === x.h ? L.sp : -L.sp, fav = mine < 0 || (mine === 0 && t === x.h);
       return fav ? `<span title="Model spread">${s5(mine)}</span>` : `<span class="tt" title="Model total">o${fr(h5(L.tot))}</span>`; };
-    const ln = (t, x, txt) => { const won = x.w === t, lost = x.w != null && x.w >= 0 && !won; txt = num(t, x, txt); return `<div class="bslot${won ? ' won' : ''}${lost ? ' lost' : ''}"${tc(t, won)}><span class="sd">${seedOf(t)}</span><span class="lg">${bkLogo(t, 30, won)}</span><span class="nm"><b><a href="#${slug(T()[t].name)}" title="${esc(T()[t].name)}">${esc(T()[t].name)}</a></b><small>${recOf(t)}</small></span><span class="p">${txt}</span></div>`; };
+    const ln = (t, x, txt) => { const won = x.w === t, lost = x.w != null && x.w >= 0 && !won; txt = num(t, x, txt); return `<div class="bslot${won ? ' won' : ''}${lost ? ' lost' : ''}"${tc(t, won)}><span class="sd">${seedOf(t)}</span><span class="lg">${bkLogo(t, 30, won)}</span><span class="nm"><b><a href="#${slug(T()[t].name)}" title="${esc(T()[t].name)}">${esc(T()[t].name)}</a></b><small>${recOf(t)}</small></span><span class="p${/^\d/.test(String(txt)) ? ' sc' : ''}">${txt}</span></div>`; };
     const box = x => `<div class="bgame"><div class="bh"><span>${esc(x.lab)}</span>${x.h != null ? `<button type="button" class="pvb" data-fbmx="${x.h},${x.h === x.a ? x.b : x.a},${x.neu ? 1 : 0}" title="Game preview" aria-label="Game preview">&#9432;</button>` : ''}</div>${ln(x.a, x, x.ta)}${ln(x.b, x, x.tb)}</div>`;
     const cell = (c, k, m, side, h) => `<div class="bcell ${side}" style="grid-column:${c};grid-row:${2 + k * (N / m)}/span ${N / m}">${h}</div>`;
     let h = rounds.map((r, c) => `<div class="rhead" style="grid-column:${c + 1};grid-row:1">${r.lab}</div><div class="rhead" style="grid-column:${nc - c};grid-row:1">${r.lab}</div>`).join('') + `<div class="rhead fin" style="grid-column:${mid};grid-row:1">${G.finLab || 'National title'}</div>`;
     rounds.forEach((r, c) => { r.L.forEach((x, k) => h += cell(c + 1, k, r.L.length, 'l', box(x))); r.R.forEach((x, k) => h += cell(nc - c, k, r.R.length, 'r', box(x))); });
     h += `<div class="bcell ctr" style="grid-column:${mid};grid-row:2/span ${N}"><div class="bctr"><div class="bchamp"${G.champ != null && G.champ >= 0 ? tc(G.champ, true) : ''}><span class="bct">Champion</span>${bkLogo(G.champ, 84, true)}<b><a href="#${slug(T()[G.champ].name)}">${esc(T()[G.champ].name)}</a></b><span class="note">${G.champNote}</span></div>${box(G.fin)}</div></div>`;
-    return `<div class="bk-scroll"><div class="bk2${rounds.length > 3 ? ' b24' : ''}" style="grid-template-columns:repeat(${rounds.length},minmax(0,1fr)) minmax(0,1.15fr) repeat(${rounds.length},minmax(0,1fr))">${h}</div></div>`;
+    return `<div class="bk-scroll"><div class="bk2 fbbk${rounds.length > 3 ? ' b24' : ''}" style="grid-template-columns:repeat(${rounds.length},minmax(0,1fr)) minmax(0,1.15fr) repeat(${rounds.length},minmax(0,1fr))">${h}</div></div>`;
   }
   // 12-team CFP: seeds 1 and 4 (with the 8-9 and 5-12 games) on the left, 2 and 3 (7-10, 6-11) on the right
   function cfpGrid(seedOf, recOf, G) {
@@ -5925,6 +5945,20 @@ onmessage = e => { if (e.data.rbt) return recBacktest(e.data); if (e.data.sdbt) 
   window.__fb = { pullEspn, buildTeams, get MODEL() { return MODEL; } };
 })();
 
+</script>
+<script>
+// Team pages, all sports: a Summary toggle on the schedule panel shows only date, site, opponent, result/score and preview (remembered in this browser)
+(() => { let on = false; try { on = localStorage.getItem('sch_sum') === '1'; } catch (e) {}
+  const KEEP = /^(date|site|opponent|result|preview)/i, apply = () => {
+    document.querySelectorAll('.themed .panel').forEach(pn => { const h = pn.querySelector('h3'); if (!h || !/^schedule/i.test(h.textContent)) return; const tb = pn.querySelector('table'); if (!tb) return;
+      let b = h.querySelector('.schsum'); if (!b) { b = document.createElement('button'); b.type = 'button'; b.className = 'ghost schsum'; h.appendChild(b); }
+      if (b.textContent !== (on ? 'Full schedule' : 'Summary')) b.textContent = on ? 'Full schedule' : 'Summary'; b.setAttribute('aria-pressed', String(on));
+      const ths = [...tb.querySelectorAll('thead tr:last-child th')], hide = new Set(ths.map((t, k) => KEEP.test(t.textContent.trim()) ? -1 : k).filter(k => k >= 0));
+      tb.classList.toggle('sumv', on); pn.querySelectorAll(':scope > p.note').forEach(n => n.classList.toggle('sumhide', on));
+      tb.querySelectorAll('tr').forEach(tr => { let c = 0; [...tr.children].forEach(td => { const span = +td.getAttribute('colspan') || 1, h_ = on && span === 1 && hide.has(c); if (td.classList.contains('sumhide') !== h_) td.classList.toggle('sumhide', h_); c += span; }); }); }); };
+  let q = 0; new MutationObserver(() => { if (q) return; q = requestAnimationFrame(() => { q = 0; apply(); }); }).observe(document.body, { childList: true, subtree: true });
+  document.addEventListener('click', e => { const b = e.target.closest('.schsum'); if (!b) return; e.preventDefault(); on = !on; try { localStorage.setItem('sch_sum', on ? '1' : '0'); } catch (x) {} apply(); });
+  apply(); })();
 </script>
 <script>
 // Phone sync. Local file (reaches ESPN): export a snapshot = all saved data and settings + team logos shrunk to data URIs.
