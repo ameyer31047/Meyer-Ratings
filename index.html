@@ -137,7 +137,7 @@ tr.sc-field td{background:color-mix(in srgb,var(--gold) 14%,transparent)!importa
 .bslot .nm{display:flex;flex-direction:column;line-height:1.15;min-width:0}.bslot .nm b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.86rem}.bslot .nm b a,.bslot .nm b a.tlink{color:inherit;text-decoration:none;border:0}.bslot .nm b a:hover{text-decoration:underline}.bslot .nm small{font-size:.7rem;opacity:.8}
 .bslot .p{font-variant-numeric:tabular-nums;font-weight:800;font-size:.82rem;white-space:nowrap}.bslot .p .tt{font-weight:600;opacity:.85}
 .bslot .nm b{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.1;word-break:normal;overflow-wrap:normal}.bslot.won .nm b{font-weight:900}.bslot.won{box-shadow:inset 4px 0 0 var(--gold)}.bslot.lost{opacity:.5}
-.b24 .bslot{grid-template-columns:14px 24px minmax(0,1fr) auto;gap:5px;padding:5px 6px}.b24 .bslot .lg,.b24 .bslot img.bl{width:24px;height:24px}.b24 .bslot .nm b{font-size:.8rem}
+.b24 .bslot{grid-template-columns:14px 24px minmax(0,1fr) auto;gap:5px;padding:5px 6px}.b24 .bslot .lg,.b24 .bslot img.bl{width:24px;height:24px}.fbbk .bslot .nm b{font-size:.78rem}.fbbk:not(.b24) .bslot .nm{container-type:inline-size;min-width:0}.fbbk:not(.b24) .bslot .nm b{font-size:clamp(.55rem,calc(100cqi / 6.2),.95rem);white-space:nowrap;display:block;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:unset;letter-spacing:-.01em}.fbbk:not(.b24) .bslot{grid-template-columns:14px 24px minmax(0,1fr) auto;gap:4px;padding:5px 5px}.fbbk:not(.b24) .bslot .lg,.fbbk:not(.b24) .bslot img.bl{width:24px;height:24px}.fbbk:not(.b24) .bslot .nm small{font-size:.58rem;line-height:1.1;opacity:.75}.fbbk:not(.b24) .bslot .fnm{display:none}.fbbk:not(.b24) .bslot .snm{display:inline}.b24 .bslot .nm b{font-size:.72rem}
 .dbx.v2{grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:auto repeat(8,60px);min-width:880px}.rgb.v2{grid-template-columns:repeat(4,minmax(0,1fr))!important;min-width:760px}.pv-dlg.wide.xwide{width:min(1480px,98vw)}.dbx.v2>div>.bgame,.dbx.v2>div>.bchamp,.rgb.v2 .bgame,.rgb.v2 .bchamp{width:100%;box-sizing:border-box}.dbx.v2 .bchamp img.bl{width:64px;height:64px}
 .bk2.bk1{min-width:900px;gap:6px 14px}.bk2.bk1 .bcell.l::after{right:-14px;width:14px}.bk2.bk1 .bcell.r::before{left:-14px;width:14px}.pis-grid{display:grid;grid-template-columns:repeat(6,minmax(200px,1fr));gap:12px;margin:8px 0 18px;overflow-x:auto}
 .ctb .bgame,.ctb .bchamp,.colabs .abs>.bgame,.colabs .abs>.bchamp{width:100%;box-sizing:border-box}.colabs .abs{left:0;right:0}
@@ -259,6 +259,13 @@ td.res.l{color:var(--accent);font-weight:600}
 .pi-grp{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:8px}
 .pi-grp h3{font:600 .95rem/1 var(--display);letter-spacing:.06em;text-transform:uppercase;margin:0}
 .pi-games{display:grid;grid-template-columns:repeat(6,minmax(170px,1fr));gap:8px}
+.snm{display:none}.bk2m{display:none}
+@media (max-width:640px){.fnm{display:none}.snm{display:inline}
+.pi-games{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.pi-grp{padding:8px;min-width:0}.pig{min-width:0;padding:5px 6px}.pig .slot{min-width:0}.pig .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.pis-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;overflow:visible;margin:6px 0 14px}.pis-grid .bslot{grid-template-columns:12px 20px minmax(0,1fr) auto;gap:4px;padding:5px 4px}.pis-grid .bslot .lg,.pis-grid .bslot img.bl{width:20px;height:20px}.pis-grid .bslot .nm b{font-size:.76rem}.pis-grid .bslot .p{font-size:.72rem}.pis-grid .bgame .bh{font-size:.6rem}
+.fbdesk{display:none!important}.bk2m{display:grid;gap:12px;padding:4px 0 8px}.bk2m .rhead{font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;padding-bottom:4px;border-bottom:2px solid var(--line)}.bk2m .rhead.fin{color:var(--ink);border-bottom-color:var(--gold)}
+.bkmg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:6px}.bkmg>*{min-width:0}.bk2m .bslot{grid-template-columns:12px 20px minmax(0,1fr) auto;gap:4px;padding:5px 4px}.bk2m .bslot .lg,.bk2m .bslot img.bl{width:20px;height:20px}.bk2m .bslot .nm b{font-size:.7rem;-webkit-line-clamp:1}.bk2m .bslot .nm small{font-size:.62rem}.bk2m .bslot .p{font-size:.72rem}.bk2m .bgame .bh{font-size:.6rem;gap:4px}.bk2m .bgame .bh span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bk2m .bgame .bh .bsite{flex:none;max-width:45%}.bk2m .bchamp{padding:8px 4px}.bk2m .bchamp img.bl{width:48px;height:48px}.bk2m .bchamp b{font-size:.9rem}
+}
 .pig{border:1px solid var(--line);border-radius:6px;padding:6px 8px;display:grid;gap:2px;font-size:.8rem}
 .pig .hd{font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
 .bk-scroll{overflow:auto;cursor:grab;touch-action:pan-x pan-y;background:var(--panel);border:1px solid var(--line);border-radius:8px}
@@ -410,6 +417,16 @@ td.wrap{white-space:normal}
 .ns{display:inline-grid;place-items:center;min-width:1.5em;height:1.5em;border-radius:4px;background:var(--gold);color:#fff;font:700 .62rem/1 var(--mono)}.ns.no{background:none}
 .bbreg2 .p,.rgx .p{font:500 .72rem/1 var(--mono);color:var(--muted)}
 .cwsrow{display:grid;grid-template-columns:repeat(3,minmax(230px,1fr));gap:14px;align-items:center;padding:4px 0 14px;min-width:max-content}
+.bkxm{display:none}
+@media (max-width:640px){#bb-bk-board .bk-scroll:has(.bkx){display:none}.bkxm{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr) minmax(0,1fr);gap:8px 5px;align-items:center;padding:4px 0 8px}.bkxm>*{min-width:0}.bkxm .supc{grid-column:1}.bkxm .bbreg2 .hd{flex-wrap:wrap;gap:0 4px;line-height:1.2}
+.bkxm .bbreg2 .hd{font-size:.56rem;padding:3px 5px}.bkxm .bbreg2 .hd b{font-size:.66rem}.bkxm .bbreg2 .slot,.bkxm .rgx .slot{font-size:.72rem;gap:3px;padding:2px 5px}.bkxm .rgx .slot{padding:2px 0}.bkxm .slot .rc{display:none}.bkxm .slot .p{min-width:2.2em;font-size:.66rem}.bkxm .slot .nm img{width:13px;height:13px}.bkxm .rgx{padding:5px 6px}.bkxm .ns{font-size:.56rem}
+#bb-bk-board .cwsrow{grid-template-columns:repeat(2,minmax(0,1fr));min-width:0;gap:8px}#bb-bk-board .cwsrow>.finc{grid-column:1/-1;grid-row:2}#bb-bk-board .cwsrow .slot{font-size:.72rem;gap:3px}#bb-bk-board .cwsrow .slot .rc{display:none}#bb-bk-board .cwsrow .rgx{padding:5px 6px;min-width:0}#bb-bk-board .bk-scroll:has(.cwsrow){overflow:visible;border:0;background:none}
+}
+#pv-body>h3.sub3:first-child{display:none}#pv-body .rgnote{margin:0 0 6px;font-size:.82rem}#pv-body .rgnote summary{cursor:pointer;color:var(--muted);font-weight:600}#pv-body .rgnote .note{margin:4px 0}#pv-body:has(.bk1) .sites{font-size:.78rem;gap:2px 14px;margin:0 0 4px}
+@media (max-width:640px){.bkxm .nm:has(img) .lgo-n,#bb-bk-board .cwsrow .nm:has(img) .lgo-n{display:none}.bkxm .slot .nm img,#bb-bk-board .cwsrow .slot .nm img{width:20px;height:20px}
+.bk2.bk1{min-width:0;gap:6px 8px}.bk2.bk1 .bcell.l::after{right:-8px;width:8px}.bk2.bk1 .bcell.r::before{left:-8px;width:8px}.bk1 .bslot{grid-template-columns:14px 22px minmax(0,1fr);gap:4px;padding:4px 3px}.bk1 .bslot:has(img.bl){display:flex;justify-content:center;align-items:center}.bk1 .bslot:has(img.bl) .nm,.bk1 .bslot .p{display:none}.bk1 .bgame .bh .pvb{width:18px!important;height:18px!important;min-width:0!important;min-height:0!important;font-size:.6rem}.bk1 .bslot .lg,.bk1 .bslot img.bl{width:22px;height:22px}.bk1 .bslot:has(img.bl) .nm b{display:none}.bk1 .bslot .nm small{display:none}.bk1 .bslot .nm b{font-size:.62rem}.bk1 .bslot .sd{font-size:.62rem;min-width:12px;text-align:right}.bk1 .bslot .p{font-size:.6rem}.bk1 .bgame .bh{padding:2px 3px;justify-content:flex-end}.bk1 .bgame .bh>span{display:none}.bk1 .bgame .bh .pvb{width:16px;height:16px;font-size:.6rem}.bk1 .rhead{font-size:.52rem;letter-spacing:0}.bk1 .bchamp{padding:6px 2px}.bk1 .bchamp img.bl{width:36px;height:36px}.bk1 .bchamp b{font-size:.7rem}.bk1 .bchamp .note,.bk1 .bchamp .bct{font-size:.5rem}
+}
+@media (min-width:641px){.bk1 .bslot .nm,.pis-grid .bslot .nm{flex-direction:row;align-items:baseline;gap:7px}.bk1 .bslot .nm b,.pis-grid .bslot .nm b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:1.02rem;min-width:0;flex:0 1 auto}.bk1 .bslot .nm b{font-size:1.22rem}.bk1 .bslot{padding:4px 8px}.bk1 .bgame .bh{font-size:.74rem}.bk1 .rhead{font-size:.8rem}.bk1 .bslot .sd{font-size:.85rem}.bk1 .bslot .nm small,.pis-grid .bslot .nm small{flex:none;font-size:.8rem}.bk1 .bslot .nm small{font-size:.92rem}.bk1 .bslot .p,.pis-grid .bslot .p{font-size:.9rem}.bk1 .bslot .p{font-size:1.08rem}.bslot.ab .fnm{display:none}.bslot.ab .snm{display:inline}}
 .finc{display:grid;gap:10px}.finc .champ{border:2px solid var(--gold);background:var(--goldbg);border-radius:8px;padding:8px;text-align:center;display:grid;gap:2px}.finc .champ b{font:700 1.15rem/1.1 var(--display)}.finc .champ img.bl{display:block;margin:0 auto 4px}
 .picking .slot[data-pick]{cursor:copy}.picking .slot[data-pick]:hover{background:var(--goldbg)}
 .slot.picked{background:color-mix(in srgb,var(--gold) 22%,transparent);border-radius:4px}
@@ -449,8 +466,8 @@ td.hot{color:var(--gold);font-weight:600}
 .fbbk .bslot .lg,.fbbk .bslot img.bl{width:24px;height:24px}.fbbk .bslot .nm{align-items:center}.fbbk .bslot .nm small{font-size:.6rem;white-space:nowrap;opacity:.9}.fbbk .bslot .p.sc{font-size:.66rem}
 .fbbk .bgame{border-radius:7px}.fbbk .bgame .bh{justify-content:center;padding:2px}.fbbk .bgame .bh span{display:none}.fbbk .bgame .bh{flex-wrap:wrap;gap:1px}.fbbk .bgame .bh span.bsite{display:block;order:-1;width:100%;text-align:center;font-size:.5rem;font-weight:700;letter-spacing:-.01em;line-height:1.15;color:var(--ink);overflow:hidden;text-overflow:ellipsis}.fbbk .bgame .bh .pvb{width:16px;height:16px;font-size:10px;min-width:0;padding:0}.fbbk .rhead{font-size:.52rem;letter-spacing:0}
 .fbbk .bchamp{padding:6px 2px;border-radius:10px;gap:2px}.fbbk .bchamp img.bl{width:40px;height:40px}.fbbk .bchamp b,.fbbk .bchamp .note{display:none}.fbbk .bchamp .bct{font-size:.5rem;letter-spacing:.02em}.fbbk .bctr{gap:8px}
-.bk.mob{display:flex;flex-direction:column;gap:12px;min-width:0;width:100%;padding:6px;box-sizing:border-box}.bk.mob .reg{grid-column:auto;min-height:520px;grid-template-columns:1.3fr 1fr .9fr .85fr!important}
-.bk.mob .slot{font-size:.68rem;padding:2px 1px;gap:2px}.bk.mob .reg>*,.bk.mob .col,.bk.mob .pair{min-width:0}.bk.mob .col-wrap:not(:first-child) .slot .rc{display:none}.bk.mob .reg{padding:2px}.bk.mob .reg .pair>.pvb{width:15px;height:15px;font-size:9px;right:-9px}.bk.mob .slot .s{min-width:1.1em;font-size:.6rem}.bk.mob .col{padding:0 2px}.bk.mob .rhead{font-size:.56rem;letter-spacing:.02em}.bk.mob .rtitle b{font-size:1.05rem}.bk.mob .rtitle span{font-size:.68rem}
+.bk.mob{display:flex;flex-direction:column;gap:12px;min-width:0;width:100%;padding:6px;box-sizing:border-box}.bk.mob .reg{grid-column:auto;min-height:520px;grid-template-columns:1.12fr 1fr 1fr .95fr!important}
+.bk.mob .slot{font-size:.68rem;padding:2px 1px;gap:2px}.bk.mob .slot .nm{white-space:nowrap;overflow:hidden;text-overflow:clip}.bk.mob .slot .nm:has(img.ml) .lgo-n{display:none}.bk.mob .slot .nm img.ml{width:20px;height:20px;margin:0}.bk.mob .reg>*,.bk.mob .col,.bk.mob .pair{min-width:0}.bk.mob .col-wrap:not(:first-child) .slot .rc{display:none}.bk.mob .reg{padding:2px}.bk.mob .reg .pair>.pvb{width:15px;height:15px;font-size:9px;right:-9px}.bk.mob .slot .s{min-width:1.1em;font-size:.6rem}.bk.mob .col{padding:0 2px}.bk.mob .rhead{font-size:.56rem;letter-spacing:.02em}.bk.mob .rtitle b{font-size:1.05rem}.bk.mob .rtitle span{font-size:.68rem}
 .bk.mob>.mid.ff3{flex-direction:column;flex-wrap:nowrap;margin:0;padding:10px 4px;gap:10px}.bk.mob .ff3 .ffpair,.bk.mob .ff3 .semi,.bk.mob .ff3 .ffmid{min-width:0;width:100%}
 }
 .themed a:not([class]),.thead .meta a,.bars .br a{color:inherit;text-decoration:none}.themed a:not([class]):hover,.thead .meta a:hover,.bars .br a:hover{text-decoration:underline}
@@ -744,12 +761,20 @@ window.tvGrid = (() => { const ORD = ['ABC', 'CBS', 'NBC', 'FOX', 'ESPN', 'ESPN2
         <label class="f" for="s-recx">Recency x (oldest 1 − x, newest 1 + x)<input id="s-recx" type="number" min="0" max="0.9" step="0.05" value="0.2"></label>
         <label class="f" for="s-luck">Shooting luck adjustment, ratings<input id="s-luck" type="number" min="0" max="1" step="0.05" value="0.5"></label>
         <label class="f" for="s-injtaper">Injury taper: games until a deduction is gone (0 = off)<input id="s-injtaper" type="number" min="0" max="20" step="1" value="0"></label>
-        <label class="f" for="s-stretch">Early-season spread stretch (0 = off): a 20-pt spread grows by this share, close games barely move<input id="s-stretch" type="number" min="0" max="1" step="0.05" value="0"></label>
-        <label class="f" for="s-stretcht">Stretch fades out by games played (avg of both teams, 0 = never fades)<input id="s-stretcht" type="number" min="0" max="40" step="1" value="12"></label>
+        <label class="f" for="s-stretch">Early-season spread stretch (0 = off): a 20-pt spread grows by this share, close games barely move<input id="s-stretch" type="number" min="0" max="1" step="0.05" value="0.1"></label>
+        <label class="f" for="s-stretcht">Stretch fades out by games played (avg of both teams, 0 = never fades)<input id="s-stretcht" type="number" min="0" max="40" step="1" value="6"></label>
         <label class="f" for="s-luckt">Shooting luck adjustment, totals<input id="s-luckt" type="number" min="0" max="1" step="0.05" value="0.5"></label>
         <p class="note">League HFA is solved from home results each run and kept between the min and max. Team HFA adds each team's own home edge (capped at ±1.2). Shooting luck: 0 uses actual scores, 1 replaces made 3s and free throws with the expected makes from the attempts (shooter's shrunk 3P%/FT% plus part of the defense's 3P% allowed); needs box scores.</p>
         <label class="f" for="s-cap">Margin cap (BK2)<input id="s-cap" type="number" min="1" max="200" step="1" value="50"></label>
         <p class="note">Largest margin the rating fit counts. Lower softens blowouts.</p>
+      </div>
+      <div class="panel"><h3>NCAA tournament experience</h3>
+        <label class="f" for="s-xpon">Experience adjustment<select id="s-xpon"><option value="on">On</option><option value="off">Off</option></select></label>
+        <label class="f" for="s-xpsr">Senior (and grad), pts per 40 minutes<input id="s-xpsr" type="number" min="-5" max="5" step="0.05" value="0.5"></label>
+        <label class="f" for="s-xpjr">Junior<input id="s-xpjr" type="number" min="-5" max="5" step="0.05" value="0.2"></label>
+        <label class="f" for="s-xpso">Sophomore<input id="s-xpso" type="number" min="-5" max="5" step="0.05" value="-0.2"></label>
+        <label class="f" for="s-xpfr">Freshman<input id="s-xpfr" type="number" min="-5" max="5" step="0.05" value="-0.5"></label>
+        <p class="note">Added to a team's rating in NCAA tournament games only (bracket odds, lines and previews). Each player adds his class value × his share of the team's minutes (minutes per team game ÷ 40): a senior playing 20 minutes adds +0.25. Class years come from ESPN rosters, else the recruiting class.</p>
       </div>
       <div class="panel"><h3>Points and lines</h3>
         <label class="f" for="s-ptsk">Points/PA prior games (CL3)<input id="s-ptsk" type="number" min="1" max="100" step="1" value="5"></label>
@@ -1012,7 +1037,9 @@ const Engine = (() => {
         let k = 0; if (N) for (let j = 0; j < m; j++) if ((g.h[j] === i || g.v[j] === i) && !isNaN(g.vs[j]) && !isNaN(g.hs[j]) && inW(j)) k++;
         const pts = x.pts * (N ? Math.max(0, 1 - k / N) : 1); if (!(pts > 0)) continue; if (!x.to) injPost[i] += pts;
         for (let j = 0; j < m; j++) { if (!inW(j)) continue; if (g.h[j] === i) g.inj[j] += pts; else if (g.v[j] === i) g.inj[j] -= pts; } } }
-    return { teams, n, idx, g, p: data.params, injPost };
+    // NCAA tournament experience: data.xp = { team: points } added to the team's rating in NCAA tournament games only
+    const xpPost = new Float64Array(n); if (data.xp) for (const k in data.xp) { const i = idx.get(k); if (i != null) xpPost[i] = +data.xp[k] || 0; }
+    return { teams, n, idx, g, p: data.params, injPost, xpPost };
   }
 
   function recencyW(M, list) {
@@ -1153,7 +1180,8 @@ const Engine = (() => {
       tot[j] += otBump(sp[j], sd[j], tot[j]);
     }
     const injP = M.injPost || new Float64Array(n), injD = (h, v) => injP[h] - injP[v]; // rest-of-season deductions for postseason and hypothetical games
-    return { F, fade, maxG, live, hfaOf, P, X, adjO, adjD, AK, totOf, paceOf, otBump, sdBase, sp, tot, sd, ph, injP, injD };
+    const xp = M.xpPost || new Float64Array(n), xpD = (h, v) => xp[h] - xp[v];
+    return { F, fade, maxG, live, hfaOf, P, X, adjO, adjD, AK, totOf, paceOf, otBump, sdBase, sp, tot, sd, ph, injP, injD, xp, xpD };
   }
 
   // One season draw ("Actuals + Sim"): fills scores for unplayed D1-vs-D1 games
@@ -1290,6 +1318,12 @@ const Tourney = (() => {
     return Engine.normCdf((S.live[b] - S.live[a] - (S.injD ? S.injD(b, a) : 0)) * S.paceOf(a, b) / (S.sdBase * tot / 2));
   }
 
+  // NCAA tournament games: the same, plus each team's experience points
+  function pBN(M, S, a, b) {
+    const tot = S.totOf(a, b);
+    return Engine.normCdf((S.live[b] - S.live[a] - (S.injD ? S.injD(b, a) : 0) + (S.xpD ? S.xpD(b, a) : 0)) * S.paceOf(a, b) / (S.sdBase * tot / 2));
+  }
+
   // Simulate all conference tourneys. confRank: array. Returns {winners:{conf:idx}, games:[{v,h,vs,hs}]}
   function simConf(M, S, T, confRank, rand, actual) {
     const winners = {}, games = [], res = {};
@@ -1423,7 +1457,7 @@ const Tourney = (() => {
     const piRes = new Array(12);
     const slot = s => { const c = s[0], r = +s.slice(1); let v = c === 'M' ? B.M[r] : c === 'N' ? B.N[r] : c === 'O' ? B.O[r] : c === 'P' ? B.P[r] : c === 'Q' ? B.Q[r - 1] : B.R[r - 1]; return typeof v === 'object' && v !== null ? piRes[v.pi] : v; };
     const val = ref => ref.slot ? slot(ref.slot) : res[ref.g];
-    const play = q => { const g = G[q], a = val(g.a), b = val(g.b), f = forced && forced.get(q); const w = f === a || f === b ? f : rand() <= pB(M, S, a, b) ? b : a; res[q] = w; return w; };
+    const play = q => { const g = G[q], a = val(g.a), b = val(g.b), f = forced && forced.get(q); const w = f === a || f === b ? f : rand() <= pBN(M, S, a, b) ? b : a; res[q] = w; return w; };
     T.playinOrder.forEach((q, k) => { piRes[k] = play(q); });
     for (let q = 0; q < G.length; q++) if (G[q].round > 0) { const w = play(q); reach.set(w, G[q].round); }
     return { res, champ: res[T.ST.ncaa.findIndex(g => g.round === 6)], reach, piRes };
@@ -1481,7 +1515,7 @@ const Tourney = (() => {
     const B = seed(M, T, { rank, auto, atLarge }); B.sel = { rank, auto, atLarge }; return B;
   }
 
-  return { setup, simConf, seed, simBracket, seedMap, pB, confRank, season, project };
+  return { setup, simConf, seed, simBracket, seedMap, pB, pBN, confRank, season, project };
 })();
 if (typeof module !== 'undefined') module.exports = Tourney;
 </script>
@@ -1524,8 +1558,15 @@ const BKUI = (() => {
   const h5 = v => Math.round(v * 2) / 2, fr = x => { const w = Math.floor(x); return x - w ? (w ? w : '') + '½' : String(w); };
   const spread = v => { const r = h5(v); return r === 0 ? 'PK' : (r > 0 ? '+' : '-') + fr(Math.abs(r)); }, total = v => 'o' + fr(h5(v));
   const img = (u, sz, dark) => { if (!u) return ''; const d = dark ? darkLogo(u) : u; return `<img class="bl" src="${esc(d)}" alt="" loading="lazy" width="${sz}" height="${sz}"${d !== u ? ` onerror="this.onerror=null;this.src='${esc(u)}'"` : ''}>`; };
+  // phone bracket names: 11 characters at most (word abbreviations first, then the school's short code, then initials); nm2 shows the full name on desktop and the short one on phones
+  const SHW = [['University', 'U'], ['State', 'St'], ['Saint', 'St'], ['Northern', 'N'], ['Southern', 'S'], ['Eastern', 'E'], ['Western', 'W'], ['Central', 'C'], ['North', 'N'], ['South', 'S'], ['East', 'E'], ['West', 'W'], ['Tennessee', 'Tenn'], ['Carolina', 'Car'], ['Kentucky', 'Ky'], ['Mississippi', 'Miss'], ['Louisiana', 'La'], ['Florida', 'Fla'], ['Georgia', 'Ga'], ['California', 'Cal'], ['Washington', 'Wash'], ['Michigan', 'Mich'], ['Illinois', 'Ill'], ['Arkansas', 'Ark'], ['Alabama', 'Ala'], ['Oklahoma', 'Okla'], ['Colorado', 'Colo'], ['Virginia', 'Va'], ['Massachusetts', 'Mass'], ['Connecticut', 'Conn'], ['Christian', 'Chr'], ['International', 'Intl'], ['Atlantic', 'Atl'], ['Pennsylvania', 'Penn'], ['Mountain', 'Mtn'], ['Wisconsin', 'Wis'], ['Minnesota', 'Minn'], ['Nebraska', 'Neb'], ['Indiana', 'Ind'], ['Arizona', 'Ariz'], ['Missouri', 'Mo'], ['Kansas', 'Kan'], ['Texas', 'Tex'], ['Charleston', 'Chas'], ['Methodist', 'Meth'], ['Wesleyan', 'Wes'], ['Technology', 'Tech'], ['Institute', 'Inst'], ['College', 'Col'], ['Northwestern', 'NW'], ['Southeastern', 'SE'], ['Southwestern', 'SW'], ['Northeastern', 'NE'], ['Fort', 'Ft'], ['Mount', 'Mt'], ['Appalachian', 'App'], ['Middle', 'Mid'], ['Valley', 'Val'], ['Sacramento', 'Sac'], ['Jacksonville', 'Jax'], ['Southeast', 'SE'], ['Northwest', 'NW'], ['Southwest', 'SW'], ['Northeast', 'NE'], ['Coastal', 'Coast'], ['Green', 'Grn']];
+  const SNFIX = { 'Bethune-Cookman': 'Bethune-Ck', 'Texas A&M-Corpus Christi': 'A&M-CC', 'Arkansas-Pine Bluff': 'UAPB', 'Arkansas-Little Rock': 'Little Rock', 'Maryland-Eastern Shore': 'UMES', 'Mississippi Valley State': 'Miss Val St', 'Florida International': 'FIU', 'Florida Gulf Coast': 'FGCU', 'Texas Rio Grande Valley': 'UTRGV' };
+  const sn = (name, abbr, mx = 11) => { name = String(name || ''); if (name.length <= mx) return name; if (SNFIX[name]) return SNFIX[name]; let s = name; for (const [a, b] of SHW) { s = s.replace(new RegExp('\\b' + a + '\\b', 'g'), b); if (s.length <= mx) return s; }
+    if (abbr && String(abbr).length <= mx) return String(abbr); const ws = s.split(/\s+/); let cut = ''; for (const w of ws) { if ((cut ? cut + ' ' + w : w).length > mx) break; cut = cut ? cut + ' ' + w : w; } if (cut.length >= 6) return cut;
+    return ws.map((w, k, A) => k < A.length - 1 ? w[0] : w).join(' ').slice(0, mx).trim(); };
+  const nm2 = (name, abbr) => { const s = sn(name, abbr); return s === String(name || '') ? esc(name) : `<span class="fnm">${esc(name)}</span><span class="snm">${esc(s)}</span>`; };
   // s = { seed, logo, name, href, sub, num, won, lost, c, a }
-  const slot = s => `<div class="bslot${s.won ? ' won' : ''}${s.lost ? ' lost' : ''}"${style(s.c, s.a, s.won, s.name)}><span class="sd">${s.seed == null ? '' : esc(s.seed)}</span><span class="lg">${img(s.logo, 28, darkFor(s.c, s.a, s.won, s.name))}</span><span class="nm"><b>${s.href ? `<a class="tlink" href="${esc(s.href)}" title="${esc(s.name)}">${esc(s.name)}</a>` : esc(s.name)}</b><small>${s.sub || ''}</small></span><span class="p">${s.num == null ? '' : s.num}</span></div>`;
+  const slot = s => `<div class="bslot${s.won ? ' won' : ''}${s.lost ? ' lost' : ''}"${style(s.c, s.a, s.won, s.name)}><span class="sd">${s.seed == null ? '' : esc(s.seed)}</span><span class="lg">${img(s.logo, 28, darkFor(s.c, s.a, s.won, s.name))}</span><span class="nm"><b>${s.href ? `<a class="tlink" href="${esc(s.href)}" title="${esc(s.name)}">${nm2(s.name, s.abbr)}</a>` : nm2(s.name, s.abbr)}</b><small>${s.sub || ''}</small></span><span class="p">${s.num == null ? '' : s.num}</span></div>`;
   const game = (lab, pv, a, b) => `<div class="bgame"><div class="bh"><span>${lab}</span>${pv || ''}</div>${slot(a)}${slot(b)}</div>`;
   const ghost = lab => `<div class="bgame ghost"><div class="bh"><span>${lab}</span></div><div class="bslot"><span></span><span></span><span class="nm"><small>not needed</small></span><span></span></div></div>`;
   const champ = (s, lab) => `<div class="bchamp"${style(s.c, s.a, true, s.name)}><span class="bct">${esc(lab || 'Champion')}</span>${img(s.logo, 72, darkFor(s.c, s.a, true, s.name))}<b>${s.href ? `<a class="tlink" href="${esc(s.href)}">${esc(s.name)}</a>` : esc(s.name)}</b><span class="note">${s.sub || ''}</span></div>`;
@@ -1583,7 +1624,7 @@ const BKUI = (() => {
   const solid = (u, sz, c0, a0, name) => { const fx = name ? TVX.get(norm(name)) : null; if (fx) { const bg0 = fx.bg || prim(c0, a0, name).slice(1), dk0 = cr(bg0, 'ffffff') >= 2.2, mode = fx.logo || (dk0 ? 'dark' : 'reg'); return { sty: ` style="--tbg:#${bg0};--tfg:#${fx.fg || (dk0 ? 'ffffff' : '111111')}"`, img: tvImg(u, sz, mode) }; }
     let bg = prim(c0, a0, name).slice(1), dk = cr(bg, 'ffffff') >= 2.2; if (!dk) { const [, m1] = main(c0, a0), a = hx(m1); if (a && a !== bg && cr(a, 'ffffff') >= 3) return { sty: ` style="--tbg:#${a};--tfg:#ffffff"`, img: img(u, sz, false) }; }
     return { sty: ` style="--tbg:#${bg};--tfg:#${dk ? 'ffffff' : '111111'}"`, img: img(u, sz, dk) }; };
-  return { SCHOOL_LIST, solid, norm, school, style, fill, cr, inv, darkLogo, logo, slot, game, ghost, champ, two, one, spread, total, h5, prim, top25, favs, fairOdds, schTop, schTopWire, h2hStar, rpBtn, rpStat, rpBars, rpOpen, confSel };
+  return { SCHOOL_LIST, sn, nm2, solid, norm, school, style, fill, cr, inv, darkLogo, logo, slot, game, ghost, champ, two, one, spread, total, h5, prim, top25, favs, fairOdds, schTop, schTopWire, h2hStar, rpBtn, rpStat, rpBars, rpOpen, confSel };
 })();
 </script>
 <script>
@@ -1596,6 +1637,10 @@ const BKUI = (() => {
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const teams = DATA.teams, n = teams.length, G = DATA.games;
   const idx = new Map(teams.map((t, i) => [t.name, i]));
+  // games ESPN schedules after the season file was built (later rounds of early-season tournaments, added games): kept in cbb26_addg as [neutral, away, home, espnId]
+  // and appended to the schedule in the same order every load, so their game numbers stay put
+  let ADDG = []; try { ADDG = (JSON.parse(localStorage.getItem('cbb26_addg') || '[]') || []).filter(x => Array.isArray(x) && idx.has(x[1]) && idx.has(x[2])); } catch (e) {}
+  const BASE_N = G.length; ADDG.forEach(x => G.push([x[0] ? 1 : 0, x[1], null, x[2], null, 0]));
   const PRE_RANK = Engine.rankDesc(DATA.teams.map(t => +t.pre));
   const slug = s => 't-' + s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const bySlug = new Map(teams.map((t, i) => [slug(t.name), i]));
@@ -1612,7 +1657,7 @@ const BKUI = (() => {
   function effectiveGames() {
     return G.map((g, j) => { const e = entered.get(j); return e ? [g[0], g[1], e[0], g[3], e[1], e[2] ? 1 : 0] : g; });
   }
-  function scoresKey() { let h = 2166136261; const s = [...entered.entries()].sort((a, b) => a[0] - b[0]).map(e => e[0] + ':' + e[1].join(',')).join(';'); for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0).toString(36) + '.' + entered.size + '.b' + Object.keys(BOX).length; }
+  function scoresKey() { let h = 2166136261; const s = [...entered.entries()].sort((a, b) => a[0] - b[0]).map(e => e[0] + ':' + e[1].join(',')).join(';'); for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0).toString(36) + '.' + entered.size + '.b' + Object.keys(BOX).length + (G.length > BASE_N ? '.g' + G.length : ''); }
   const writing = {}, pending = {};
   let LOGOS = {}, TCOL = {}, BOX = {};
   let bkRegion = null, bkPlayins = null, lastRgn = null; // region / play-in modals (set by bracket())
@@ -1659,15 +1704,15 @@ const BKUI = (() => {
     const r1 = num('s-r1', 0.27, 0, 1), r2 = num('s-r2', 0.46, 0, 1), r3 = num('s-r3', 0.27, 0, 1), rs = r1 + r2 + r3 || 1; p.rpiW = [r1 / rs, r2 / rs, r3 / rs];
     p.locMode = $('s-loc').value; p.locW = num('s-locw', 0.5, 0, 1);
     p.totModel = $('s-totm').value; p.totK = num('s-totk', 4, 0, 30); p.totShrink = num('s-totsh', 0.5, 0, 1); p.totReg = num('s-totreg', 0.9, 0.5, 1.2); p.otShare = $('s-ot').value === 'off' ? 0 : 0.135;
-    p.hfaLo = num('s-hlo', 2.5, 0, 6); p.hfaHi = Math.max(p.hfaLo, num('s-hhi', 3, 0, 6)); p.recency = $('s-rec').value === 'on' ? num('s-recx', 0.2, 0, 0.9) : 0; p.luck = num('s-luck', 0.5, 0, 1); p.injTaper = num('s-injtaper', 0, 0, 20); p.stretchA = num('s-stretch', 0, 0, 1); p.stretchT = num('s-stretcht', 12, 0, 40); p.luckTot = num('s-luckt', 0.5, 0, 1); p.driftH = $('s-drift').value === 'off' ? 0 : num('s-drifth', 21, 3, 120); p.t0 = num('s-t0', 68, 55, 80); p.paceSpread = $('s-pace').value === 'on';
+    p.hfaLo = num('s-hlo', 2.5, 0, 6); p.hfaHi = Math.max(p.hfaLo, num('s-hhi', 3, 0, 6)); p.recency = $('s-rec').value === 'on' ? num('s-recx', 0.2, 0, 0.9) : 0; p.luck = num('s-luck', 0.5, 0, 1); p.injTaper = num('s-injtaper', 0, 0, 20); p.stretchA = num('s-stretch', 0.1, 0, 1); p.stretchT = num('s-stretcht', 6, 0, 40); p.luckTot = num('s-luckt', 0.5, 0, 1); p.driftH = $('s-drift').value === 'off' ? 0 : num('s-drifth', 21, 3, 120); p.t0 = num('s-t0', 68, 55, 80); p.paceSpread = $('s-pace').value === 'on';
     return p;
   }
   const vigNow = () => { const x = parseFloat($('s-vig').value); return isNaN(x) || x <= 0 ? DATA.params.vig : x; };
   const gqiW = () => { const x = parseFloat($('s-gqi').value); return isNaN(x) ? 0.65 : Math.min(1, Math.max(0, x)); };
-  const MODEL_SET = ['s-slm', 's-h2h', 's-injtaper', 's-stretch', 's-stretcht', 'fade', 'hfa', 'automode', 'w-sor', 'w-mar', 'w-rpi', 'w-pow', 's-cap', 's-ptsk', 's-sd', 's-hw', 's-rw', 's-nw', 's-r1', 's-r2', 's-r3', 's-loc', 's-locw', 's-totm', 's-totk', 's-totsh', 's-totreg', 's-ot', 's-t0', 's-pace', 's-hlo', 's-hhi', 's-rec', 's-recx', 's-luck', 's-luckt', 's-drift', 's-drifth'];
+  const MODEL_SET = ['s-slm', 's-h2h', 's-injtaper', 's-stretch', 's-stretcht', 'fade', 'hfa', 'automode', 'w-sor', 'w-mar', 'w-rpi', 'w-pow', 's-cap', 's-ptsk', 's-sd', 's-hw', 's-rw', 's-nw', 's-r1', 's-r2', 's-r3', 's-loc', 's-locw', 's-totm', 's-totk', 's-totsh', 's-totreg', 's-ot', 's-t0', 's-pace', 's-hlo', 's-hhi', 's-rec', 's-recx', 's-luck', 's-luckt', 's-drift', 's-drifth', 's-xpon', 's-xpsr', 's-xpjr', 's-xpso', 's-xpfr'];
   const settingsKey = () => JSON.stringify([MODEL_SET.map(id => $(id).value), INJ]);
   const gameTimes = () => G.map((g, j) => { const v = gameDate.get(j); if (!v) return null; const x = Date.parse(v.t || v.d + 'T12:00:00'); return isFinite(x) ? x : null; });
-  function dataNow() { return Object.assign({}, DATA, { games: effectiveGames(), params: params(), box: BOX, times: gameTimes(), inj: INJ }); }
+  function dataNow() { return Object.assign({}, DATA, { games: effectiveGames(), params: params(), box: BOX, times: gameTimes(), inj: INJ, xp: xpData() }); }
   // ---------- injury deductions (same tool as football): { team, pts, from, to (null = rest of season incl. postseason), note } ----------
   let INJ = (() => { const x = LS.get('cbb26_inj'); return Array.isArray(x) ? x : []; })();
   const dayStr = ms => { if (ms == null || !isFinite(ms)) return null; const d = new Date(ms); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
@@ -2120,7 +2165,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     const slotDist = s => { const c = s[0], r = +s.slice(1); let v = c === 'M' ? B.M[r] : c === 'N' ? B.N[r] : c === 'O' ? B.O[r] : c === 'P' ? B.P[r] : c === 'Q' ? B.Q[r - 1] : B.R[r - 1]; return v && typeof v === 'object' ? dist[piNode(v.pi)] : new Map([[v, 1]]); };
     const inDist = ref => ref.slot ? slotDist(ref.slot) : dist[ref.g];
     const play = q => { const g = NG[q], A = inDist(g.a), Bd = inDist(g.b), out = new Map();
-      for (const [x, px] of A) for (const [y, py] of Bd) { const pb = Tourney.pB(M, S, x, y); out.set(x, (out.get(x) || 0) + px * py * (1 - pb)); out.set(y, (out.get(y) || 0) + px * py * pb); }
+      for (const [x, px] of A) for (const [y, py] of Bd) { const pb = Tourney.pBN(M, S, x, y); out.set(x, (out.get(x) || 0) + px * py * (1 - pb)); out.set(y, (out.get(y) || 0) + px * py * pb); }
       const f = forced && forced.get(q); dist[q] = f != null && out.has(f) ? new Map([[f, 1]]) : out; };
     T.playinOrder.forEach(play);
     for (let q = 0; q < NG.length; q++) if (NG[q].round > 0) play(q);
@@ -2136,7 +2181,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     const slotT = s => { const c = s[0], r = +s.slice(1); let v = c === 'M' ? B.M[r] : c === 'N' ? B.N[r] : c === 'O' ? B.O[r] : c === 'P' ? B.P[r] : c === 'Q' ? B.Q[r - 1] : B.R[r - 1]; return v && typeof v === 'object' ? piRes[v.pi] : v; };
     const inT = ref => ref.slot ? slotT(ref.slot) : res[ref.g];
     const dist = [], won = [];
-    NG.forEach((g, q) => { const a = inT(g.a), b = inT(g.b), pb = Tourney.pB(M, S, a, b); dist[q] = new Map([[a, 1 - pb], [b, pb]]); won[q] = res[q]; });
+    NG.forEach((g, q) => { const a = inT(g.a), b = inT(g.b), pb = Tourney.pBN(M, S, a, b); dist[q] = new Map([[a, 1 - pb], [b, pb]]); won[q] = res[q]; });
     return { dist, won, best: q => [res[q], dist[q].get(res[q])] };
   }
   let bkAutoFit = () => {};
@@ -2156,12 +2201,12 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     const slots = g => [g.a.slot, g.b.slot].filter(Boolean).sort().join(',');
     const findGame = (x, y) => NG.findIndex(g => g.round === 1 && slots(g) === [x, y].sort().join(','));
     const seedOf = new Map(); for (const [t, v] of Tourney.seedMap(B)) seedOf.set(t, v.s);
-    const nm = t => picking ? logoImg(teams[t].name, 'ml', 16) + esc(teams[t].name) : `<a class="tlink" href="#${slug(teams[t].name)}">${logoImg(teams[t].name, 'ml', 16)}${esc(teams[t].name)}</a>`;
+    const nm = t => picking ? logoImg(teams[t].name, 'ml', 16) + `<span class="lgo-n">${BKUI.nm2(teams[t].name, ABBR[teams[t].name])}</span>` : `<a class="tlink" href="#${slug(teams[t].name)}" title="${esc(teams[t].name)}">${logoImg(teams[t].name, 'ml', 16)}<span class="lgo-n">${BKUI.nm2(teams[t].name, ABBR[teams[t].name])}</span></a>`;
     const piParent = {};
     const slotHtml = (t, p, extra = '', cls = '', q = null, title = '') => t == null ? '<div class="slot">&nbsp;</div>' : `<div class="slot ${cls}${picking && q != null ? ' pick' : ''}${picking && q != null && bkForced.get(q) === t ? ' forced' : ''}"${title ? ` title="${title}"` : ''}${picking && q != null ? ` data-q="${q}" data-t="${t}" tabindex="0" role="button" aria-label="Advance ${esc(teams[t].name)}"` : ''}><span class="s">${seedOf.get(t) ?? ''}</span><span class="nm">${nm(t)}${extra}</span>${p != null ? '' : `<span class="rc">${recStr(t)}</span>`}</div>`;
     const piPair = v => v.pi < 6 ? [B.Q[2 * v.pi], B.Q[2 * v.pi + 1]] : [B.R[2 * (v.pi - 6)], B.R[2 * (v.pi - 6) + 1]];
     const r64Slot = (col, r, q) => { const v = B[col][r]; if (v && typeof v === 'object') { const pn = det.T.playinOrder[v.pi]; piParent[pn] = q; const [w] = D.best(pn); const pr = piPair(v); return slotHtml(w, null, '', 'pi', q, 'Play-in: ' + esc(pr.map(t => teams[t].name).join(' vs '))); } return slotHtml(v, null, '', '', q); };
-    const pvb = (a, b) => a != null && b != null && a >= 0 && b >= 0 ? `<button type="button" class="pvb" data-pv="${a},${b},1" aria-label="Preview ${esc(teams[a].name)} vs ${esc(teams[b].name)}" title="Game preview">&#9432;</button>` : '';
+    const pvb = (a, b) => a != null && b != null && a >= 0 && b >= 0 ? `<button type="button" class="pvb" data-pv="${a},${b},2" aria-label="Preview ${esc(teams[a].name)} vs ${esc(teams[b].name)}" title="Game preview">&#9432;</button>` : '';
     const sideT = r => { if (r.slot) { const c = r.slot[0], k = +r.slot.slice(1); const v = c === 'M' ? B.M[k] : c === 'N' ? B.N[k] : c === 'O' ? B.O[k] : c === 'P' ? B.P[k] : c === 'Q' ? B.Q[k - 1] : B.R[k - 1]; return v && typeof v === 'object' ? D.best(det.T.playinOrder[v.pi])[0] : v; } return D.best(r.g)[0]; };
     const pvq = q => q == null ? '' : pvb(sideT(NG[q].a), sideT(NG[q].b));
     function region(reg, right) {
@@ -2189,8 +2234,8 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     }
     // region and play-in views in the shared bracket design (opened from a region title or the Play-ins button)
     const rawSlot = s_ => { const c = s_[0], k = +s_.slice(1); return c === 'M' ? B.M[k] : c === 'N' ? B.N[k] : c === 'O' ? B.O[k] : c === 'P' ? B.P[k] : c === 'Q' ? B.Q[k - 1] : B.R[k - 1]; };
-    const tSlot = (t, num, w) => ({ seed: seedOf.get(t), logo: LOGOS[teams[t].name], name: teams[t].name, href: '#' + slug(teams[t].name), sub: recStr(t), num, won: w === t, lost: w != null && w !== t, c: (TCOL[teams[t].name] || [])[0], a: (TCOL[teams[t].name] || [])[1] });
-    const pairBox = (a, b, w, lab) => { if (a == null || b == null || a < 0 || b < 0) return BKUI.ghost(lab); const L = pairLine(a, b, true), fav = L.sp > 0 ? a : b, pf = fav === b ? L.ph : 1 - L.ph;
+    const tSlot = (t, num, w) => ({ seed: seedOf.get(t), logo: LOGOS[teams[t].name], name: teams[t].name, abbr: ABBR[teams[t].name], href: '#' + slug(teams[t].name), sub: recStr(t), num, won: w === t, lost: w != null && w !== t, c: (TCOL[teams[t].name] || [])[0], a: (TCOL[teams[t].name] || [])[1] });
+    const pairBox = (a, b, w, lab) => { if (a == null || b == null || a < 0 || b < 0) return BKUI.ghost(lab); const L = pairLine(a, b, true, true), fav = L.sp > 0 ? a : b, pf = fav === b ? L.ph : 1 - L.ph;
       const num = t => t === fav ? BKUI.spread(-Math.abs(L.sp)) : `<span class="tt">${BKUI.total(L.tot)}</span>`;
       return BKUI.game(`${lab} · ${esc(teams[fav].name)} ${pc(pf)}%`, pvb(a, b), tSlot(a, num(a), w), tSlot(b, num(b), w)); };
     const box = (q, lab) => pairBox(sideT(NG[q].a), sideT(NG[q].b), D.won ? D.won[q] : D.best(q)[0], lab);
@@ -2219,7 +2264,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
         { lab: 'Champion', items: [{ row: 0, span: 16, html: ch != null && ch >= 0 ? BKUI.champ(Object.assign(tSlot(ch, null, ch), { sub: `${seedOf.get(ch) ?? ''} seed · ${recStr(ch)}` }), reg + ' champion') : '' }] }];
       const podList = [0, 2, 4, 6].map(k => { const x = pSite(k), top = B.M[pods[k / 2][0]]; return x ? `<span><b>${esc(x[0])}</b> <small class="note">${x[3]} · ${seedOf.get(top) ?? ''} seed pod${top != null && top >= 0 ? ' (' + esc(teams[top].name) + ')' : ''}</small></span>` : ''; }).filter(Boolean);
       const piList = pis.length ? [...new Set(r64.flatMap(q => [NG[q].a, NG[q].b].map(ref => { const v = ref.slot ? rawSlot(ref.slot) : null; return v && typeof v === 'object' ? piSite.get(v.pi) : null; }).filter(Boolean)))] : [];
-      return `<h3 class="sub3">${esc(reg)} Region</h3><div class="sites"><span><b>Regional: ${esc(SITES[reg] || '')}</b> <small class="note">${esc(ARENA[reg] || '')}</small></span>${podList.join('')}${piList.length ? `<span><b>Play-ins: ${piList.map(esc).join(' & ')}</b> <small class="note">Mar 16-17</small></span>` : ''}</div><p class="note">${modeNote} First- and second-round sites are assigned by seed line and distance (two pods per site), as the committee does; game headers show the site. The favorite shows the model spread and the underdog the model total (neutral site); header % is the favorite’s chance in that game.${pis.length ? ' Play-in winners move into the first round beside them.' : ''}</p>` + BKUI.one(cols, 16, !!rtl);
+      return `<h3 class="sub3">${esc(reg)} Region</h3><div class="sites"><span><b>Regional: ${esc(SITES[reg] || '')}</b> <small class="note">${esc(ARENA[reg] || '')}</small></span>${podList.join('')}${piList.length ? `<span><b>Play-ins: ${piList.map(esc).join(' & ')}</b> <small class="note">Mar 16-17</small></span>` : ''}</div><details class="rgnote"><summary>How this works</summary><p class="note">${modeNote} First- and second-round sites are assigned by seed line and distance (two pods per site), as the committee does; game headers show the site. The favorite shows the model spread and the underdog the model total (neutral site); header % is the favorite’s chance in that game.${pis.length ? ' Play-in winners move into the first round beside them.' : ''}</p></details>` + BKUI.one(cols, 16, !!rtl);
     };
     bkPlayins = () => { const grp = ks => `<div class="pis-grid">${ks.map(k => { const inf = piInfo(k); return piGame(k, `${esc(inf.reg)} · ${inf.seed} seed · ${esc(city(piSite.get(k)))}`); }).join('')}</div>`;
       return `<p class="note">${modeNote} The favorite shows the model spread and the underdog the model total (neutral site).</p><h3 class="sub3">At-large play-ins</h3>${grp([0, 1, 2, 3, 4, 5])}<h3 class="sub3">Auto-bid play-ins</h3>${grp(autoOrd())}`; };
@@ -2414,7 +2459,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     for (let j = 0; j < g.n; j++) {
       if (g.v[j] !== i && g.h[j] !== i) continue;
       const home = g.h[j] === i, opp = home ? g.v[j] : g.h[j], oppName = home ? g.vn[j] : g.hn[j];
-      const loc = g.neu[j] ? 'vs' : home ? 'vs' : '@', site = g.neu[j] ? 'Neutral' : home ? 'Home' : 'Away';
+      const loc = g.neu[j] ? 'vs (n)' : home ? 'vs' : '@';
       const sp = S.sp[j], my = isNaN(sp) ? '' : ((home ? sp : -sp) > 0 ? '+' : '') + (home ? sp : -sp).toFixed(1);
       const wp = isNaN(S.ph[j]) ? '' : pc(home ? S.ph[j] : 1 - S.ph[j]);
       const tot = isNaN(S.tot[j]) ? '' : S.tot[j].toFixed(1), mySp = home ? sp : -sp, psc = isNaN(S.tot[j]) ? '' : `${((S.tot[j] - mySp) / 2).toFixed(1)}-${((S.tot[j] + mySp) / 2).toFixed(1)}`;
@@ -2426,12 +2471,12 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
       let simRes = '';
       if (!done && snap && !isNaN(snap.va[j]) && !isNaN(snap.ha[j])) { const sm = home ? snap.ha[j] : snap.va[j], st = home ? snap.va[j] : snap.ha[j]; simRes = `<span class="note">${sm > st ? 'W' : 'L'} ${sm}-${st} sim</span>`; }
       const gd = gameDate.get(j), dk = gd ? gd.d + (gd.t || '') : '9999';
-      rows.push([dk, `<tr data-j="${j}" data-home="${home ? 1 : 0}" class="${g.neu[j] ? 'neu' : home ? '' : 'away'}${!done && LIVE.has(j) ? ' lvr' : ''}"><td class="m">${gd ? new Date(gd.d + 'T12:00:00').toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' }) : 'TBA'}</td><td class="c">${site}</td><td class="t">${loc} ${opp >= 0 ? tl(opp) : esc(oppName)}${g.conf[j] ? ' <small class="note">conf</small>' : ''}</td><td class="m">${my}</td><td class="m">${vCell}</td><td class="m">${tot}</td><td class="m">${vT == null ? '' : vT.toFixed(1)}</td><td class="m">${psc}</td><td class="m">${wp}</td>`
+      rows.push([dk, `<tr data-j="${j}" data-home="${home ? 1 : 0}" class="${g.neu[j] ? 'neu' : home ? '' : 'away'}${!done && LIVE.has(j) ? ' lvr' : ''}"><td class="m">${gd ? new Date(gd.d + 'T12:00:00').toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' }) : 'TBA'}</td><td class="t">${loc} ${opp >= 0 ? tl(opp) : esc(oppName)}${g.conf[j] ? ' <small class="note">conf</small>' : ''}</td><td class="m">${my}</td><td class="m">${vCell}</td><td class="m">${tot}</td><td class="m">${vT == null ? '' : vT.toFixed(1)}</td><td class="m">${psc}</td><td class="m">${wp}</td>`
         + `<td class="res ${res === 'W' ? 'w' : res === 'L' ? 'l' : ''}">${res}${done ? ` ${mine}-${theirs}` : ''}${!done && LIVE.has(j) ? liveCellB(j, i) : simRes}</td><td class="c">${atsC}</td><td class="c">${ouC}</td>`
         + `<td><input class="sc" type="number" min="0" max="250" inputmode="numeric" aria-label="${esc(t.name)} score" value="${mine}"${base ? ' disabled' : ''}></td><td><input class="sc" type="number" min="0" max="250" inputmode="numeric" aria-label="${esc(oppName)} score" value="${theirs}"${base ? ' disabled' : ''}></td>`
         + `<td><input type="checkbox" class="ot" aria-label="Overtime"${(entered.get(j) || [])[2] || G[j][5] ? ' checked' : ''}${base ? ' disabled' : ''}></td><td>${entered.has(j) ? '<button class="ghost clr" type="button">Clear</button>' : ''}</td><td>${opp >= 0 && !isLiveB(j) && !bxBtn(j) ? `<button type="button" class="pvb" data-pvj="${j}" title="Game preview" aria-label="Preview">&#9432;</button>` : ''}${bxBtn(j)}</td></tr>`]);
     }
-    for (const x of psRowsFor(x => x.v === i || x.h === i)) { const home = x.h === i, opp = home ? x.v : x.h, L = pairLine(x.v, x.h, true), mySp = home ? L.sp : -L.sp, me = home ? x.hs : x.vs, op = home ? x.vs : x.hs;
+    for (const x of psRowsFor(x => x.v === i || x.h === i)) { const home = x.h === i, opp = home ? x.v : x.h, L = pairLine(x.v, x.h, true, x.kind === 'nc'), mySp = home ? L.sp : -L.sp, me = home ? x.hs : x.vs, op = home ? x.vs : x.hs;
       rows.push([x.date + 'T99', `<tr class="neu post"><td class="m">${new Date(x.date + 'T12:00:00').toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' })}</td><td class="c">Neutral</td><td class="t">vs ${tl(opp)} <small class="note">${esc(x.stage)}</small></td><td class="m">${(mySp > 0 ? '+' : '') + mySp.toFixed(1)}</td><td></td><td class="m">${L.tot.toFixed(1)}</td><td></td><td class="m">${((L.tot - mySp) / 2).toFixed(1)}-${((L.tot + mySp) / 2).toFixed(1)}</td><td class="m">${pc(home ? L.ph : 1 - L.ph)}</td><td class="res ${me > op ? 'w' : 'l'}">${me > op ? 'W' : 'L'} <span class="note">${me}-${op} sim</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td><button type="button" class="pvb" data-pv="${x.v},${x.h},1" data-ps="${x.id}" title="Game preview" aria-label="Preview">&#9432;</button></td></tr>`]); }
     const logo = logos[t.name], th = teamTheme(t.name);
     $('team-body').style.cssText = th ? `--tc:${th[0]};--tc2:${th[1]}` : '';
@@ -2444,8 +2489,8 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
       ${advPanel(i)}
       ${resume(i)}
       ${rosterPanel(i)}
-      <div class="panel"><h3>Schedule and scores</h3><p class="note">Away games are shaded, neutral-site games lighter. Spreads (model and Vegas), projected score and win % are from ${esc(t.name)}'s side (negative = favored). Totals are combined points. ATS is the final against the Vegas spread; O/U is the final against the Vegas total. Type both scores to save a final, and the ratings update right away. Click Refresh afterward to update the odds.</p>
-      <div class="tbl"><table><thead><tr><th>Date</th><th class="c">Site</th><th class="t">Opponent</th><th>Spread<small>model</small></th><th>Vegas<small>spread</small></th><th>Total<small>model</small></th><th>Vegas<small>O/U</small></th><th>Proj score</th><th>Win %</th><th>Result</th><th class="c">ATS</th><th class="c">O/U</th><th>${esc(t.name)}</th><th>Opp</th><th>OT</th><th></th><th>Preview</th></tr></thead><tbody id="tb-team">${rows.sort((a, b) => a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0).map(x => x[1]).join('')}</tbody></table></div></div>${injPanel(i)}`;
+      <div class="panel"><h3>Schedule and scores</h3><p class="note">Away games are shaded, neutral-site games lighter; (n) = neutral site. Spreads (model and Vegas), projected score and win % are from ${esc(t.name)}'s side (negative = favored). Totals are combined points. ATS is the final against the Vegas spread; O/U is the final against the Vegas total. Type both scores to save a final, and the ratings update right away. Click Refresh afterward to update the odds.</p>
+      <div class="tbl"><table><thead><tr><th>Date</th><th class="t">Opponent</th><th>Spread<small>model</small></th><th>Vegas<small>spread</small></th><th>Total<small>model</small></th><th>Vegas<small>O/U</small></th><th>Proj score</th><th>Win %</th><th>Result</th><th class="c">ATS</th><th class="c">O/U</th><th>${esc(t.name)}</th><th>Opp</th><th>OT</th><th></th><th>Preview</th></tr></thead><tbody id="tb-team">${rows.sort((a, b) => a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0).map(x => x[1]).join('')}</tbody></table></div></div>${injPanel(i)}`;
     wireInj($('team-body').querySelector('.injp'));
     const img = $('team-body').querySelector('img.tlogo'); if (img) img.addEventListener('error', () => img.remove());
   }
@@ -2679,10 +2724,13 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     if (window.MEYER_HOST && !window.MEYER_NIGHTLY && window.MEYER_SNAP_AT && Date.now() - window.MEYER_SNAP_AT < 30 * 3600e3 && snapHasGames) { $('auto-note').textContent = 'Updated nightly at ' + new Date(window.MEYER_SNAP_AT).toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + '.'; return; }
     if (window.MEYER_HOST && (window.MEYER_NIGHTLY || !gameDate.size || !snapHasGames)) { if (!window.MEYER_NIGHTLY) $('auto-note').textContent = 'Loading this season from ESPN…'; loadLogos(); let ok = false; for (let t = 0; t < 3 && !ok; t++) { if (t) await new Promise(r => setTimeout(r, 60000 * t)); ok = (await loadEspn('2026-11-01', '2027-03-15', 'Full season')) !== false; } if (ok || !window.MEYER_NIGHTLY) run(); return; }
     if (!autoPref() || !(window.MEYER_HOST || /^file:|^https?:\/\/(localhost|127\.)/.test(location.href))) { $('auto-note').textContent = autoPref() ? 'Auto-update works when the page is opened as a file on your computer.' : 'Auto-update is off.'; return; }
-    const before = scoresKey(), a0 = new Date(), b0 = new Date(); a0.setDate(a0.getDate() - 3); b0.setDate(b0.getDate() + 3);
+    const before = scoresKey(), a0 = new Date(), b0 = new Date(); b0.setDate(b0.getDate() + 3);
+    // when the team-name list changes (a school renamed on ESPN), reload the whole season once so games that didn't match before get their dates and scores
+    const aliasV = 'n' + Object.keys(ALIAS).length; let aliasOld = null; try { aliasOld = localStorage.getItem('cbb26_aliasv'); } catch (e) {}
+    if (aliasOld !== aliasV) a0.setTime(new Date('2026-11-01T12:00:00').getTime()); else a0.setDate(a0.getDate() - 3);
     $('auto-note').textContent = 'Updating scores and lines from ESPN…';
     loadLogos();
-    await loadEspn(ymd(a0), ymd(b0), 'Auto-update');
+    await cbbIdle(); const autoRes = await loadEspn(ymd(a0), ymd(b0), aliasOld !== aliasV ? 'Full season (team names updated)' : 'Auto-update'); if (autoRes !== false) try { localStorage.setItem('cbb26_aliasv', aliasV); } catch (e) {}
     const msg = $('paste-msg').textContent; $('auto-note').textContent = /Couldn/.test(msg) ? 'Auto-update couldn’t reach ESPN. Use the Scores tab to paste instead.' : `Updated ${new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}: ${msg.replace(/^Auto-update: /, '')}`;
     await new Promise(r => setTimeout(r, 400));
     if (scoresKey() !== before) run();
@@ -2709,7 +2757,8 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     'stephen f. austin': 'SF Austin', 'stephen f austin': 'SF Austin', 'siu edwardsville': 'SIUE', 'ualbany': 'SUNY Albany', 'albany': 'SUNY Albany', 'sam houston': 'Sam Houston St', 'southern': 'Southern Univ', "saint joseph's": "St Joseph's PA", "st. joseph's": "St Joseph's PA", 'saint louis': 'St Louis', "saint mary's": "St Mary's CA", "saint peter's": "St Peter's",
     'st. thomas-minnesota': 'St Thomas MN', 'st. thomas (mn)': 'St Thomas MN', 'st. thomas': 'St Thomas MN', 'texas a&m-corpus christi': 'TAM C. Christi', 'texas a&m corpus christi': 'TAM C. Christi', 'ut martin': 'TN Martin', 'texas southern': 'TX Southern', 'utsa': 'UT San Antonio', 'ut rio grande valley': 'UTRGV',
     'western carolina': 'W Carolina', 'western illinois': 'W Illinois', 'western michigan': 'W Michigan', 'green bay': 'WI Green Bay', 'milwaukee': 'WI Milwaukee', 'western kentucky': 'WKU', "hawai'i": 'Hawaii', 'san josé state': 'San Jose St', 'ul monroe': 'ULM', 'louisiana-monroe': 'ULM', 'app state': 'Appalachian St', 'seattle u': 'Seattle',
-    'pitt': 'Pittsburgh', 'detroit mercy': 'Detroit', 'tarleton': 'Tarleton St', 'tarleton state': 'Tarleton St', 'texas a&m-commerce': 'East Texas A&M', 'nc state': 'NC State', 'unc wilmington': 'UNC Wilmington', 'southern miss': 'Southern Miss', 'east texas a&m': 'East Texas A&M' };
+    'pitt': 'Pittsburgh', 'detroit mercy': 'Detroit', 'tarleton': 'Tarleton St', 'tarleton state': 'Tarleton St', 'texas a&m-commerce': 'East Texas A&M', 'nc state': 'NC State', 'unc wilmington': 'UNC Wilmington', 'southern miss': 'Southern Miss', 'east texas a&m': 'East Texas A&M',
+    'lsu new orleans': 'New Orleans', 'lsu-new orleans': 'New Orleans', 'lsu new orleans privateers': 'New Orleans', 'lsu-no': 'New Orleans', 'lsuno': 'New Orleans', 'uno': 'New Orleans', 'new orleans privateers': 'New Orleans' };
   const nameIx = new Map(); const addName = (k, v) => { const z = norm(k); if (z && !nameIx.has(z)) nameIx.set(z, v); };
   G.forEach(g => { addName(g[1], g[1]); addName(g[3], g[3]); });
   for (const k in ALIAS) addName(k, ALIAS[k]);
@@ -3027,8 +3076,8 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     // roster rating follows LPR exactly: the roll-up values, sorted, are handed out in LPR order (the raw roll-up stays as Talent)
     const ids = [...m.keys()], vals = ids.map(i => m.get(i).raw).sort((a, b) => b - a), L_ = det.S.live; ids.slice().sort((a, b) => L_[b] - L_[a]).forEach((i, k) => { const x = m.get(i); x.v = vals[k]; x.rk = k + 1; });
     ids.slice().sort((a, b) => m.get(b).raw - m.get(a).raw).forEach((i, k) => (m.get(i).trk = k + 1)); btrC = { OR, m }; return m; }
-  function bbTeamView() { const TR = bbTeamRatings(), R = curR(), ids = [...TR.keys()].sort((a, b) => TR.get(b).v - TR.get(a).v);
-    return `<p class="note">Roster rating = the team's player ratings rolled up by minutes: the top 5 count 16% each, the next 3 about 6.7% each, every position the same. An empty slot counts as a 60. The roster rating is then lined up with LPR: the same set of values, handed out in LPR order, so roster rank = LPR. Talent is the raw roll-up before that, with its own rank.</p><div class="tbl" style="max-height:75vh"><table><thead><tr><th>#</th><th class="t">Team</th><th class="t">Conf</th><th class="grp">Roster rating</th><th>Starters<small>avg</small></th><th class="grp">LPR</th><th>Talent<small>raw roll-up</small></th><th>Talent<small>rank</small></th></tr></thead><tbody>${ids.map((i, k) => { const x = TR.get(i), d = R.rank[i] - (k + 1); return `<tr><td class="m">${k + 1}</td><td class="t">${tl(i)}</td><td class="t">${esc(confAb(teams[i].conf))}</td><td class="m grp"><b>${x.v.toFixed(1)}</b></td><td class="m">${x.st.toFixed(1)}</td><td class="m grp">#${R.lpr[i]}</td><td class="m">${x.raw.toFixed(1)}</td><td class="m">#${x.trk}</td></tr>`; }).join('')}</tbody></table></div>`; }
+  function bbTeamView() { const TR = bbTeamRatings(), R = curR(), ids = [...TR.keys()].sort((a, b) => TR.get(b).v - TR.get(a).v), XT = xpTeams();
+    return `<p class="note">Roster rating = the team's player ratings rolled up by minutes: the top 5 count 16% each, the next 3 about 6.7% each, every position the same. An empty slot counts as a 60. The roster rating is then lined up with LPR: the same set of values, handed out in LPR order, so roster rank = LPR. Talent is the raw roll-up before that, with its own rank. Experience = each player's class value (settings: senior ${$('s-xpsr').value}, junior ${$('s-xpjr').value}, sophomore ${$('s-xpso').value}, freshman ${$('s-xpfr').value}; grad students count as seniors) × his share of the team's minutes (minutes per team game ÷ 40), summed; it is added to the team's rating in NCAA tournament games${xpOn() ? '' : ' (turned off in Settings)'}. ${xpStatus()}</p><div class="tbl" style="max-height:75vh"><table><thead><tr><th>#</th><th class="t">Team</th><th class="t">Conf</th><th class="grp">Roster rating</th><th>Starters<small>avg</small></th><th class="grp">LPR</th><th>Talent<small>raw roll-up</small></th><th>Talent<small>rank</small></th><th class="grp">Experience<small>pts</small></th><th>Exp<small>rank</small></th></tr></thead><tbody>${ids.map((i, k) => { const x = TR.get(i), d = R.rank[i] - (k + 1), xe = XT.get(i); return `<tr><td class="m">${k + 1}</td><td class="t">${tl(i)}</td><td class="t">${esc(confAb(teams[i].conf))}</td><td class="m grp"><b>${x.v.toFixed(1)}</b></td><td class="m">${x.st.toFixed(1)}</td><td class="m grp">#${R.lpr[i]}</td><td class="m">${x.raw.toFixed(1)}</td><td class="m">#${x.trk}</td><td class="m grp" title="${xe ? `${Math.round(100 * xe.cov)}% of minutes with a known class` : ''}">${xe ? sgn2(xe.pts) : '-'}</td><td class="m">${xe ? '#' + xe.rk : '-'}</td></tr>`; }).join('')}</tbody></table></div>`; }
   // team page roster panel
   function rosterPanel(i) { const rs = teamPlayers(i).sort((a, b) => b.pg[1] - a.pg[1]); if (!rs.length) return ''; const OR = bbRatings(), f1 = x => isNaN(x) ? '-' : x.toFixed(1), pc_ = x => isNaN(x) ? '-' : (100 * x).toFixed(1);
     const TR = bbTeamRatings().get(i); return `<div class="panel"><h3>Players</h3>${TR ? `<p><b>Roster rating ${TR.v.toFixed(1)}</b> <span class="note">#${TR.rk} of ${bbTeamRatings().size} (LPR #${curR().lpr[i]}) · talent ${TR.raw.toFixed(1)} (#${TR.trk}) · starters avg ${TR.st.toFixed(1)}</span></p>` : ''}<p class="note">Season per-game stats from ESPN box scores, by points per game. Click a player for his game log, percentiles, next-game projection and past seasons.</p><div class="tbl"><table class="bxs"><thead><tr><th class="t">Player</th><th class="c">Pos</th><th>GP</th><th>GS</th><th>MIN</th><th>PTS</th><th>REB</th><th>AST</th><th>STL</th><th>BLK</th><th>FG%</th><th>3P%</th><th>FT%</th><th>Our rating</th></tr></thead><tbody>${rs.map(r => `<tr><td class="t">${bbLink(r.a, r.nm)}</td><td class="c">${r.pos}</td><td class="m">${r.gp}</td><td class="m">${r.gs}</td><td class="m">${f1(r.pg[0])}</td><td class="m"><b>${f1(r.pg[1])}</b></td><td class="m">${f1(r.reb)}</td><td class="m">${f1(r.pg[10])}</td><td class="m">${f1(r.pg[11])}</td><td class="m">${f1(r.pg[12])}</td><td class="m">${pc_(r.fgp)}</td><td class="m">${pc_(r.tpp)}</td><td class="m">${pc_(r.ftp)}</td><td class="m">${(OR.get(r) || {}).v ?? ''}</td></tr>`).join('')}</tbody></table></div></div>`; }
@@ -3076,6 +3125,30 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
   // recruiting stars (CollegeBasketballData, the last 5 classes): base 5★ 80, 4★ 75, 3★ 70, 2★ 65, 0-1★ / unranked 60, +1 per year in college; players then earn their way from the base
   let BREC = LS.get('cbb26_recr') || null; const BB_CLASS = 2026, BSTAR = s_ => s_ >= 5 ? 80 : s_ === 4 ? 75 : s_ === 3 ? 70 : s_ === 2 ? 65 : 60, BCLSY = { FR: 0, SO: 1, JR: 2, SR: 3, GR: 4 };
   const bRecKey = s_ => String(s_ || '').toLowerCase().replace(/\b(jr|sr|ii|iii|iv)\b/g, '').replace(/[^a-z]/g, '');
+  // ---------- experience for NCAA tournament games: class value × share of team minutes (minutes per team game ÷ 40), summed per team ----------
+  // class years from ESPN team rosters (all D1 teams, refreshed weekly in the background and by the nightly job), else from the recruiting class
+  let BCLSD = LS.get('cbb26_cls') || null, clsRun = null, xpC = null;
+  const xpOn = () => { const e = document.getElementById('s-xpon'); return !e || e.value !== 'off'; };
+  const sgn2 = x => (x > 0 ? '+' : x < 0 ? '-' : '') + Math.abs(x).toFixed(2);
+  const xpW = () => { const n_ = (id, d) => { const e = document.getElementById(id), x = e ? parseFloat(e.value) : NaN; return isNaN(x) ? d : Math.max(-5, Math.min(5, x)); }; const sr = n_('s-xpsr', 0.5); return { SR: sr, GR: sr, JR: n_('s-xpjr', 0.2), SO: n_('s-xpso', -0.2), FR: n_('s-xpfr', -0.5) }; };
+  function xpCls(r) { const c = BCLSD && BCLSD.c && BCLSD.c[r.a]; if (c) return c; try { if (BREC) { const x = BREC.id[r.a] || BREC.nm[bRecKey(r.nm)]; if (x) { const y = BB_CLASS - x[1]; return y <= 0 ? 'FR' : y === 1 ? 'SO' : y === 2 ? 'JR' : 'SR'; } } } catch (e) {} return ''; }
+  function xpTeams() { const W = xpW(), key = JSON.stringify([W, BCLSD && BCLSD.at, Object.keys(PBX.done).length, BREC && BREC.at]); if (xpC && xpC.key === key) return xpC.m;
+    const rows = Object.entries(PBX.p).filter(([, p]) => idx.has(p.t) && p.gp > 0).map(([a, p]) => ({ a, nm: p.n, ti: idx.get(p.t), gp: p.gp, pg: [p.s[0] / p.gp] })); if (xpC && xpC.key === key) return xpC.m;
+    const by = new Map(); for (const r of rows) (by.get(r.ti) || by.set(r.ti, []).get(r.ti)).push(r);
+    const m = new Map(); for (const [i, L] of by) { const gpT = Math.max(1, ...L.map(r => r.gp || 0)); let pts = 0, kn = 0, mn = 0; for (const r of L) { const mins = (r.pg[0] || 0) * (r.gp || 0) / gpT, c = xpCls(r); mn += mins; if (!c || W[c] == null) continue; kn += mins; pts += W[c] * mins / 40; } m.set(i, { pts, cov: mn ? kn / mn : 0 }); }
+    [...m.keys()].sort((a, b) => m.get(b).pts - m.get(a).pts).forEach((i, k) => (m.get(i).rk = k + 1)); xpC = { key, m }; return m; }
+  function xpData() { if (!xpOn()) return null; try { const m = xpTeams(), o = {}; for (const [i, x] of m) if (x.pts) o[teams[i].name] = Math.round(x.pts * 1000) / 1000; return o; } catch (e) { return null; } }
+  const xpStatus = () => { const n_ = BCLSD && BCLSD.c ? Object.keys(BCLSD.c).length : 0; return clsRun ? `Loading class years from ESPN rosters… (${clsRun.done} of ${clsRun.n} teams)` : n_ ? `Class years: ${n_} players from ESPN rosters (${new Date(BCLSD.at).toLocaleDateString()}), recruiting class otherwise.` : 'Class years: recruiting class only until the ESPN rosters load.'; };
+  // fetch every team's ESPN roster for class years; also run by the nightly job (window.cbbClsRefresh)
+  // basketball's background ESPN loads wait while football is pulling, so the two don't hit ESPN at once
+  const cbbIdle = async () => { for (let k = 0; k < 240; k++) { const b = document.getElementById('fb-refresh'); if (!b || !/^Pulling/.test(b.textContent.trim())) return; await new Promise(r => setTimeout(r, 2000)); } };
+  async function cbbClsRefresh(force) { if (clsRun) return clsRun.p; if (!window.MEYER_NIGHTLY) await cbbIdle(); if (!force && BCLSD && BCLSD.at && Date.now() - BCLSD.at < 7 * 864e5) return;
+    const ids = teams.map((t, i) => [i, bbEspnId(i)]).filter(x => x[1]), c = {}; clsRun = { n: ids.length, done: 0 };
+    clsRun.p = (async () => { let k = 0; const one = async () => { while (k < ids.length) { const [, id] = ids[k++]; try { const r = await fetch(`${API_BB}/teams/${id}/roster`, { cache: 'no-store' }); if (r.ok) { const j = await r.json(); const add = a => { if (!a || !a.id) return; const cl = bClsAb((a.experience && (a.experience.abbreviation || a.experience.displayValue)) || ''); if (cl) c[String(a.id)] = cl; }; for (const x of j.athletes || []) { if (Array.isArray(x.items)) x.items.forEach(add); else add(x); } } } catch (e) {} clsRun.done++; } };
+      await Promise.all(Array.from({ length: 4 }, one)); const ok = Object.keys(c).length > 500; if (ok) { BCLSD = { at: Date.now(), c }; LS.set('cbb26_cls', BCLSD); } clsRun = null; if (ok && xpOn()) { xpC = null; if (det) { deterministic(); markStale(); renderAll(); } } return ok; })();
+    return clsRun.p; }
+  window.cbbClsRefresh = cbbClsRefresh;
+  setTimeout(() => { try { cbbClsRefresh(); } catch (e) {} }, 8000);
   const bRecBase = (a, nm, clsYrs) => { const x = BREC ? (a && BREC.id[a]) || BREC.nm[bRecKey(nm)] || null : null, yrs = Math.max(0, Math.min(5, x ? BB_CLASS - x[1] : clsYrs || 0)); return { base: BSTAR(x ? x[0] : 0) + yrs, stars: x ? x[0] : 0, yrs, cls: x ? x[1] : null }; };
   const bRecTxt = b => `${b.stars ? b.stars + '★' : 'unranked'}${b.cls ? ' (' + b.cls + ')' : ''} base ${b.base - b.yrs} +${b.yrs} yr${b.yrs === 1 ? '' : 's'}`;
   async function bbRecLoad(get, say) { const out = { at: Date.now(), id: {}, nm: {} };
@@ -3142,10 +3215,13 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
   }
   function applyPaste(text) {
     const P = parsePaste(text); if (P.error) return P.error;
-    const eff = effectiveGames(), claimed = new Set(); let scores = 0, dates = 0, nOdds = 0; const miss = [], bad = [];
+    const eff = effectiveGames(), claimed = new Set(); let scores = 0, dates = 0, nOdds = 0, added = 0; const miss = [], bad = [];
     const rows = P.rows.filter(r => !r.bad && r.A && r.B).sort((x, y) => (x.date || '').localeCompare(y.date || ''));
     for (const r of rows) {
       const cand = []; G.forEach((g, q) => { if (claimed.has(q)) return; if ((g[1] === r.A && g[3] === r.B) || (g[1] === r.B && g[3] === r.A)) cand.push(q); });
+      if (!cand.length && r.id && idx.has(r.A) && idx.has(r.B) && r.A !== r.B && !ADDG.some(x => x[3] === r.id) && ![...gameDate.values()].some(x => x && String(x.id) === String(r.id))) {
+        ADDG.push([r.neutral ? 1 : 0, r.A, r.B, String(r.id)]); G.push([r.neutral ? 1 : 0, r.A, null, r.B, null, 0]); eff.push(G[G.length - 1]); cand.push(G.length - 1); added++;
+        try { localStorage.setItem('cbb26_addg', JSON.stringify(ADDG)); } catch (e) {} }
       if (!cand.length) { miss.push(r.raw); continue; }
       const homeName = r.neutral ? null : r.homeA ? r.A : r.B;
       const score = q => (gameDate.has(q) && gameDate.get(q).d === r.date ? 4 : 0) + (homeName && G[q][3] === homeName ? 2 : 0) + (gameDate.has(q) ? 0 : 1) + (eff[q][2] == null ? 1 : 0);
@@ -3162,9 +3238,9 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     }
     P.rows.filter(r => r.bad).forEach(r => bad.push(r.bad));
     saveDates(); saveVegas(); savePre(); new Set([...Array(G.length).keys()].filter(q => claimed.has(q)).map(chunkOf)).forEach(saveChunk);
-    if (scores) scoresChanged(); else renderAll();
+    if (scores || added) scoresChanged(); else renderAll();
     unresolved = P.unknown;
-    return `${P.source === 'ESPN' ? 'ESPN' : 'Pasted'} data: ${rows.length} games read, ${scores} new final${scores === 1 ? '' : 's'} saved, ${dates} game dates set${nOdds ? `, ${nOdds} betting lines` : ''}.` + (miss.length ? ` ${miss.length} game${miss.length === 1 ? '' : 's'} not on the schedule (often exhibitions or non-D1).` : '') + (bad.length ? ` ${bad.length} line${bad.length === 1 ? '' : 's'} not understood.` : '');
+    return `${P.source === 'ESPN' ? 'ESPN' : 'Pasted'} data: ${rows.length} games read, ${scores} new final${scores === 1 ? '' : 's'} saved, ${dates} game dates set${added ? `, ${added} newly scheduled game${added === 1 ? '' : 's'} added` : ''}${nOdds ? `, ${nOdds} betting lines` : ''}.` + (miss.length ? ` ${miss.length} game${miss.length === 1 ? '' : 's'} not on the schedule (often exhibitions or non-D1).` : '') + (bad.length ? ` ${bad.length} line${bad.length === 1 ? '' : 's'} not understood.` : '');
   }
   let unresolved = [], lastPaste = '';
   function aliasUI() {
@@ -3237,6 +3313,15 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     } catch (err) { chip.hidden = false; chip.textContent = 'Live scores: ESPN unreachable, retrying'; }
     liveBusy = false; liveT = setTimeout(liveTick, 45e3);
   }
+  // new-game check: every 30 minutes (and on open) look at ESPN for today and the next 3 days; any game it lists that isn't on our schedule yet
+  // (a tournament's next round once the matchups are set, a newly added game) is added with its date, network and line, and the model refits
+  let schedT = null, schedBusy = false;
+  async function schedCheck() { clearTimeout(schedT); if (document.hidden || schedBusy || !det) { schedT = setTimeout(schedCheck, 30 * 60e3); return; } schedBusy = true;
+    try { const known = new Set([...gameDate.values()].filter(x => x && x.id).map(x => String(x.id))), evs = [];
+      for (let k = 0; k < 4; k++) { const d = new Date(); d.setDate(d.getDate() + k); try { const r = await fetch(espnUrl(ymd(d)), { cache: 'no-store' }); if (r.ok) { const j = await r.json(); (j.events || []).forEach(e => { if (!known.has(String(e.id))) evs.push(e); }); } } catch (e) {} }
+      if (evs.length) { const msg = applyPaste(JSON.stringify({ events: evs })); if (/newly scheduled/.test(msg)) { const pm = $('paste-msg'); if (pm) pm.textContent = 'Schedule check: ' + msg; } } } catch (e) {}
+    schedBusy = false; schedT = setTimeout(schedCheck, 30 * 60e3); }
+  setTimeout(schedCheck, 9000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) liveTick(); });
   setTimeout(liveTick, 6000);
   // ---------- direct ESPN load (works when the page is opened as a local file) ----------
@@ -3603,18 +3688,18 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
   document.querySelectorAll('.xl-export').forEach(b => b.addEventListener('click', exportExcel));
 
   // ---------- game preview popup ----------
-  function previewHtml(v, h, neu, j, ps) {
+  function previewHtml(v, h, neu, j, ps, nc) {
     const S = det.S, R = curR(), A = advStats(), g = det.M.g;
     let sp, tot, ph, done = false, pre = false;
     if (j != null && !isNaN(S.sp[j])) { done = !isNaN(g.vs[j]) && !isNaN(g.hs[j]); const pg = done ? pregame.get(j) : null; sp = pg ? pg.msp : S.sp[j]; tot = pg ? pg.mtot : S.tot[j]; ph = pg ? pg.mph : S.ph[j]; pre = !!pg; }
-    else { const hfa = neu ? 0 : S.hfaOf(h), t0 = S.totOf(h, v); sp = -Math.min((S.live[h] - S.live[v] + hfa - S.injD(h, v)) * S.paceOf(h, v), t0); const sd = S.sdBase * t0 / 2; ph = 1 - Engine.normCdf(sp / sd); tot = t0 + S.otBump(sp, sd, t0); }
+    else { const hfa = neu ? 0 : S.hfaOf(h), t0 = S.totOf(h, v); sp = -Math.min((S.live[h] - S.live[v] + hfa - S.injD(h, v) + (nc ? S.xpD(h, v) : 0)) * S.paceOf(h, v), t0); const sd = S.sdBase * t0 / 2; ph = 1 - Engine.normCdf(sp / sd); tot = t0 + S.otBump(sp, sd, t0); }
     const th = i => teamTheme(teams[i].name) || ['#0c2340', 'var(--gold)', '#fff'], cv = th(v), ch = th(h);
     const half = x => Math.round(x * 2) / 2, sp5 = x => { const r = half(x); return r === 0 ? 'PK' : (r > 0 ? '+' : '-') + Math.abs(r).toFixed(1); };
     const d = j != null ? gameDate.get(j) || {} : {}, vg = j != null ? vegas.get(j) || {} : {};
     const when = d.t ? new Date(d.t).toLocaleString([], { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) : d.d ? new Date(d.d + 'T12:00:00').toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' }) : '';
     const side = (i, al, c, pts, myp, mysp) => `<div class="pv-side ${al}" style="background:${c[0]};color:${c[2]}">${logoImg(teams[i].name, 'bl', 76)}<div class="pv-nm"><small>#${R.rank[i]} · ${esc(confAb(teams[i].conf))}</small><b>${esc(teams[i].name)}</b><small>${R.W[i]}-${R.L[i]} (${R.CW[i]}-${R.CL[i]} conf) · rating ${S.live[i].toFixed(1)}</small></div><div class="pv-big"><span>${myp < 0.005 ? '<1' : myp > 0.995 ? '>99' : (myp * 100).toFixed(0)}%</span><small>${sp5(mysp)} · ML ${ml(myp)}</small><em>${pts.toFixed(0)}<small> proj</small></em></div></div>`;
     const site = neu ? 'Neutral site' : `at ${esc(teams[h].name)}`;
-    const stats = [['Live rating', i => S.live[i], 2, 1], ['Adj O', i => S.adjO[i], 1, 1], ['Adj D', i => S.adjD[i], 1, 0], ['Adj tempo', i => A[i].tempo, 1, 1], ['Adj OE', i => A[i].aoe, 1, 1], ['Adj DE', i => A[i].ade, 1, 0], ['eFG%', i => A[i].efg * 100, 1, 1], ['TO%', i => A[i].tov * 100, 1, 0], ['OR%', i => A[i].orb * 100, 1, 1], ['3P%', i => A[i].tpp * 100, 1, 1], ['Opp 3P%', i => A[i].dtpp * 100, 1, 0], ['Luck', i => A[i].luck, 2, 1], ['Volatility', i => A[i].vol, 1, 0]];
+    const stats = [['Live rating', i => S.live[i], 2, 1], ['Adj O', i => S.adjO[i], 1, 1], ['Adj D', i => S.adjD[i], 1, 0], ['Adj tempo', i => A[i].tempo, 1, 1], ['Adj OE', i => A[i].aoe, 1, 1], ['Adj DE', i => A[i].ade, 1, 0], ['eFG%', i => A[i].efg * 100, 1, 1], ['TO%', i => A[i].tov * 100, 1, 0], ['OR%', i => A[i].orb * 100, 1, 1], ['3P%', i => A[i].tpp * 100, 1, 1], ['Opp 3P%', i => A[i].dtpp * 100, 1, 0], ['Luck', i => A[i].luck, 2, 1], ['Volatility', i => A[i].vol, 1, 0], ...(nc && xpOn() ? [['Experience', i => { const x = xpTeams().get(i); return x ? x.pts : NaN; }, 2, 1]] : [])];
     const all = [...Array(n).keys()];
     const rows = stats.map(([l, f, dp, hi]) => { const xs = all.map(f).filter(x => !isNaN(x)).sort((a, b) => a - b); if (!xs.length) return ''; const pr = x => { if (isNaN(x)) return 0; let lo = 0, up = xs.length; while (lo < up) { const m = (lo + up) >> 1; xs[m] < x ? lo = m + 1 : up = m; } const p = lo / Math.max(1, xs.length - 1); return hi ? p : 1 - p; }; const a = f(v), b = f(h); if (isNaN(a) && isNaN(b)) return '';
       return `<div class="hrow"><b class="va">${isNaN(a) ? '–' : a.toFixed(dp)}</b><span class="hb l"><i style="width:${(pr(a) * 100).toFixed(1)}%;background:${cv[0]}"></i></span><span class="hl">${l}</span><span class="hb r"><i style="width:${(pr(b) * 100).toFixed(1)}%;background:${ch[0]}"></i></span><b class="vb">${isNaN(b) ? '–' : b.toFixed(dp)}</b></div>`; }).join('');
@@ -3624,24 +3709,35 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     return `<div class="pv-head">${side(v, 'a', cv, (tot + sp) / 2, 1 - ph, -sp)}<div class="pv-mid"><span class="pv-at">${neu ? 'vs' : '@'}</span>${isNaN(q) ? '' : gqiBadge(q)}</div>${side(h, 'b', ch, (tot - sp) / 2, ph, sp)}</div>
       <div class="pv-info"><span>${when ? esc(when) + ' · ' : ''}${j != null && netOf(j) ? esc(netOf(j)) + ' · ' : ''}${site}${j != null && g.conf[j] ? ' · Conference' : ''}</span><span>Model <b>${esc(teams[fav].name)} ${sp5(-Math.abs(sp))}</b> · Total <b>${half(tot).toFixed(1)}</b> · Proj <b>${((tot + sp) / 2).toFixed(0)}-${((tot - sp) / 2).toFixed(0)}</b></span>${vl}</div>${fin}
       <div class="pv-body"><div class="pv-gauge">${gauge(1 - ph, v, h, cv[0], ch[0])}</div><div class="hrows">${rows}</div></div>
-      <p class="note">Bars are each team's percentile among D1 teams (flipped where lower is better). <a class="tlink" href="#${slug(teams[v].name)}">${esc(teams[v].name)}</a> · <a class="tlink" href="#${slug(teams[h].name)}">${esc(teams[h].name)}</a> · <a class="tlink" href="#matchup" data-mu="${v},${h},${neu ? 1 : 0}">Open in matchup simulator</a></p>`;
+      <p class="note">Bars are each team's percentile among D1 teams (flipped where lower is better).${nc && xpOn() ? ` NCAA tournament game: each team's experience points (class value × share of minutes) are added to its rating, ${esc(teams[v].name)} ${sgn2(S.xp[v])}, ${esc(teams[h].name)} ${sgn2(S.xp[h])}.` : ''} <a class="tlink" href="#${slug(teams[v].name)}">${esc(teams[v].name)}</a> · <a class="tlink" href="#${slug(teams[h].name)}">${esc(teams[h].name)}</a> · <a class="tlink" href="#matchup" data-mu="${v},${h},${neu ? 1 : 0}">Open in matchup simulator</a></p>`;
   }
-  function openRegion(reg, rtl) { if (reg === '__pi' ? !bkPlayins : !bkRegion) return; lastRgn = [reg, rtl]; const dlg = $('pv-dlg'); $('pv-title').textContent = reg === '__pi' ? 'Play-ins' : reg + ' Region'; $('pv-body').innerHTML = reg === '__pi' ? bkPlayins() : bkRegion(reg, rtl); dlg.classList.add('wide', 'xwide'); if (dlg.showModal) { if (!dlg.open) dlg.showModal(); } else dlg.setAttribute('open', ''); }
+  function openRegion(reg, rtl) { if (reg === '__pi' ? !bkPlayins : !bkRegion) return; lastRgn = [reg, rtl]; const dlg = $('pv-dlg'); $('pv-title').textContent = reg === '__pi' ? 'Play-ins' : reg + ' Region'; $('pv-body').innerHTML = reg === '__pi' ? bkPlayins() : bkRegion(reg, rtl); dlg.classList.add('wide', 'xwide'); if (dlg.showModal) { if (!dlg.open) dlg.showModal(); } else dlg.setAttribute('open', ''); dlg.scrollTop = 0; fitRgn(); setTimeout(fitRgn, 300); }
+  // region pop-up: shrink the bracket so all of it fits the window (desktop: height; phones: width, scrolling down is fine)
+  function fitRgn() { const d = $('pv-dlg'); if (!d || !d.open) return; const g = d.querySelector('.bk2.bk1'); if (g) g.style.zoom = 1; const mob = window.matchMedia('(max-width:640px)').matches;
+    if (!g) { abFit(); return; }
+    const top = g.getBoundingClientRect().top - d.getBoundingClientRect().top + d.scrollTop, pad = 10; let z = mob ? (d.clientWidth - 4) / g.scrollWidth : Math.min((d.clientHeight - top - pad) / g.scrollHeight, (d.clientWidth - 4) / g.scrollWidth);
+    g.style.zoom = Math.max(0.5, Math.min(1, z)).toFixed(3); abFit(); }
+  function abFit() { const d = $('pv-dlg'), mob = window.matchMedia('(max-width:640px)').matches;
+    // desktop: full school names, switched to the short name only where a long one does not fit its box
+    if (!mob) d.querySelectorAll('.bk1 .bslot, .pis-grid .bslot').forEach(s => { s.classList.remove('ab'); const n = s.querySelector('.nm'), f = n && n.querySelector('.fnm'); if (!f) return; const sm = n.querySelector('small'); if (f.offsetWidth > n.clientWidth - (sm ? sm.offsetWidth + 8 : 0)) s.classList.add('ab'); });
+  }
+  window.addEventListener('resize', () => { if (lastRgn && $('pv-dlg').open && $('pv-dlg').querySelector('.bk2.bk1, .pis-grid')) fitRgn(); });
+  document.addEventListener('toggle', e => { if (e.target.classList && e.target.classList.contains('rgnote')) fitRgn(); }, true);
   $('bk').addEventListener('click', e => { const r = e.target.closest('[data-rgn]'); if (!r) return; e.preventDefault(); openRegion(r.dataset.rgn, r.dataset.rdir === '1'); });
   $('bk').addEventListener('keydown', e => { const r = e.target.closest('[data-rgn]'); if (r && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openRegion(r.dataset.rgn, r.dataset.rdir === '1'); } });
   $('bk-pis').addEventListener('click', () => openRegion('__pi'));
-  function openPreview(v, h, neu, j, ps) {
+  function openPreview(v, h, neu, j, ps, nc) {
     const dlg = $('pv-dlg'), fromRgn = dlg.open && dlg.classList.contains('wide') && lastRgn && $('pv-body').querySelector('.bk2, .pis-grid'); if (!fromRgn) lastRgn = null;
     // games not yet played: the projected box score follows the preview
     const g_ = det.M.g, pj = j != null && j >= 0 && isNaN(g_.hs[j]) && !LIVE.has(j) && g_.h[j] >= 0 && g_.v[j] >= 0 && Object.keys(PBX.done).length > 0; let pb = '';
     if (pj) { try { pb = `<div class="pvsec"><h3>Projected box score</h3></div>${bbProjHtml(j)}`; } catch (x) { pb = ''; } }
     $('pv-title').textContent = 'Game preview'; dlg.classList.remove('wide', 'xwide'); if (pb) dlg.classList.add('wide');
-    $('pv-body').innerHTML = (lastRgn ? `<p><a href="#" data-rgnback="1">&larr; Back to ${lastRgn[0] === '__pi' ? 'the play-ins' : 'the ' + esc(lastRgn[0]) + ' Region'}</a></p>` : '') + previewHtml(v, h, neu, j, ps) + pb;
+    $('pv-body').innerHTML = (lastRgn ? `<p><a href="#" data-rgnback="1">&larr; Back to ${lastRgn[0] === '__pi' ? 'the play-ins' : 'the ' + esc(lastRgn[0]) + ' Region'}</a></p>` : '') + previewHtml(v, h, neu, j, ps, nc) + pb;
     if (dlg.showModal) { if (!dlg.open) dlg.showModal(); } else dlg.setAttribute('open', '');
   }
   document.addEventListener('click', e => {
     const b = e.target.closest('[data-pvj],[data-pv]');
-    if (b) { e.preventDefault(); e.stopPropagation(); if (b.dataset.pvj != null) { const j = +b.dataset.pvj, g = det.M.g; if (g.v[j] >= 0 && g.h[j] >= 0) openPreview(g.v[j], g.h[j], !!g.neu[j], j); } else { const [x, y, nu] = b.dataset.pv.split(',').map(Number); openPreview(x, y, !!nu, null, b.dataset.ps != null && snap && snap.ps ? snap.ps[+b.dataset.ps] : null); } return; }
+    if (b) { e.preventDefault(); e.stopPropagation(); if (b.dataset.pvj != null) { const j = +b.dataset.pvj, g = det.M.g; if (g.v[j] >= 0 && g.h[j] >= 0) openPreview(g.v[j], g.h[j], !!g.neu[j], j); } else { const [x, y, nu] = b.dataset.pv.split(',').map(Number), ps_ = b.dataset.ps != null && snap && snap.ps ? snap.ps[+b.dataset.ps] : null; openPreview(x, y, !!nu, null, ps_, nu === 2 || !!(ps_ && ps_.kind === 'nc')); } return; }
     const rb = e.target.closest('[data-rgnback]'); if (rb) { e.preventDefault(); e.stopPropagation(); openRegion(lastRgn[0], lastRgn[1]); return; }
     const mu = e.target.closest('[data-mu]'); if (mu) { const [x, y, nu] = mu.dataset.mu.split(',').map(Number); $('mu-v').value = x; $('mu-h').value = y; $('mu-n').checked = !!nu; $('pv-dlg').close && $('pv-dlg').close(); }
   }, true);
@@ -3660,12 +3756,12 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     snapBar(); renderAll();
   }
   // model line for any pairing (same math as the preview): sp > 0 favors the visitor; ph = home win prob
-  const pairLine = (v, h, neu) => { const S = det.S, hfa = neu ? 0 : S.hfaOf(h), t0 = S.totOf(h, v), sp = -Math.min((S.live[h] - S.live[v] + hfa - S.injD(h, v)) * S.paceOf(h, v), t0), sd = S.sdBase * t0 / 2; return { sp, sd, ph: 1 - Engine.normCdf(sp / sd), tot: t0 + S.otBump(sp, sd, t0) }; };
+  const pairLine = (v, h, neu, nc) => { const S = det.S, hfa = neu ? 0 : S.hfaOf(h), t0 = S.totOf(h, v), sp = -Math.min((S.live[h] - S.live[v] + hfa - S.injD(h, v) + (nc ? S.xpD(h, v) : 0)) * S.paceOf(h, v), t0), sd = S.sdBase * t0 / 2; return { sp, sd, ph: 1 - Engine.normCdf(sp / sd), tot: t0 + S.otBump(sp, sd, t0) }; };
   // Season Sim postseason games with dates (2027 calendar: conference tourneys the week before Selection Sunday, March 14) and scores that match each simulated winner
   function postGames(o, rand) {
     const ps = [], D = (k, base = '2027-03-14') => { const x = new Date(base + 'T12:00:00'); x.setDate(x.getDate() + k); return x.toISOString().slice(0, 10); };
     // the higher seed is listed as the home team (bottom / second); ties go to the better Rank
-    const add = (v, h, w, date, kind, stage, sd) => { if (sd) { const a = sd(v), b = sd(h); if (a < b || (a === b && o.R.rank[v] < o.R.rank[h])) [v, h] = [h, v]; } const L = pairLine(v, h, true), s2 = L.sd / Math.SQRT2; let vs = 0, hs = 0;
+    const add = (v, h, w, date, kind, stage, sd) => { if (sd) { const a = sd(v), b = sd(h); if (a < b || (a === b && o.R.rank[v] < o.R.rank[h])) [v, h] = [h, v]; } const L = pairLine(v, h, true, kind === 'nc'), s2 = L.sd / Math.SQRT2; let vs = 0, hs = 0;
       for (let t = 0; t < 60; t++) { vs = Math.max(30, Math.round(L.tot / 2 + L.sp / 2 + s2 * Engine.normInv(rand()))); hs = Math.max(30, Math.round(L.tot / 2 - L.sp / 2 + s2 * Engine.normInv(rand()))); if (vs !== hs && (hs > vs) === (w === h)) break; }
       if (vs === hs) { if (w === h) hs++; else vs++; } else if ((hs > vs) !== (w === h)) [vs, hs] = [hs, vs];
       ps.push({ id: ps.length, v, h, w, vs, hs, date, kind, stage }); };
@@ -3751,7 +3847,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
   </div>`;
 
   // ---------- settings ----------
-  const SET_IDS = ['s-slm', 's-h2h', 'nsims', 'fade', 'hfa', 'automode', 'w-sor', 'w-mar', 'w-rpi', 'w-pow', 's-cap', 's-ptsk', 's-sd', 's-vig', 's-hw', 's-rw', 's-nw', 's-r1', 's-r2', 's-r3', 's-loc', 's-locw', 's-gqi', 's-theme', 's-totm', 's-totk', 's-totsh', 's-totreg', 's-ot', 's-t0', 's-pace', 's-hlo', 's-hhi', 's-rec', 's-recx', 's-luck', 's-luckt', 's-drift', 's-drifth'], SET_DEF = {};
+  const SET_IDS = ['s-stretch', 's-stretcht', 's-slm', 's-h2h', 'nsims', 'fade', 'hfa', 'automode', 'w-sor', 'w-mar', 'w-rpi', 'w-pow', 's-cap', 's-ptsk', 's-sd', 's-vig', 's-hw', 's-rw', 's-nw', 's-r1', 's-r2', 's-r3', 's-loc', 's-locw', 's-gqi', 's-theme', 's-totm', 's-totk', 's-totsh', 's-totreg', 's-ot', 's-t0', 's-pace', 's-hlo', 's-hhi', 's-rec', 's-recx', 's-luck', 's-luckt', 's-drift', 's-drifth', 's-xpon', 's-xpsr', 's-xpjr', 's-xpso', 's-xpfr'], SET_DEF = {};
   SET_IDS.forEach(id => (SET_DEF[id] = $(id).value));
   try { const s = JSON.parse(localStorage.getItem('cbb26_settings') || '{}'); SET_IDS.forEach(id => { if (s[id] != null) $(id).value = s[id]; }); } catch (e) {}
   const saveSettings = () => { const s = {}; SET_IDS.forEach(id => (s[id] = $(id).value)); try { localStorage.setItem('cbb26_settings', JSON.stringify(s)); } catch (e) {} };
@@ -4314,7 +4410,7 @@ if (typeof module !== 'undefined') module.exports = TourneyBB;
       { k: 'field', l: 'Field', s: '%', grp: 1, v: i => P('field', i), f: pc },
       { k: 's1', l: '1 seed', s: 'host %', v: i => ln(i, 1), f: pc }, { k: 'ns', l: 'Natl seed', s: 'avg if top 16', v: ns, f: f1, asc: 1 },
       { k: 's2', l: '2 seed', s: '%', v: i => ln(i, 2), f: pc }, { k: 's3', l: '3 seed', s: '%', v: i => ln(i, 3), f: pc }, { k: 's4', l: '4 seed', s: '%', v: i => ln(i, 4), f: pc },
-      { k: 'reg', l: 'Win regional', s: '%', grp: 1, v: i => P('reg', i), f: pc },
+      { k: 'reg', l: 'Win <span class="fnm">regional</span><span class="snm">reg</span>', s: '%', grp: 1, v: i => P('reg', i), f: pc },
       { k: 'sup', l: 'Win super', s: 'CWS %', v: i => P('sup', i), f: pc, hot: 1 },
       { k: 'fin', l: 'CWS finals', s: '%', v: i => P('fin', i), f: pc },
       { k: 'champ', l: 'Champion', s: '%', v: i => P('champ', i), f: pc, hot: 1 },
@@ -4466,9 +4562,9 @@ if (typeof module !== 'undefined') module.exports = TourneyBB;
     const stats = [stat('Preseason rating', f2(t.pre), `Power Rating #${R0.lpr[i]}`), stat('Runs / RA', `${f2(S.R[i])} / ${f2(S.RA[i])}`, `park factor ${f2(S.park[i])}`), stat('Proj W-L', rec(i), `Conf ${crec(i)}`), stat('SOS played', isNaN(sosStats().cur.sos[i]) ? '-' : `#${sosStats().cur.rank[i]}`, isNaN(sosStats().cur.sos[i]) ? 'no games yet' : `${f2(sosStats().cur.sos[i])} · opp win ${pc(sosStats().cur.owp[i])}%`), stat('SOS projected', `#${sosStats().proj.rank[i]}`, `${f2(sosStats().proj.sos[i])} · opp win ${pc(sosStats().proj.owp[i])}%`), stat('Proj Rank', PROJ.avgRank[i].toFixed(1), `RPI ${(AG.c.rpi[i] / N).toFixed(4).replace(/^0/, '')}`), stat('NCAA field', pc(P('field', i)) + '%', `host ${pc(P('host', i))}%`), stat('Omaha', pc(P('sup', i)) + '%', `title ${pc(P('champ', i))}%`)].join('');
     const bars = [['Field', P('field', i)], ['1 seed (host)', ln(1)], ['Win regional', P('reg', i)], ['Win super (CWS)', P('sup', i)], ['CWS finals', P('fin', i)], ['Champion', P('champ', i)]].map(([l, x]) => `<div class="br"><span>${l}</span><span class="trk"><i style="width:${(x * 100).toFixed(1)}%"></i></span><span class="v">${pc(x)}</span></div>`).join('');
     const rows = []; for (let j = 0; j < g.n; j++) { if (g.v[j] !== i && g.h[j] !== i) continue; const home = g.h[j] === i, o = home ? g.v[j] : g.h[j], sp = home ? S.sp[j] : -S.sp[j], p = home ? S.ph[j] : 1 - S.ph[j];
-      rows.push(`<tr class="${g.neu[j] ? 'neu' : home ? '' : 'away'}"><td class="m">${new Date(G[j][5] + 'T12:00:00').toLocaleDateString([], { month: 'short', day: 'numeric', weekday: 'short' })}</td><td class="c">${esc(dayLab[G[j][6]] || '')}</td><td class="c">${g.neu[j] ? 'Neutral' : home ? 'Home' : 'Away'}</td><td class="t">${g.neu[j] || home ? 'vs' : '@'} ${tl(o)}${g.conf[j] ? ' <small class="note">conf</small>' : ''}</td><td class="m">${sg(sp)}</td><td class="m">${f1(S.tot[j])}</td><td class="m">${pc(p)}</td><td class="m">${ml(p)}</td>${SNAP ? (() => { const me = home ? SNAP.sc.ha[j] : SNAP.sc.va[j], op = home ? SNAP.sc.va[j] : SNAP.sc.ha[j]; return `<td class="res ${me > op ? 'w' : 'l'}">${me > op ? 'W' : 'L'} ${me}-${op}</td>`; })() : ''}<td><button type="button" class="pvb" data-bbpv="${j}" title="Game preview" aria-label="Preview">&#9432;</button></td></tr>`); }
+      rows.push(`<tr class="${g.neu[j] ? 'neu' : home ? '' : 'away'}"><td class="m">${new Date(G[j][5] + 'T12:00:00').toLocaleDateString([], { month: 'short', day: 'numeric', weekday: 'short' })}</td><td class="c">${esc(dayLab[G[j][6]] || '')}</td><td class="t">${g.neu[j] ? 'vs (n)' : home ? 'vs' : '@'} ${tl(o)}${g.conf[j] ? ' <small class="note">conf</small>' : ''}</td><td class="m">${sg(sp)}</td><td class="m">${f1(S.tot[j])}</td><td class="m">${pc(p)}</td><td class="m">${ml(p)}</td>${SNAP ? (() => { const me = home ? SNAP.sc.ha[j] : SNAP.sc.va[j], op = home ? SNAP.sc.va[j] : SNAP.sc.ha[j]; return `<td class="res ${me > op ? 'w' : 'l'}">${me > op ? 'W' : 'L'} ${me}-${op}</td>`; })() : ''}<td><button type="button" class="pvb" data-bbpv="${j}" title="Game preview" aria-label="Preview">&#9432;</button></td></tr>`); }
     if (SNAP && SNAP.ps) for (const x of SNAP.ps) { if (x.a !== i && x.b !== i) continue; const me = x.a === i, o = me ? x.b : x.a, home = (x.hb > 0) === (x.b === i) && x.hb !== 0, neu = x.hb === 0, h = x.hb < 0 ? x.a : x.b, Ln = EngineBB.lineFor(M, S, h, h === x.a ? x.b : x.a, neu, TourneyBB.ROLE[Math.min(h === x.a ? x.ka : x.kb, 4) - 1], omahaOf(x)), p = h === i ? Ln.ph : 1 - Ln.ph, sp = h === i ? Ln.sp : -Ln.sp, mr = me ? x.sa : x.sb, orr = me ? x.sb : x.sa;
-      rows.push(`<tr class="post ${neu ? 'neu' : home ? '' : 'away'}"><td class="m">${new Date(x.date + 'T12:00:00').toLocaleDateString([], { month: 'short', day: 'numeric', weekday: 'short' })}</td><td class="c">${x.kind === 'ct' ? 'Conf tourney' : 'NCAA'}</td><td class="c">${neu ? 'Neutral' : home ? 'Home' : 'Away'}</td><td class="t">${neu || home ? 'vs' : '@'} ${tl(o)} <small class="note">${esc(x.stage)}</small></td><td class="m">${sg(sp)}</td><td class="m">${f1(Ln.tot)}</td><td class="m">${pc(p)}</td><td class="m">${ml(p)}</td><td class="res ${mr > orr ? 'w' : 'l'}">${mr > orr ? 'W' : 'L'} ${mr}-${orr}</td><td>${pvBtn(x.a, x.b, x.ka, x.kb, psHb(x), x.kind, x)}</td></tr>`); }
+      rows.push(`<tr class="post ${neu ? 'neu' : home ? '' : 'away'}"><td class="m">${new Date(x.date + 'T12:00:00').toLocaleDateString([], { month: 'short', day: 'numeric', weekday: 'short' })}</td><td class="c">${x.kind === 'ct' ? 'Conf tourney' : 'NCAA'}</td><td class="t">${neu ? 'vs (n)' : home ? 'vs' : '@'} ${tl(o)} <small class="note">${esc(x.stage)}</small></td><td class="m">${sg(sp)}</td><td class="m">${f1(Ln.tot)}</td><td class="m">${pc(p)}</td><td class="m">${ml(p)}</td><td class="res ${mr > orr ? 'w' : 'l'}">${mr > orr ? 'W' : 'L'} ${mr}-${orr}</td><td>${pvBtn(x.a, x.b, x.ka, x.kb, psHb(x), x.kind, x)}</td></tr>`); }
     const th = t.color ? `--tc:#${t.color}` : '';
     $('bb-team-out').innerHTML = `<div style="${th}" class="${t.color ? 'themed' : ''}" id="bb-team-body"><div class="thead"><div class="tname">${logo(i, 64, 'tlogo')}<h2>${esc(t.name)}</h2></div><span class="meta">${cl(t.conf)} · ${esc(t.state)}</span></div>
       <div class="stats">${stats}</div>
@@ -4477,7 +4573,7 @@ if (typeof module !== 'undefined') module.exports = TourneyBB;
       ${seedRow(i)}
       ${quadPanel(i)}
       <div class="tp2">${rankPanel(i)}<div class="panel"><h3>RPI path</h3><p class="note">${SNAP ? 'RPI rank at the end of each week in this Season Sim.' : 'Projected RPI rank at the end of each week with expected results.'} Shaded band is the top 64. Hover a point for the RPI.</p>${rpiChart(i)}</div></div>
-      <div class="panel"><h3>Schedule</h3><p class="note">Away games are shaded, neutral-site games lighter. Spread is from ${esc(t.name)}'s side, in runs.</p><div class="tbl"><table><thead><tr><th>Date</th><th class="c">Series game</th><th class="c">Site</th><th class="t">Opponent</th><th>Spread</th><th>Total</th><th>Win %</th><th>ML</th>${SNAP ? '<th>Result<small>Season Sim</small></th>' : ''}<th>Preview</th></tr></thead><tbody id="bb-tb-team">${rows.join('')}</tbody></table></div></div></div>`;
+      <div class="panel"><h3>Schedule</h3><p class="note">Away games are shaded, neutral-site games lighter; (n) = neutral site. Spread is from ${esc(t.name)}'s side, in runs.</p><div class="tbl"><table><thead><tr><th>Date</th><th class="c">Series game</th><th class="t">Opponent</th><th>Spread</th><th>Total</th><th>Win %</th><th>ML</th>${SNAP ? '<th>Result<small>Season Sim</small></th>' : ''}<th>Preview</th></tr></thead><tbody id="bb-tb-team">${rows.join('')}</tbody></table></div></div></div>`;
   }
 
   // ---------- conference tourney bracket (drawn by round) ----------
@@ -4706,22 +4802,24 @@ if (typeof module !== 'undefined') module.exports = TourneyBB;
   }
   function bracket2() {
     const { B, rank } = curB(), C = condFor(B, rank), ST = stageTeams(B, C), snap = !!SNAP;
-    const recT = t => snap ? `${SNAP.R.W[t]}-${SNAP.R.L[t]}` : rec(t), row = (t, p, won, stage, pre = '') => `<div class="slot${won ? ' won' : ''}${PICKS.get(stage) === t && !snap ? ' picked' : ''}" data-pick="${stage},${t}">${pre}${natSeed(B, t)}<span class="nm">${logo(t, 15)}${esc(teams[t].name)}</span><span class="rc">${recT(t)}</span>${p != null ? `<span class="p">${pc(p)}</span>` : ''}</div>`;
-    const regCard = j => { const rg = B.regs[j], w = ST.reg[j]; return `<div class="bbreg2" data-reg="${j}" role="button" tabindex="0" title="Open the ${esc(teams[rg[0]].name)} Regional"><div class="hd"><span><b>${esc(teams[rg[0]].name)}</b>: ${cityOf(rg[0])}</span><span>No. ${j + 1}</span></div>${rg.map((t, l) => row(t, C.reg[t], t === w, 'R' + j, `<span class="s">${l + 1}</span>`)).join('')}</div>`; };
-    const supBox = k => { const [x, y] = SUP[k], a = ST.reg[x], b = ST.reg[y], w = ST.sup[k]; let hd = `Super ${k + 1}`; if (snap) { const lg = SNAP.nc.logs.supLog[k], wa = lg.filter(g => g.w === w).length; hd += ` · ${wa}-${lg.length - wa}`; }
+    const recT = t => snap ? `${SNAP.R.W[t]}-${SNAP.R.L[t]}` : rec(t), row = (t, p, won, stage, pre = '') => `<div class="slot${won ? ' won' : ''}${PICKS.get(stage) === t && !snap ? ' picked' : ''}" data-pick="${stage},${t}">${pre}${natSeed(B, t)}<span class="nm" title="${esc(teams[t].name)}">${logo(t, 15)}<span class="lgo-n">${BKUI.nm2(teams[t].name)}</span></span><span class="rc">${recT(t)}</span>${p != null ? `<span class="p">${pc(p)}</span>` : ''}</div>`;
+    const regCard = j => { const rg = B.regs[j], w = ST.reg[j]; return `<div class="bbreg2" data-reg="${j}" role="button" tabindex="0" title="Open the ${esc(teams[rg[0]].name)} Regional"><div class="hd"><span><b>${BKUI.nm2(teams[rg[0]].name)}</b><span class="fnm">: ${cityOf(rg[0])}</span><span class="snm"> Reg</span></span><span>No. ${j + 1}</span></div>${rg.map((t, l) => row(t, C.reg[t], t === w, 'R' + j, `<span class="s">${l + 1}</span>`)).join('')}</div>`; };
+    const supBox = k => { const [x, y] = SUP[k], a = ST.reg[x], b = ST.reg[y], w = ST.sup[k]; let hd = `<span class="fnm">Super</span><span class="snm">SR</span> ${k + 1}`; if (snap) { const lg = SNAP.nc.logs.supLog[k], wa = lg.filter(g => g.w === w).length; hd += ` · ${wa}-${lg.length - wa}`; }
       return `<div class="rgx sup" data-sup="${k}" role="button" tabindex="0"><span class="hd">${hd}</span>${row(a, snap ? null : C.sup[a], a === w, 'S' + k)}${row(b, snap ? null : C.sup[b], b === w, 'S' + k)}</div>`; };
     const cwsBox = q => { const tm = ST.sup.slice(q * 4, q * 4 + 4), w = ST.fin[q]; return `<div class="rgx cws" data-cws="${q}" role="button" tabindex="0"><span class="hd">CWS Bracket ${q + 1}${snap ? '' : ' · reach finals %'}</span>${tm.map(t => row(t, snap ? null : C.fin[t], t === w, 'C' + q)).join('')}</div>`; };
     const [f0, f1_] = ST.fin, c = ST.champ;
     let fhd = 'Finals'; if (snap) { const fl = SNAP.nc.logs.fin, wa = fl.filter(g => g.w === c).length; fhd += ` · ${wa}-${fl.length - wa}`; } else fhd += ' · title %';
     const finBox = `<div class="rgx fin" data-fin="1" role="button" tabindex="0"><span class="hd">${fhd}</span>${row(f0, snap ? null : C.champ[f0], c === f0, 'F')}${row(f1_, snap ? null : C.champ[f1_], c === f1_, 'F')}</div><div class="champ">${logo(c, 48, 'bl')}<span class="note">${snap ? 'National champion' : 'Projected champion'}</span><b>${tl(c)}</b>${snap ? '' : `<span class="note">${pc(C.champ[c])}%</span>`}</div>`;
     const leftR = [0, 1, 2, 3].flatMap(k => SUP[k]), rightR = [4, 5, 6, 7].flatMap(k => SUP[k]);
-    const grid = `<div class="bk-scroll"><div class="bkx">${leftR.map((j, r) => `<div style="grid-column:1;grid-row:${r + 1}">${regCard(j)}</div>`).join('')}${[0, 1, 2, 3].map(k => `<div class="supc" style="grid-column:2;grid-row:${2 * k + 1}/span 2">${supBox(k)}</div>`).join('')}${[4, 5, 6, 7].map(k => `<div class="supc" style="grid-column:3;grid-row:${2 * (k - 4) + 1}/span 2">${supBox(k)}</div>`).join('')}${rightR.map((j, r) => `<div style="grid-column:4;grid-row:${r + 1}">${regCard(j)}</div>`).join('')}</div></div>`;
+    const grid = `<div class="bk-scroll"><div class="bkx">${leftR.map((j, r) => `<div style="grid-column:1;grid-row:${r + 1}">${regCard(j)}</div>`).join('')}${[0, 1, 2, 3].map(k => `<div class="supc" style="grid-column:2;grid-row:${2 * k + 1}/span 2">${supBox(k)}</div>`).join('')}${[4, 5, 6, 7].map(k => `<div class="supc" style="grid-column:3;grid-row:${2 * (k - 4) + 1}/span 2">${supBox(k)}</div>`).join('')}${rightR.map((j, r) => `<div style="grid-column:4;grid-row:${r + 1}">${regCard(j)}</div>`).join('')}</div></div>`
+      // phones: each super regional on the left with its two regionals side by side on its right, all eight in order
+      + `<div class="bkxm">${[0, 1, 2, 3, 4, 5, 6, 7].map(k => `<div class="supc" style="grid-row:${k + 1}">${supBox(k)}</div>${SUP[k].map((j, e) => `<div class="bkxr" style="grid-row:${k + 1};grid-column:${e + 2}">${regCard(j)}</div>`).join('')}`).join('')}</div>`;
     const cols = [
       { k: 'ln', l: 'Seed', v: i => B.regs[regOf(B, i)].indexOf(i) + 1, f: x => x, asc: 1 },
-      { k: 'ns', l: 'Regional', s: 'national seed', v: i => regOf(B, i) + 1, f: (x, i) => `${x} · ${esc(teams[B.regs[x - 1][0]].name)}`, asc: 1 },
+      { k: 'ns', l: '<span class="fnm">Regional</span><span class="snm">Reg</span>', s: '<span class="fnm">national seed</span><span class="snm">nat seed</span>', v: i => regOf(B, i) + 1, f: (x, i) => `${x} · ${BKUI.nm2(teams[B.regs[x - 1][0]].name)}`, asc: 1 },
       { k: 'team', l: 'Team', cls: 't', v: i => teams[i].name, f: (x, i) => tl(i), asc: 1 }, { k: 'conf', l: 'Conf', cls: 'c', v: i => teams[i].conf, f: x => cl(x), asc: 1 },
       { k: 'rec', l: 'Record', v: i => SNAP ? SNAP.R.W[i] : AG.c.W[i] / N, f: (x, i) => SNAP ? `${SNAP.R.W[i]}-${SNAP.R.L[i]}` : rec(i) },
-      { k: 'reg', l: 'Win regional', s: '%', grp: 1, v: i => C.reg[i], f: pc, hot: 1 }, { k: 'sup', l: 'Win super', s: 'Omaha %', v: i => C.sup[i], f: pc, hot: 1 }, { k: 'fin', l: 'CWS finals', s: '%', v: i => C.fin[i], f: pc }, { k: 'champ', l: 'Champion', s: '%', v: i => C.champ[i], f: pc, hot: 1 },
+      { k: 'reg', l: 'Win <span class="fnm">regional</span><span class="snm">reg</span>', s: '%', grp: 1, v: i => C.reg[i], f: pc, hot: 1 }, { k: 'sup', l: 'Win <span class="fnm">super</span><span class="snm">SR</span>', s: 'Omaha %', v: i => C.sup[i], f: pc, hot: 1 }, { k: 'fin', l: 'CWS finals', s: '%', v: i => C.fin[i], f: pc }, { k: 'champ', l: 'Champion', s: '%', v: i => C.champ[i], f: pc, hot: 1 },
       ...(SNAP ? [{ k: 'res', l: 'Result', s: 'this season', cls: 'c', grp: 1, v: i => resRank(i), f: (x, i) => resLab(i), asc: 1 }] : []),
     ];
     const cc = {}; B.field.forEach(i => (cc[teams[i].conf] = (cc[teams[i].conf] || 0) + 1));
@@ -4734,7 +4832,7 @@ if (typeof module !== 'undefined') module.exports = TourneyBB;
     $('bb-bk-out').innerHTML = `<p class="note">${SNAP ? 'Season Sim: the field and seeds from this simulated season’s Rank and conference tourney champions, and every NCAA game played.' : `Projected field: the 64 teams by average Rank across ${N.toLocaleString()} simulated seasons, auto bids to each conference's most frequent tourney champion, hosts and 2-4 seeds placed with your workbook's location and conference rules.`} Odds on this page are for this field${PICKS.size && !snap ? ' and your picks' : ''} (${C.K.toLocaleString()} simulated tournaments). Small numbers are national seeds.</p>
       ${ctrl}
       <div class="panel ${pickMode && !snap ? 'picking' : ''}" id="bb-bk-board"><div class="boardhead"><h3>College World Series</h3></div><div class="bk-scroll"><div class="cwsrow">${cwsBox(0)}<div class="finc">${finBox}</div>${cwsBox(1)}</div></div>
-      <div class="boardhead"><h3>Regionals and Super Regionals</h3></div>${grid}</div>
+      <div class="boardhead"><h3><span class="fnm">Regionals and Super Regionals</span><span class="snm">Regionals &amp; Supers</span></h3></div>${grid}</div>
       <div class="panel"><div class="boardhead"><h3>How far each team goes</h3><span class="note">For this field${PICKS.size && !snap ? ' and your picks' : ''}. Click a column to sort.</span></div>${T_('bkm', cols, B.field, { k: 'champ', d: -1 })}</div>
       ${seedMatrix()}
       ${fieldPanel(B, rank)}
@@ -5095,6 +5193,72 @@ const EngineCFB = (() => {
     if (hs === vs) { const [hw, pts] = otWin(rand, L.ph); if (hw) hs += pts; else vs += pts; }
     return { v, h, vs, hs, neu: neu ? 1 : 0, w: hs > vs ? h : v, p: L.ph, day: day || null };
   }
+  // conference standings with each conference's tiebreakers, for a set of results (va / ha = away / home scores, NaN = not played); used by the sims and the standings pages
+  function confStandings(M, R1, va, ha, CFG, byConf) {
+    const { n, g, teams } = M; if (!byConf) { byConf = new Map(); teams.forEach((t, i) => (byConf.get(t.conf) || byConf.set(t.conf, []).get(t.conf)).push(i)); }
+    // Conference standings: conference win %, then each conference's published 2026 tiebreakers among the tied teams, with separate two-team and 3+-team lists where the
+    // conference has them. When a step separates a group, each remaining tie restarts at step 1 of the list for its size. Rank (the model's resume ranking) stands in for the
+    // ranking each conference uses as a late step (CFP ranking, SportSource Team Rating / Team Success Ranking, or the SP+ / SportSource / SOR / KPI composite); a draw is the last step.
+    //   SEC: head-to-head, common opponents, highest-placed common opponent, opponents' conference win %, capped relative scoring margin, (draw)
+    //   Big Ten: 2 teams: head-to-head, common opponents, common opponents by order of finish, opponents' conference record, SportSource. 3+: same without order of finish
+    //   Big 12: 2 teams: head-to-head, common opponents, order of finish, opponents' conference record, total wins (one FCS win counts), SportSource. 3+: same without order of finish
+    //   ACC (July 2026): tied teams also include a team with a different number of league games and the same wins or losses; head-to-head, then SportSource SSR
+    //   American: head-to-head, then CFP ranking / computer composite
+    //   Mountain West: head-to-head, CFP ranking / composite, overall win % (one FCS win counts), next-highest common opponent, common opponents
+    //   MAC: head-to-head, common opponents, SportSource, common opponents by order of finish, opponents' conference win %
+    //   Conference USA: head-to-head, common opponents, highest-placed common opponent, computer composite, opponents' conference win %
+    //   Pac-12: 2 teams: head-to-head, next-highest common opponent, common opponents, CFP / SportSource. 3+: head-to-head (only if all played), common opponents, next-highest
+    //     common opponent, opponents' conference win %, SportSource
+    //   Sun Belt (divisions): head-to-head, division win %, next-highest team in the division standings, common non-division opponents, computer composite, win % vs FBS
+    //   Others (FCS): head-to-head, common opponents, common opponents by order of finish, opponents' conference win %, ranking
+    // Head-to-head for 3+ teams uses the mini round robin when every pair played; otherwise a team that beat (or lost to) all the others is separated (Pac-12: round robin only).
+    const cg = new Map(); for (let j = 0; j < g.n; j++) { const v = g.v[j], h = g.h[j]; if (!g.conf[j] || g.post[j] || v < 0 || h < 0 || teams[v].conf !== teams[h].conf || isNaN(va[j]) || va[j] === ha[j]) continue; const w = ha[j] > va[j] ? h : v, l = w === h ? v : h; (cg.get(teams[h].conf) || cg.set(teams[h].conf, []).get(teams[h].conf)).push([w, l, Math.abs(ha[j] - va[j]), j]); }
+    const pctOf = (rs, t, keep) => { let w = 0, n_ = 0; for (const [a, b] of rs) { if (a === t && keep(b)) { w++; n_++; } else if (b === t && keep(a)) n_++; } return n_ ? w / n_ : 0.5; };
+    // regular-season scoring averages (SEC relative margin) and wins vs FCS / non-FBS opponents (Big 12 and Mountain West count only one)
+    const pf = new Float64Array(n), pa = new Float64Array(n), gpN = new Float64Array(n), fcsW = new Float64Array(n), fbsW = new Float64Array(n), fbsL = new Float64Array(n);
+    for (let j = 0; j < g.n; j++) { if (g.post[j] || isNaN(va[j]) || isNaN(ha[j]) || va[j] === ha[j]) continue; const v = g.v[j], h = g.h[j];
+      for (const [me, op, ms, os] of [[h, v, ha[j], va[j]], [v, h, va[j], ha[j]]]) { if (me < 0) continue; pf[me] += ms; pa[me] += os; gpN[me]++; const fb = op >= 0 && teams[op].div === 'FBS'; if (ms > os) { if (fb) fbsW[me]++; else fcsW[me]++; } else if (fb) fbsL[me]++; } }
+    const wins1 = t => R1.W[t] - Math.max(0, fcsW[t] - 1), ck = c => /^SEC$|Southeastern/i.test(c) ? 'SEC' : /Big Ten/i.test(c) ? 'B1G' : /Big 12/i.test(c) ? 'B12' : /^ACC$|Atlantic Coast/i.test(c) ? 'ACC' : /^American|^AAC$/i.test(c) ? 'AAC' : /Mountain West/i.test(c) ? 'MWC' : /Mid-American|^MAC$/i.test(c) ? 'MAC' : /Conference USA|^C-?USA$/i.test(c) ? 'CUSA' : /Pac-12/i.test(c) ? 'P12' : /Sun Belt/i.test(c) ? 'SBC' : '';
+    const TB = { SEC: [['h2h', 'com', 'hpc', 'opp', 'relm', 'rank']], B1G: [['h2h', 'com', 'hpc', 'opp', 'rank'], ['h2h', 'com', 'opp', 'rank']], B12: [['h2h', 'com', 'hpc', 'opp', 'wins1', 'rank'], ['h2h', 'com', 'opp', 'wins1', 'rank']], ACC: [['h2h', 'rank']], AAC: [['h2h', 'rank']],
+      MWC: [['h2h', 'rank', 'wpct1', 'hpc', 'com']], MAC: [['h2h', 'com', 'rank', 'hpc', 'opp']], CUSA: [['h2h', 'com', 'hpc', 'rank', 'opp']], P12: [['h2h', 'hpc', 'com', 'rank'], ['h2hRR', 'com', 'hpc', 'opp', 'rank']], SBC: [['h2h', 'dpct', 'hpcD', 'comND', 'rank', 'fbsP']] }, TB0 = [['h2h', 'com', 'hpc', 'opp', 'rank']];
+    const dv = (c, i) => { const d = CFG.divs && CFG.divs[c]; return d ? (d.includes(teams[i].name) ? 0 : 1) : -1; };
+    const cOrder = ids => { const c = teams[ids[0]].conf, K = ck(c), rs = cg.get(c) || [], cpct = i => R1.CW[i] / Math.max(1, R1.CW[i] + R1.CL[i]), L2 = TB[K] || TB0, lists = [L2[0], L2[1] || L2[0]];
+      const opps = t => new Set(rs.flatMap(([a, b]) => a === t ? [b] : b === t ? [a] : [])), beat = (a, b) => rs.some(([w, l]) => w === a && l === b), met = (a, b) => beat(a, b) || beat(b, a);
+      const allC = byConf.get(c) || ids, place = allC.slice().sort((a, b) => cpct(b) - cpct(a) || R1.rank[a] - R1.rank[b]), pos = new Map(place.map((t, k) => [t, k])); // order of finish for the common-opponent steps
+      const common = grp => { const sets = grp.map(opps); return [...sets[0]].filter(x => !grp.includes(x) && sets.every(z => z.has(x))); };
+      // order of finish: teams tied in the standings count as one group (each tied team's record against the group as a whole), working down the standings
+      const hpcF = C0 => { const C = C0.sort((a, b) => pos.get(a) - pos.get(b)), levels = []; for (const o of C) { const last = levels[levels.length - 1]; if (last && Math.abs(cpct(last[0]) - cpct(o)) < 1e-9) last.push(o); else levels.push([o]); }
+        return t => levels.reduce((s_, lv, k) => s_ + pctOf(rs, t, x => lv.includes(x)) * Math.pow(10, -k), 0); };
+      const F = {
+        h2h: grp => { const S_ = new Set(grp); if (grp.length === 2) return met(grp[0], grp[1]) ? t => pctOf(rs, t, x => S_.has(x)) : () => 0;
+          if (grp.every(a => grp.every(b => a === b || met(a, b)))) return t => pctOf(rs, t, x => S_.has(x));
+          return t => grp.every(o => o === t || beat(t, o)) ? 1 : grp.every(o => o === t || beat(o, t)) ? -1 : 0; },
+        h2hRR: grp => { const S_ = new Set(grp); return grp.every(a => grp.every(b => a === b || met(a, b))) ? t => pctOf(rs, t, x => S_.has(x)) : () => 0; },
+        com: grp => { const C = new Set(common(grp)); return t => C.size ? pctOf(rs, t, x => C.has(x)) : 0.5; },
+        hpc: grp => hpcF(common(grp)),
+        hpcD: grp => hpcF(common(grp).filter(o => dv(c, o) === dv(c, grp[0]))),
+        comND: grp => { const C = new Set(common(grp).filter(o => dv(c, o) !== dv(c, grp[0]))); return t => C.size ? pctOf(rs, t, x => C.has(x)) : 0.5; },
+        dpct: () => t => pctOf(rs, t, x => dv(c, x) === dv(c, t)),
+        opp: () => t => { let w = 0, l = 0; for (const o of opps(t)) { w += R1.CW[o]; l += R1.CL[o]; } return w / Math.max(1, w + l); },
+        // SEC capped relative total scoring margin: per league game, points scored as a % of what the opponent allows on average (capped at 200%) minus points allowed as a % of what the opponent scores on average
+        relm: () => t => { let s_ = 0, k = 0; for (const [, , , j] of rs) { const h = g.h[j], v = g.v[j]; if (h !== t && v !== t) continue; const o = h === t ? v : h, ms = h === t ? ha[j] : va[j], os = h === t ? va[j] : ha[j], oA = gpN[o] ? pa[o] / gpN[o] : 25, oS = gpN[o] ? pf[o] / gpN[o] : 25;
+          s_ += Math.min(200, 100 * ms / Math.max(1, oA)) - Math.max(0, 100 * os / Math.max(1, oS)); k++; } return k ? s_ / k : 0; },
+        wins1: () => t => wins1(t),
+        wpct1: () => t => { const w = wins1(t); return w / Math.max(1, w + R1.L[t]); },
+        fbsP: () => t => fbsW[t] / Math.max(1, fbsW[t] + fbsL[t]),
+        rank: () => t => -R1.rank[t] };
+      const order = (grp, k) => { if (grp.length < 2) return grp; const list = lists[grp.length === 2 ? 0 : 1]; if (k >= list.length) return grp.slice().sort((a, b) => R1.rank[a] - R1.rank[b]); const f = F[list[k]](grp), vals = new Map(grp.map(t => [t, f(t)])), srt = grp.slice().sort((a, b) => vals.get(b) - vals.get(a)), out = [];
+        for (let q = 0; q < srt.length;) { let r = q; while (r + 1 < srt.length && Math.abs(vals.get(srt[r + 1]) - vals.get(srt[q])) < 1e-9) r++; const run = srt.slice(q, r + 1); out.push(...(run.length === grp.length ? order(run, k + 1) : order(run, 0))); q = r + 1; } return out; };
+      // ACC: the tied group is everyone at the best conference win % plus any team with a different number of league games and the same wins or losses as one of them;
+      // the tiebreaker seeds one team, then the group is redefined from the teams left
+      if (K === 'ACC') { const left = ids.slice(), out = []; while (left.length) { const best = Math.max(...left.map(cpct)), A = left.filter(t => Math.abs(cpct(t) - best) < 1e-9), gp_ = t => R1.CW[t] + R1.CL[t];
+          const T_ = left.filter(t => A.includes(t) || A.some(a => Math.abs(gp_(a) - gp_(t)) === 1 && (R1.CW[a] === R1.CW[t] || R1.CL[a] === R1.CL[t])) /* 8 vs 9 league games */), top = T_.length > 1 ? order(T_, 0)[0] : T_[0]; out.push(top); left.splice(left.indexOf(top), 1); } return out; }
+      const byP = ids.slice().sort((a, b) => cpct(b) - cpct(a)), out = []; for (let q = 0; q < byP.length;) { let r = q; while (r + 1 < byP.length && Math.abs(cpct(byP[r + 1]) - cpct(byP[q])) < 1e-9) r++; out.push(...order(byP.slice(q, r + 1), 0)); q = r + 1; } return out; };
+    // conferences with divisions (Sun Belt East/West): the title game is the two division winners, each found with the full conference's results
+    const divOf = (c, i) => { const d = CFG.divs && CFG.divs[c]; return d ? (d.includes(teams[i].name) ? 0 : 1) : -1; };
+    const top2 = c => { const ids = byConf.get(c), d = CFG.divs && CFG.divs[c]; if (!d) return cOrder(ids).slice(0, 2); const E_ = ids.filter(i => divOf(c, i) === 0), W_ = ids.filter(i => divOf(c, i) === 1); return E_.length && W_.length ? [cOrder(E_)[0], cOrder(W_)[0]] : cOrder(ids).slice(0, 2); };
+    return { cOrder, top2 };
+  }
   // One full season. CFG: { ccg: [conference names with a title game], indep: [no-title conferences], bowls: [{name, a, b}] (a/b = conference name or 'At-large'),
   // fcsNoPO: [FCS conferences without an auto bid] }
   function season(M, S, CFG, rand) {
@@ -5102,38 +5266,7 @@ const EngineCFB = (() => {
     for (let j = 0; j < g.n; j++) if (g.post[j] && isNaN(g.vs[j])) { va[j] = NaN; ha[j] = NaN; } // projected postseason replaces ESPN's unplayed bowl / playoff listings
     const R1 = tally(M, S, va, ha), extra = [], champ = {}, ccg = [];
     const byConf = new Map(); teams.forEach((t, i) => (byConf.get(t.conf) || byConf.set(t.conf, []).get(t.conf)).push(i));
-    // Conference standings: conference win %, then each conference's published tiebreakers among the tied teams (2026). When a step separates a group,
-    // each remaining tie restarts at step 1. Rank stands in for the SportSource / CFP-style rankings the conferences use as their last real step.
-    //   SEC: head-to-head, common opponents, highest-placed common opponent, opponents' conference win %, capped scoring margin
-    //   Big Ten: head-to-head, common opponents, common opponents by order of finish, opponents' conference win %, SportSource ranking
-    //   Big 12: head-to-head, common opponents, common opponents by order of finish, opponents' conference win %, total wins, SportSource rating
-    //   ACC (revised 2026): head-to-head, then SportSource Team Success ranking
-    //   Others: head-to-head, common opponents, common opponents by order of finish, opponents' conference win %, ranking
-    // Head-to-head for 3+ teams uses the mini round robin only if every pair played; otherwise only a team that beat (or lost to) all the others is separated.
-    const cg = new Map(); for (let j = 0; j < g.n; j++) { const v = g.v[j], h = g.h[j]; if (!g.conf[j] || g.post[j] || v < 0 || h < 0 || teams[v].conf !== teams[h].conf || isNaN(va[j]) || va[j] === ha[j]) continue; const w = ha[j] > va[j] ? h : v, l = w === h ? v : h; (cg.get(teams[h].conf) || cg.set(teams[h].conf, []).get(teams[h].conf)).push([w, l, Math.abs(ha[j] - va[j])]); }
-    const pctOf = (rs, t, keep) => { let w = 0, n_ = 0; for (const [a, b] of rs) { if (a === t && keep(b)) { w++; n_++; } else if (b === t && keep(a)) n_++; } return n_ ? w / n_ : 0.5; };
-    const TB = { SEC: ['h2h', 'com', 'hpc', 'opp', 'marg', 'rank'], 'Big Ten': ['h2h', 'com', 'hpc', 'opp', 'rank'], 'Big 12': ['h2h', 'com', 'hpc', 'opp', 'wins', 'rank'], ACC: ['h2h', 'rank'] }, TB0 = ['h2h', 'com', 'hpc', 'opp', 'rank'];
-    const cOrder = ids => { const c = teams[ids[0]].conf, rs = cg.get(c) || [], cpct = i => R1.CW[i] / Math.max(1, R1.CW[i] + R1.CL[i]);
-      const opps = t => new Set(rs.flatMap(([a, b]) => a === t ? [b] : b === t ? [a] : [])), beat = (a, b) => rs.some(([w, l]) => w === a && l === b), met = (a, b) => beat(a, b) || beat(b, a);
-      const place = ids.slice().sort((a, b) => cpct(b) - cpct(a) || R1.rank[a] - R1.rank[b]), pos = new Map(place.map((t, k) => [t, k])); // order of finish for the common-opponent step
-      const common = grp => { const sets = grp.map(opps); return [...sets[0]].filter(x => !grp.includes(x) && sets.every(z => z.has(x))); };
-      const F = {
-        h2h: grp => { const S_ = new Set(grp); if (grp.length === 2) return met(grp[0], grp[1]) ? t => pctOf(rs, t, x => S_.has(x)) : () => 0;
-          if (grp.every(a => grp.every(b => a === b || met(a, b)))) return t => pctOf(rs, t, x => S_.has(x));
-          return t => grp.every(o => o === t || beat(t, o)) ? 1 : grp.every(o => o === t || beat(o, t)) ? -1 : 0; },
-        com: grp => { const C = new Set(common(grp)); return t => C.size ? pctOf(rs, t, x => C.has(x)) : 0.5; },
-        hpc: grp => { const C = common(grp).sort((a, b) => pos.get(a) - pos.get(b)); return t => C.reduce((s_, o, k) => s_ + (beat(t, o) ? Math.pow(3, -k) : 0), 0); },
-        opp: () => t => { let w = 0, l = 0; for (const o of opps(t)) { w += R1.CW[o]; l += R1.CL[o]; } return w / Math.max(1, w + l); },
-        marg: () => t => { let s_ = 0, k = 0; for (const [a, b, m] of rs) { if (a === t) { s_ += Math.min(m, 42); k++; } else if (b === t) { s_ -= Math.min(m, 42); k++; } } return k ? s_ / k : 0; },
-        wins: () => t => R1.W[t],
-        rank: () => t => -R1.rank[t] };
-      const crit = (TB[c] || TB0).map(k => F[k]);
-      const order = (grp, k) => { if (grp.length < 2) return grp; if (k >= crit.length) return grp.slice().sort((a, b) => a - b); const f = crit[k](grp), vals = new Map(grp.map(t => [t, f(t)])), srt = grp.slice().sort((a, b) => vals.get(b) - vals.get(a)), out = [];
-        for (let q = 0; q < srt.length;) { let r = q; while (r + 1 < srt.length && Math.abs(vals.get(srt[r + 1]) - vals.get(srt[q])) < 1e-9) r++; const run = srt.slice(q, r + 1); out.push(...(run.length === grp.length ? order(run, k + 1) : order(run, 0))); q = r + 1; } return out; };
-      const byP = ids.slice().sort((a, b) => cpct(b) - cpct(a)), out = []; for (let q = 0; q < byP.length;) { let r = q; while (r + 1 < byP.length && Math.abs(cpct(byP[r + 1]) - cpct(byP[q])) < 1e-9) r++; out.push(...order(byP.slice(q, r + 1), 0)); q = r + 1; } return out; };
-    // conferences with divisions (Sun Belt East/West): the title game is the two division winners, each found with the full conference's results
-    const divOf = (c, i) => { const d = CFG.divs && CFG.divs[c]; return d ? (d.includes(teams[i].name) ? 0 : 1) : -1; };
-    const top2 = c => { const ids = byConf.get(c), d = CFG.divs && CFG.divs[c]; if (!d) return cOrder(ids).slice(0, 2); const o = cOrder(ids), e = o.find(i => divOf(c, i) === 0), w = o.find(i => divOf(c, i) === 1); return e != null && w != null ? [e, w] : o.slice(0, 2); };
+    const { cOrder, top2 } = confStandings(M, R1, va, ha, CFG, byConf);
     for (const c of CFG.ccg) { const ids = byConf.get(c); if (!ids || ids.length < 2) continue; const [a, b] = top2(c), hi = R1.rank[a] <= R1.rank[b] ? a : b, lo = hi === a ? b : a, x = play(S, hi, lo, !(CFG.ccgCampus || []).includes(c), rand, (CFG.ccgDays || {})[c] || '2026-12-05'); x.lab = c + ' Championship'; extra.push(x); ccg.push([c, hi, lo, x]); champ[c] = x.w; }
     for (const [c, ids] of byConf) if (!(c in champ) && !CFG.indep.includes(c)) champ[c] = cOrder(ids)[0];
     const R2 = tally(M, S, va, ha, extra), post = [];
@@ -5179,7 +5312,7 @@ const EngineCFB = (() => {
     return { R1, R2, W, L: Lo, champ, ccg, seed, cfp, CG, cfpTop: CFG.cfp24 ? 6 : 5, bowlOf, bowlRes, fcsSeed: fsd, fcsR, FG, fcsTop: 6, va, ha, post, extra };
   }
 
-  return { prepare, build, simScores, tally, play, season, normCdf, normInv, rng: E.rng, mean, stdevS, xround };
+  return { prepare, build, simScores, tally, play, season, confStandings, normCdf, normInv, rng: E.rng, mean, stdevS, xround };
 })();
 if (typeof module !== 'undefined') module.exports = EngineCFB;
 
@@ -5191,7 +5324,7 @@ if (typeof module !== 'undefined') module.exports = EngineCFB;
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const LS = { get: k => { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }, set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } } };
   const PEAR = JSON.parse($('fb-pear').textContent), SEASON = 2026, KEY = 'cfb26_espn_v1';
-  const DEFP = { touchBlend: 0.5, touchDecay: 0.75, paceRec: 0, paceMargin: 1, wxTot: 1, cfp24: 0, preK: 2, fadeK: 1, resW: 0.8, sorLossMult: 1.3, h2hGap: 3, preW: 1, hfaTiers: 1, hfaPrior: 2.5, hfaPriorK: 100, hfaK: 100, hfaMax: 1.5, pw: 1.83, cap: 50, hfaCap: 4, errCap: 25, injTaper: 0, yardW: 0.25, toLuck: 0.1, volAdj: 1, volK: 6, travel: 1, tzPts: 0.5, injTot: 0, sdSlope: 0, hfaLo: null, hfaHi: null, tierV: null, totModel: 'tempo', ptsK: 4, sd: 14.5, sdTotExp: 0.5, fcsPre: -22, recency: 0.25, lossPen: 10, vig: 1.1 };
+  const DEFP = { touchBlend: 0.5, touchDecay: 0.75, paceRec: 0, paceMargin: 1, wxTot: 1, cfp24: 0, preK: 2, fadeK: 1, resW: 0.8, sorLossMult: 1.3, h2hGap: 3, preW: 1, hfaTiers: 1, hfaPrior: 2.5, hfaPriorK: 100, hfaK: 100, hfaMax: 1.5, pw: 1.83, cap: 50, hfaCap: 4, errCap: 25, injTaper: 0, yardW: 0.25, toLuck: 0.1, volAdj: 1, volK: 6, travel: 1, tzPts: 0.5, injTot: 0, sdSlope: 0, hfaLo: null, hfaHi: null, tierV: null, totModel: 'tempo', ptsK: 4, sd: 14.5, sdTotExp: 0.5, fcsPre: -27, recency: 0.25, lossPen: 10, vig: 1.1 };
   const PRM = Object.assign({}, DEFP, LS.get('cfb26_params') || {});
   // suggested injury deductions (Nov 4, 2026), added once per browser; edit or remove them on the Schedule or team pages
   const INJ_SEED = [['Ohio State', 5, '2026-10-18', null, 'QB Julian Sayin (shoulder/arm), out indefinitely'], ['Oregon', 4, '2026-09-27', null, 'QB Dante Moore (concussion), out for season'], ['UCLA', 4, '2026-10-11', null, 'QB Nico Iamaleava (knee surgery), out for season'],
@@ -5273,8 +5406,9 @@ if (typeof module !== 'undefined') module.exports = EngineCFB;
     const teamConf = {}; await Promise.all([81, 80].map(gp => getJ(`https://site.api.espn.com/apis/v2/sports/football/college-football/standings?group=${gp}&season=${SEASON}`).then(j => confFromStandings(j, teamConf)).catch(() => null)));
     const jobs = []; for (const gpid of [80, 81]) { for (let w = 1; w <= 16; w++) jobs.push([gpid, 2, w]); jobs.push([gpid, 3, 1]); }
     const ev = new Map(); let done = 0, fails = 0, lastErr = '';
-    const run = async ([gpid, st, w]) => { try { const j = await getJ(`${API}/scoreboard?dates=${SEASON}&seasontype=${st}&week=${w}&groups=${gpid}&limit=500`); for (const e of j.events || []) { const x = parseEvent(e, st === 3); if (x) ev.set(x.id, x); } } catch (e) { fails++; lastErr = String(e && e.message || e).slice(0, 120); } done++; say(`Schedule ${done} of ${jobs.length}`); };
+    const run = async job => { const [gpid, st, w] = job; try { const j = await getJ(`${API}/scoreboard?dates=${SEASON}&seasontype=${st}&week=${w}&groups=${gpid}&limit=500`); for (const e of j.events || []) { const x = parseEvent(e, st === 3); if (x) ev.set(x.id, x); } job.ok = true; } catch (e) { fails++; lastErr = String(e && e.message || e).slice(0, 120); } done++; say(`Schedule ${done} of ${jobs.length}`); };
     for (let q = 0; q < jobs.length; q += 6) await Promise.all(jobs.slice(q, q + 6).map(run));
+    if (fails) { const again = jobs.filter(j => !j.ok); fails = 0; say('Retrying ' + again.length + ' weeks ESPN didn\u2019t answer'); await new Promise(r => setTimeout(r, 4000)); for (let q = 0; q < again.length; q += 3) await Promise.all(again.slice(q, q + 3).map(run)); }
     if (!ev.size) throw new Error('ESPN returned no games' + (lastErr ? '; ' + fails + ' requests failed, last: ' + lastErr : ''));
     const games = [...ev.values()].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
     await fillClosing(games, say);
@@ -6090,7 +6224,7 @@ if (typeof module !== 'undefined') module.exports = EngineCFB;
     if (!DATA) { MODEL = null; return; }
     const B = buildTeams(DATA), M = EngineCFB.prepare({ teams: B.teams, games: B.games, params: Object.assign({}, PRM) }), TI = tiersFor(B.teams); if (TI) M.hfaDev = TI.dev; M.ext = extrasFor(M, B.meta, B.teams); const S = EngineCFB.build(M), R = EngineCFB.tally(M, S, M.g.vs, M.g.hs);
     const weeks = [...new Set(B.meta.map((e, j) => wkKey(e)))].sort((a, b) => a - b);
-    MODEL = Object.assign({ M, S, R, weeks, TI }, B); applyWx();
+    MODEL = Object.assign({ M, S, R, weeks, TI }, B); applyWx(); confTB(M, R, M.g.vs, M.g.hs, B.teams);
   }
   // last week's model: the same fit with the latest played week's results removed, for weekly rank and rating changes
   function prevModel() {
@@ -6117,6 +6251,9 @@ if (typeof module !== 'undefined') module.exports = EngineCFB;
   const T = () => MODEL.teams;
   const logo = (i, sz = 18, cls = 'ml') => T()[i].logo ? `<img class="${cls}" src="${esc(T()[i].logo)}" alt="" loading="lazy" width="${sz}" height="${sz}">` : '';
   const tl = i => `<a href="#${slug(T()[i].name)}">${logo(i)}${esc(T()[i].name)}</a>`, cl = c => `<a href="#${cslug(c)}" title="${esc(c)}">${esc(confAb(c))}</a>`;
+  // conference standing positions (Pos, conference finish) with each conference's published tiebreakers instead of win % alone
+  function confTB(M, R, va, ha, teams) { try { const by = new Map(); teams.forEach((t, i) => (by.get(t.conf) || by.set(t.conf, []).get(t.conf)).push(i)); const { cOrder } = EngineCFB.confStandings(M, R, va, ha, cfgFor(teams), by);
+      for (const [c, ids] of by) if (c && ids.length > 1) cOrder(ids).forEach((t, k) => (R.confRank[t] = k + 1)); } catch (e) {} }
   let SNAP = null; const RR = () => SNAP ? SNAP.R2 : MODEL.R, VS = j => SNAP ? SNAP.va[j] : MODEL.M.g.vs[j], HS = j => SNAP ? SNAP.ha[j] : MODEL.M.g.hs[j];
   const rec = i => SNAP ? `${SNAP.R2.W[i]}-${SNAP.R2.L[i]}` : `${MODEL.R.W[i]}-${MODEL.R.L[i]}`, crec = i => `${RR().CW[i]}-${RR().CL[i]}`, prec = i => AGG && AGG.names.length === MODEL.teams.length ? `${(AGG.c.RW[i] / AGG.n).toFixed(1)}-${(AGG.c.RL[i] / AGG.n).toFixed(1)}` : `${MODEL.R.ew[i].toFixed(1)}-${MODEL.R.el[i].toFixed(1)}`;
   const ml = p => { const v = PRM.vig || 1.1; let x = p > 0.5 ? -Math.round(p / (1 - p) * 100 * v) : Math.round((1 - p) / p * 100 / v); if (x > 0 && x < 100) x -= 200; x = Math.max(-10000, Math.min(10000, x)); return (x > 0 ? '+' : '') + x; };
@@ -6492,8 +6629,8 @@ if (typeof module !== 'undefined') module.exports = EngineCFB;
     const rows = G.map(d => { const j = d.j, rk = d.o >= 0 && R.rank[d.o] <= 25 && T()[d.o].div === t.div ? `<small class="note">#${rkS(R, d.o)}</small> ` : '', perf = d.done && !isNaN(d.exp) ? (d.me - d.op) - d.exp : NaN;
       const ats = d.done && d.real && !isNaN(d.vt) ? (() => { const x = d.me - d.op + d.vt; return x > 0 ? '<span class="res w">Cover</span>' : x < 0 ? '<span class="res l">Miss</span>' : 'Push'; })() : '';
       const vou = d.e.odds && d.e.odds.ou != null ? d.e.odds.ou : NaN, ou = d.done && d.real && !isNaN(vou) ? (x => x > 0 ? 'Over' : x < 0 ? 'Under' : 'Push')(d.me + d.op - vou) : '';
-      return `<tr class="${g.neu[j] ? 'neu' : d.home ? '' : 'away'}${!d.done && d.e.state === 'in' ? ' lvr' : ''}"><td class="m">${d.e.date ? fd(d.e.date) : ''}</td><td class="c">${g.neu[j] ? 'Neutral' : d.home ? 'Home' : 'Away'}</td><td class="t">${g.neu[j] || d.home ? 'vs' : '@'} ${rk}${d.o >= 0 ? tl(d.o) : esc((d.side.loc || d.side.disp) + ' (non-D1)')}${g.conf[j] && !g.post[j] ? ' <small class="note">conf</small>' : ''}${d.e.note ? ` <small class="note">${esc(d.e.note)}</small>` : ''}</td><td class="m">${isNaN(d.spm) ? '' : sp5(d.spm)}</td><td class="m">${isNaN(d.vt) ? '' : sp5(d.vt)}</td><td class="m">${isNaN(S.tot[j]) ? '' : S.tot[j].toFixed(1)}</td><td class="m">${isNaN(vou) ? '' : vou.toFixed(1)}</td><td class="m">${pc(d.p)}</td>${d.done ? `<td class="res ${d.me > d.op ? 'w' : 'l'}">${d.me > d.op ? 'W' : 'L'} ${d.me}-${d.op}${d.real && d.e.ot ? ' OT' : ''}${d.real ? '' : ' <small class="note">sim</small>'}</td>` : (d.e.state === 'in' ? `<td>${liveCell(d.e, j, i)}</td>` : `<td class="note">${d.e.date ? ft(d.e.date) : ''}${d.e.net ? ' · ' + esc(d.e.net) : ''}</td>`)}<td class="m">${isNaN(perf) ? '' : sg(perf)}</td><td class="c">${ats}</td><td class="c">${ou}</td><td>${!isNaN(S.sp[j]) && d.e.state !== 'in' && !boxBtn(j) ? `<button type="button" class="pvb" data-fbpv="${j}" aria-label="Preview">&#9432;</button>` : ''}${boxBtn(j)}</td></tr>`; });
-    const snapPost = SNAP ? [...SNAP.extra, ...SNAP.post].filter(x => x.h === i || x.v === i).map(x => { const home = x.h === i, o = home ? x.v : x.h, me = home ? x.hs : x.vs, op = home ? x.vs : x.hs; return `<tr class="neu"><td class="m">Postseason</td><td class="c">${x.neu ? 'Neutral' : home ? 'Home' : 'Away'}</td><td class="t">vs ${tl(o)} <small class="note">${esc(x.lab || '')}</small></td><td class="m"></td><td class="m"></td><td class="m"></td><td class="m"></td><td class="m">${pc(home ? x.p : 1 - x.p)}</td><td class="res ${me > op ? 'w' : 'l'}">${me > op ? 'W' : 'L'} ${me}-${op} <small class="note">sim</small></td><td></td><td></td><td></td><td></td></tr>`; }).join('') : '';
+      return `<tr class="${g.neu[j] ? 'neu' : d.home ? '' : 'away'}${!d.done && d.e.state === 'in' ? ' lvr' : ''}"><td class="m">${d.e.date ? fd(d.e.date) : ''}</td><td class="t">${g.neu[j] ? 'vs (n)' : d.home ? 'vs' : '@'} ${rk}${d.o >= 0 ? tl(d.o) : esc((d.side.loc || d.side.disp) + ' (non-D1)')}${g.conf[j] && !g.post[j] ? ' <small class="note">conf</small>' : ''}${d.e.note ? ` <small class="note">${esc(d.e.note)}</small>` : ''}</td><td class="m">${isNaN(d.spm) ? '' : sp5(d.spm)}</td><td class="m">${isNaN(d.vt) ? '' : sp5(d.vt)}</td><td class="m">${isNaN(S.tot[j]) ? '' : S.tot[j].toFixed(1)}</td><td class="m">${isNaN(vou) ? '' : vou.toFixed(1)}</td><td class="m">${pc(d.p)}</td>${d.done ? `<td class="res ${d.me > d.op ? 'w' : 'l'}">${d.me > d.op ? 'W' : 'L'} ${d.me}-${d.op}${d.real && d.e.ot ? ' OT' : ''}${d.real ? '' : ' <small class="note">sim</small>'}</td>` : (d.e.state === 'in' ? `<td>${liveCell(d.e, j, i)}</td>` : `<td class="note">${d.e.date ? ft(d.e.date) : ''}${d.e.net ? ' · ' + esc(d.e.net) : ''}</td>`)}<td class="m">${isNaN(perf) ? '' : sg(perf)}</td><td class="c">${ats}</td><td class="c">${ou}</td><td>${!isNaN(S.sp[j]) && d.e.state !== 'in' && !boxBtn(j) ? `<button type="button" class="pvb" data-fbpv="${j}" aria-label="Preview">&#9432;</button>` : ''}${boxBtn(j)}</td></tr>`; });
+    const snapPost = SNAP ? [...SNAP.extra, ...SNAP.post].filter(x => x.h === i || x.v === i).map(x => { const home = x.h === i, o = home ? x.v : x.h, me = home ? x.hs : x.vs, op = home ? x.vs : x.hs; return `<tr class="neu"><td class="m">Postseason</td><td class="t">${x.neu ? 'vs (n)' : home ? 'vs' : '@'} ${tl(o)} <small class="note">${esc(x.lab || '')}</small></td><td class="m"></td><td class="m"></td><td class="m"></td><td class="m"></td><td class="m">${pc(home ? x.p : 1 - x.p)}</td><td class="res ${me > op ? 'w' : 'l'}">${me > op ? 'W' : 'L'} ${me}-${op} <small class="note">sim</small></td><td></td><td></td><td></td><td></td></tr>`; }).join('') : '';
     const pd_ = played.filter(d => !isNaN(d.exp)), perfAvg = pd_.length ? pd_.reduce((s_, d) => s_ + (d.me - d.op) - d.exp, 0) / pd_.length : NaN, atsG = played.filter(d => d.real && !isNaN(d.vt)), cov = atsG.filter(d => d.me - d.op + d.vt > 0).length, push = atsG.filter(d => d.me - d.op + d.vt === 0).length;
     const ppg = played.length ? played.reduce((s_, d) => s_ + d.me, 0) / played.length : NaN, papg = played.length ? played.reduce((s_, d) => s_ + d.op, 0) / played.length : NaN;
     $('fb-team-out').innerHTML = `<div style="${t.color ? '--tc:#' + t.color : ''}" class="${t.color ? 'themed' : ''}"><div class="thead"><div class="tname">${logo(i, 64, 'tlogo')}<h2>${esc(t.name)}</h2></div><span class="meta">${cl(t.conf)} · ${t.div} · conference finish #${R.confRank[i]} <button type="button" class="rosb" data-fbros="${i}">Roster &amp; depth chart</button></span></div>
@@ -6503,7 +6640,7 @@ if (typeof module !== 'undefined') module.exports = EngineCFB;
       ${teamPlayers(i)}
       ${dist}
       ${post && rem ? `<div class="two">${rem}<div></div></div>` : ''}
-      <div class="panel"><h3>Schedule and results</h3><p class="note">Model and Vegas spreads from ${esc(t.name)}'s side (negative = favored). Model lines use current ratings. Totals are combined points. Perf is the final margin minus the model's expected margin; ATS is the result against the Vegas spread and O/U against the Vegas total. Away games shaded, neutral lighter.</p><div class="tbl"><table><thead><tr><th>Date</th><th class="c">Site</th><th class="t">Opponent</th><th>Model<small>spread</small></th><th>Vegas<small>spread</small></th><th>Total<small>model</small></th><th>Vegas<small>O/U</small></th><th>Win %</th><th>Result / kickoff</th><th>Perf</th><th class="c">ATS</th><th class="c">O/U</th><th>Preview</th></tr></thead><tbody>${rows.join('')}${snapPost}</tbody></table></div></div>${injPanel(i)}</div>`;
+      <div class="panel"><h3>Schedule and results</h3><p class="note">Model and Vegas spreads from ${esc(t.name)}'s side (negative = favored). Model lines use current ratings. Totals are combined points. Perf is the final margin minus the model's expected margin; ATS is the result against the Vegas spread and O/U against the Vegas total. Away games shaded, neutral lighter; (n) = neutral site.</p><div class="tbl"><table><thead><tr><th>Date</th><th class="t">Opponent</th><th>Model<small>spread</small></th><th>Vegas<small>spread</small></th><th>Total<small>model</small></th><th>Vegas<small>O/U</small></th><th>Win %</th><th>Result / kickoff</th><th>Perf</th><th class="c">ATS</th><th class="c">O/U</th><th>Preview</th></tr></thead><tbody>${rows.join('')}${snapPost}</tbody></table></div></div>${injPanel(i)}</div>`;
     wireInj($('fb-team-out').querySelector('.injp'));
   }
   function dataView() {
@@ -6902,13 +7039,16 @@ onmessage = e => { if (e.data.rbt) return recBacktest(e.data); if (e.data.sdbt) 
     // right-hand number: the final score when the game has been played (Season Sim), otherwise the model spread on the favorite and the total on the underdog
     const num = (t, x, txt) => { if (typeof txt === 'number') return txt; if (x.h == null) return ''; const o = t === x.a ? x.b : x.a, L = MODEL.S.lineFor(x.h, x.h === x.a ? x.b : x.a, !!x.neu), mine = t === x.h ? L.sp : -L.sp, fav = mine < 0 || (mine === 0 && t === x.h);
       return fav ? `<span title="Model spread">${s5(mine)}</span>` : `<span class="tt" title="Model total">o${fr(h5(L.tot))}</span>`; };
-    const ln = (t, x, txt) => { const won = x.w === t, lost = x.w != null && x.w >= 0 && !won; txt = num(t, x, txt); return `<div class="bslot${won ? ' won' : ''}${lost ? ' lost' : ''}"${tc(t, won)}><span class="sd">${seedOf(t)}</span><span class="lg">${bkLogo(t, 30, won)}</span><span class="nm"><b><a href="#${slug(T()[t].name)}" title="${esc(T()[t].name)}">${esc(T()[t].name)}</a></b><small>${recOf(t)}</small></span><span class="p${/^\d/.test(String(txt)) ? ' sc' : ''}">${txt}</span></div>`; };
+    const ln = (t, x, txt) => { const won = x.w === t, lost = x.w != null && x.w >= 0 && !won; txt = num(t, x, txt); return `<div class="bslot${won ? ' won' : ''}${lost ? ' lost' : ''}"${tc(t, won)}><span class="sd">${seedOf(t)}</span><span class="lg">${bkLogo(t, 30, won)}</span><span class="nm"><b><a href="#${slug(T()[t].name)}" title="${esc(T()[t].name)}">${BKUI.nm2(T()[t].name, T()[t].abbr)}</a></b><small>${recOf(t)}</small></span><span class="p${/^\d/.test(String(txt)) ? ' sc' : ''}">${txt}</span></div>`; };
     const box = x => `<div class="bgame"><div class="bh"><span>${esc(x.lab)}</span>${x.site ? `<span class="bsite">${esc(x.site)}</span>` : ''}${x.h != null ? `<button type="button" class="pvb" data-fbmx="${x.h},${x.h === x.a ? x.b : x.a},${x.neu ? 1 : 0}" title="Game preview" aria-label="Game preview">&#9432;</button>` : ''}</div>${ln(x.a, x, x.ta)}${ln(x.b, x, x.tb)}</div>`;
     const cell = (c, k, m, side, h) => `<div class="bcell ${side}" style="grid-column:${c};grid-row:${2 + k * (N / m)}/span ${N / m}">${h}</div>`;
     let h = rounds.map((r, c) => `<div class="rhead" style="grid-column:${c + 1};grid-row:1">${r.lab}</div><div class="rhead" style="grid-column:${nc - c};grid-row:1">${r.lab}</div>`).join('') + `<div class="rhead fin" style="grid-column:${mid};grid-row:1">${G.finLab || 'National title'}</div>`;
     rounds.forEach((r, c) => { r.L.forEach((x, k) => h += cell(c + 1, k, r.L.length, 'l', box(x))); r.R.forEach((x, k) => h += cell(nc - c, k, r.R.length, 'r', box(x))); });
     h += `<div class="bcell ctr" style="grid-column:${mid};grid-row:2/span ${N}"><div class="bctr"><div class="bchamp"${G.champ != null && G.champ >= 0 ? tc(G.champ, true) : ''}><span class="bct">Champion</span>${bkLogo(G.champ, 84, true)}<b><a href="#${slug(T()[G.champ].name)}">${esc(T()[G.champ].name)}</a></b><span class="note">${G.champNote}</span></div>${box(G.fin)}</div></div>`;
-    return `<div class="bk-scroll"><div class="bk2 fbbk${rounds.length > 3 ? ' b24' : ''}" style="grid-template-columns:repeat(${rounds.length},minmax(0,1fr)) minmax(0,1.15fr) repeat(${rounds.length},minmax(0,1fr))">${h}</div></div>`;
+    // phones: the same games round by round (two per row, top half first) with short names, then the final and the champion
+    const champH = `<div class="bchamp"${G.champ != null && G.champ >= 0 ? tc(G.champ, true) : ''}><span class="bct">Champion</span>${bkLogo(G.champ, 60, true)}<b><a href="#${slug(T()[G.champ].name)}">${BKUI.nm2(T()[G.champ].name, T()[G.champ].abbr)}</a></b><span class="note">${G.champNote}</span></div>`;
+    const mob = rounds.map(r => `<div><div class="rhead">${r.lab}</div><div class="bkmg">${[...r.L, ...r.R].map(box).join('')}</div></div>`).join('') + `<div><div class="rhead fin">${G.finLab || 'National title'}</div><div class="bkmg">${box(G.fin)}${champH}</div></div>`;
+    return `<div class="bk-scroll fbdesk"><div class="bk2 fbbk${rounds.length > 3 ? ' b24' : ''}" style="grid-template-columns:repeat(${rounds.length},minmax(0,1fr)) minmax(0,1.15fr) repeat(${rounds.length},minmax(0,1fr))">${h}</div></div><div class="bk2m">${mob}</div>`;
   }
   // 12-team CFP: seeds 1 and 4 (with the 8-9 and 5-12 games) on the left, 2 (7-10) above 3 (6-11) on the right
   function cfpGrid(seedOf, recOf, G) {
@@ -7248,7 +7388,7 @@ onmessage = e => { if (e.data.rbt) return recBacktest(e.data); if (e.data.sdbt) 
   }
   // ---------- Season Sim (one simulated rest of season) ----------
   window.__fbDebug = () => ({ MODEL, SNAP, T: T() }); // read-only hook for automated checks
-  function seasonSim() { if (!MODEL) return; SNAP = EngineCFB.season(MODEL.M, MODEL.S, cfgFor(MODEL.teams), EngineCFB.rng((Math.random() * 2 ** 32) >>> 0)); snapBar(); render(); }
+  function seasonSim() { if (!MODEL) return; SNAP = EngineCFB.season(MODEL.M, MODEL.S, cfgFor(MODEL.teams), EngineCFB.rng((Math.random() * 2 ** 32) >>> 0)); confTB(MODEL.M, SNAP.R2, SNAP.va, SNAP.ha, MODEL.teams); snapBar(); render(); }
   function snapBar() { $('fb-snapbar').hidden = !SNAP; $('fb-season').textContent = SNAP ? 'New Season Sim' : 'Season Sim'; if (!SNAP) return; const c = SNAP.CG.fin.w, o = c === SNAP.CG.fin.h ? SNAP.CG.fin.v : SNAP.CG.fin.h;
     $('fb-snaptext').innerHTML = `Season Sim: every remaining game, the conference title games, ${PRM.cfp24 ? 'the 24-team CFP' : 'the CFP and bowls'} played once. CFP teams are shaded gold and the champion green on every table. National champion: <b>${esc(T()[c].name)}</b> over ${esc(T()[o].name)}, ${Math.max(SNAP.CG.fin.hs, SNAP.CG.fin.vs)}-${Math.min(SNAP.CG.fin.hs, SNAP.CG.fin.vs)}.`; }
   $('fb-season').addEventListener('click', seasonSim); $('fb-exitsnap').addEventListener('click', () => { SNAP = null; snapBar(); render(); });
