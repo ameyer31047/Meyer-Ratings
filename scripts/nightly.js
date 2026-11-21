@@ -105,6 +105,8 @@ async function eaRatings(UA) {
         out.yrs[y] = o; }
       await page.evaluate(v => localStorage.setItem('cbb26_career', v), JSON.stringify(out)); console.log('Basketball prior seasons:', Object.values(out.yrs).map(o => Object.keys(o).length).join(' / '), 'players'); }
     else console.log('Basketball prior seasons: kept from', new Date(prev.at).toISOString().slice(0, 10)); } catch (e) { console.log('Basketball prior seasons failed:', e.message); }
+  // Basketball class years (ESPN team rosters) for the NCAA tournament experience adjustment: refresh weekly
+  try { const r = await page.evaluate(() => window.cbbClsRefresh ? window.cbbClsRefresh() : 'missing'); console.log('Basketball class years:', r === undefined ? 'kept (under a week old)' : r === true ? 'updated' : r === 'missing' ? 'app has no refresh' : 'failed, kept the old ones'); } catch (e) { console.log('Basketball class years failed:', e.message); }
   const ls = await page.evaluate(() => { const o = {}; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.indexOf('__snap') !== 0 && k !== 'cfbd_key' && k !== 'cfb26_cfbdc') o[k] = localStorage.getItem(k); } return o; });
   const out = JSON.stringify({ v: 1, at: Date.now(), ls });
   fs.writeFileSync(path.join(ROOT, 'data.json'), out);
