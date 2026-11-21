@@ -5401,9 +5401,14 @@ if (typeof module !== 'undefined') module.exports = EngineCFB;
   async function pullEspn(progress) {
     const say = t => progress && progress(t);
     say('Teams and conferences');
-    const [fbsT, fcsT, grp] = await Promise.all([getJ(`${API}/teams?groups=80&limit=500`).then(teamsFrom).catch(() => []), getJ(`${API}/teams?groups=81&limit=500`).then(teamsFrom).catch(() => []), getJ(`${API}/groups`).catch(() => null)]);
+    let [fbsT, fcsT, allT, grp] = await Promise.all([getJ(`${API}/teams?groups=80&limit=1000`).then(teamsFrom).catch(() => []), getJ(`${API}/teams?groups=81&limit=1000`).then(teamsFrom).catch(() => []), getJ(`${API}/teams?limit=1000`).then(teamsFrom).catch(() => []), getJ(`${API}/groups`).catch(() => null)]);
     const confNames = Object.assign({}, FBS_CONF_FALLBACK, grp ? collectGroups(grp, {}) : {});
-    const teamConf = {}; await Promise.all([81, 80].map(gp => getJ(`https://site.api.espn.com/apis/v2/sports/football/college-football/standings?group=${gp}&season=${SEASON}`).then(j => confFromStandings(j, teamConf)).catch(() => null)));
+    // divisions come from the FBS (80) and FCS (81) standings: since Nov 2026 ESPN's teams endpoint ignores its groups filter and returns every school (capped at the limit)
+    const teamConf = {}, divIds = { 80: new Set(), 81: new Set() }; await Promise.all([81, 80].map(gp => getJ(`https://site.api.espn.com/apis/v2/sports/football/college-football/standings?group=${gp}&season=${SEASON}`).then(j => { const o = confFromStandings(j, {}); Object.assign(teamConf, o); Object.keys(o).forEach(id => divIds[gp].add(id)); }).catch(() => null)));
+    const pool = new Map(); [...allT, ...fbsT, ...fcsT].forEach(t => { if (t && t.id && !pool.has(t.id)) pool.set(t.id, t); });
+    const groupsBroken = fbsT.length > 170 || fcsT.length > 200 || fbsT.some(t => fcsT.some(u => u.id === t.id));
+    if (divIds[80].size >= 100 && divIds[80].size <= 170) { fbsT = [...divIds[80]].map(id => pool.get(id) || { id }); if (divIds[81].size >= 80) fcsT = [...divIds[81]].filter(id => !divIds[80].has(id)).map(id => pool.get(id) || { id }); else if (groupsBroken) fcsT = []; }
+    else if (groupsBroken) { fbsT = []; fcsT = []; }
     const jobs = []; for (const gpid of [80, 81]) { for (let w = 1; w <= 16; w++) jobs.push([gpid, 2, w]); jobs.push([gpid, 3, 1]); }
     const ev = new Map(); let done = 0, fails = 0, lastErr = '';
     const run = async job => { const [gpid, st, w] = job; try { const j = await getJ(`${API}/scoreboard?dates=${SEASON}&seasontype=${st}&week=${w}&groups=${gpid}&limit=500`); for (const e of j.events || []) { const x = parseEvent(e, st === 3); if (x) ev.set(x.id, x); } job.ok = true; } catch (e) { fails++; lastErr = String(e && e.message || e).slice(0, 120); } done++; say(`Schedule ${done} of ${jobs.length}`); };
@@ -6197,6 +6202,7 @@ if (typeof module !== 'undefined') module.exports = EngineCFB;
     const teams = [], idOf = new Map(), used = new Set(), unmatched = [];
     for (const p of PEAR.teams) {
       const k = norm(p.name), cands = ALIAS[k] || [k]; let id = null; for (const c of cands) { const f = (byKey.get(c) || []).find(x => !used.has(x) && (esp.get(x).div || 'FBS') !== 'FCS'); if (f) { id = f; break; } }
+      if (!id) for (const c of cands) { const f = (byKey.get(c) || []).find(x => !used.has(x)); if (f) { id = f; break; } }
       if (!id) unmatched.push(p.name); else used.add(id);
       const t = id ? esp.get(id) : {}; idOf.set(id || 'pear:' + p.name, teams.length);
       teams.push({ name: p.name, espn: id, conf: p.conf, div: 'FBS', pre: p.tsr, prePts: p.off, prePA: p.def, pear: p, logo: t.logo || (id ? `https://a.espncdn.com/i/teamlogos/ncaa/500/${id}.png` : ''), color: t.color, alt: t.alt, abbr: t.abbr });
