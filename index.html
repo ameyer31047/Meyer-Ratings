@@ -1719,7 +1719,7 @@ const BKUI = (() => {
   const idx = new Map(teams.map((t, i) => [t.name, i]));
   // games ESPN schedules after the season file was built (later rounds of early-season tournaments, added games): kept in cbb26_addg as [neutral, away, home, espnId]
   // and appended to the schedule in the same order every load, so their game numbers stay put
-  let ADDG = []; try { ADDG = (JSON.parse(localStorage.getItem('cbb26_addg') || '[]') || []).filter(x => Array.isArray(x) && idx.has(x[1]) && idx.has(x[2])); } catch (e) {}
+  let ADDG = []; try { ADDG = (JSON.parse(localStorage.getItem('cbb26_addg') || '[]') || []).filter(x => Array.isArray(x) && (idx.has(x[1]) || idx.has(x[2]))); } catch (e) {}
   const BASE_N = G.length; ADDG.forEach(x => G.push([x[0] ? 1 : 0, x[1], null, x[2], null, 0]));
   const PRE_RANK = Engine.rankDesc(DATA.teams.map(t => +t.pre));
   const slug = s => 't-' + s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -2821,7 +2821,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     if (!autoPref() || !(window.MEYER_HOST || /^file:|^https?:\/\/(localhost|127\.)/.test(location.href))) { $('auto-note').textContent = autoPref() ? 'Auto-update works when the page is opened as a file on your computer.' : 'Auto-update is off.'; return; }
     const before = scoresKey(), a0 = new Date(), b0 = new Date(); b0.setDate(b0.getDate() + 3);
     // when the team-name list changes (a school renamed on ESPN), reload the whole season once so games that didn't match before get their dates and scores
-    const aliasV = 'n' + Object.keys(ALIAS).length + 'c1'; let aliasOld = null; try { aliasOld = localStorage.getItem('cbb26_aliasv'); } catch (e) {}
+    const aliasV = 'n' + Object.keys(ALIAS).length + 'c3'; let aliasOld = null; try { aliasOld = localStorage.getItem('cbb26_aliasv'); } catch (e) {}
     if (aliasOld !== aliasV) a0.setTime(new Date('2026-11-01T12:00:00').getTime()); else a0.setDate(a0.getDate() - 3);
     $('auto-note').textContent = 'Updating scores and lines from ESPN…';
     loadLogos();
@@ -2859,6 +2859,10 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
   for (const k in ALIAS) addName(k, ALIAS[k]);
   let userAlias = {}; try { userAlias = JSON.parse(localStorage.getItem('cbb26_alias') || '{}') || {}; } catch (e) {}
   const lookup = s => { const z = norm(s); return userAlias[z] || nameIx.get(z) || null; };
+  // ESPN team id -> our team (from each team's ESPN logo id): a non-D1 school with a D1-like name (e.g. St. Mary's (TX)) can never be read as a D1 team
+  const ESPNID = new Map(); DATA.teams.forEach(t => { const m = /\/(\d+)\.png/.exec(t.logo || ''); if (m) ESPNID.set(m[1], t.name); }); DATA.teams.forEach(t => addName(t.name, t.name));
+  const ourOf = tm => { const id = tm && tm.id != null ? String(tm.id) : ''; if (id && ESPNID.size > 300) return ESPNID.get(id) || null; for (const k of [tm.location, tm.shortDisplayName, tm.displayName, tm.nickname, tm.abbreviation]) { const o = k && lookup(k); if (o) return o; } return null; };
+  const NOND1 = new Map(); // ESPN event id -> { d1: our team, other: non-D1 opponent label }
   const gameDate = new Map(); // game index -> {d: 'YYYY-MM-DD', t: ISO time or null}
   try { const gd = JSON.parse(localStorage.getItem('cbb26_dates') || '[]'); gd.forEach(([k, v]) => gameDate.set(+k, v)); } catch (e) {}
   const vegas = new Map(); // game index -> {vsp, vtot, mlH, mlA, prov, msp, mtot, mph}
@@ -2872,6 +2876,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
   // Built-in ESPN logos and colors for every team (from the 2025-26 ESPN schedule), overridden by anything newer loaded from ESPN
   const logos = (LOGOS = Object.assign(Object.fromEntries(teams.filter(t => t.logo).map(t => [t.name, t.logo])), LS.get('cbb26_logos') || {}));
   const tcolors = (TCOL = Object.assign(Object.fromEntries(teams.filter(t => t.color).map(t => [t.name, [t.color, t.alt || null]])), LS.get('cbb26_colors') || {})); let logoDirty = false;
+  teams.forEach(t => { const a = /\/(\d+)\.png/.exec(t.logo || ''), b = /\/(\d+)\.png/.exec(logos[t.name] || ''); if (a && b && a[1] !== b[1]) { logos[t.name] = t.logo; if (t.color) tcolors[t.name] = [t.color, t.alt || null]; logoDirty = true; } });
   document.addEventListener('error', e => { const im = e.target; if (im.tagName === 'IMG' && (im.classList.contains('ml') || im.classList.contains('bl'))) im.remove(); }, true);
   const saveLogos = () => { if (logoDirty) { LS.set('cbb26_logos', logos); LS.set('cbb26_colors', tcolors); logoDirty = false; } };
   const setColor = (our, tm) => { const c = /^[0-9a-f]{6}$/i.test(tm.color || '') ? tm.color : null, c2 = /^[0-9a-f]{6}$/i.test(tm.alternateColor || '') ? tm.alternateColor : null; if (c && (!tcolors[our] || tcolors[our][0] !== c)) { tcolors[our] = [c, c2]; logoDirty = true; } };
@@ -2881,7 +2886,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
     try {
       const r = await fetch('https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/teams?groups=50&limit=500', { cache: 'no-store' }); if (!r.ok) return;
       const j = await r.json(), list = (((j.sports || [])[0] || {}).leagues || [{}])[0].teams || [];
-      for (const x of list) { const tm = x.team || {}; let our = null; for (const k of [tm.location, tm.shortDisplayName, tm.displayName, tm.nickname, tm.abbreviation]) if (k && (our = lookup(k))) break; const u = ((tm.logos || [])[0] || {}).href || (tm.id ? `https://a.espncdn.com/i/teamlogos/ncaa/500/${tm.id}.png` : null); if (our && u && !logos[our]) { logos[our] = u; logoDirty = true; } if (our) setColor(our, tm); if (our && tm.abbreviation && ABBR[our] !== tm.abbreviation) { ABBR[our] = tm.abbreviation; abbrDirty = true; } }
+      for (const x of list) { const tm = x.team || {}; const our = ourOf(tm); const u = ((tm.logos || [])[0] || {}).href || (tm.id ? `https://a.espncdn.com/i/teamlogos/ncaa/500/${tm.id}.png` : null); if (our && u && !logos[our]) { logos[our] = u; logoDirty = true; } if (our) setColor(our, tm); if (our && tm.abbreviation && ABBR[our] !== tm.abbreviation) { ABBR[our] = tm.abbreviation; abbrDirty = true; } }
       if (abbrDirty) LS.set('cbb26_abbr', ABBR);
       saveLogos(); if (currentView() === 'team') renderAll();
     } catch (e) {}
@@ -2928,7 +2933,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
   const API_BB = 'https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball', ATH_BB = 'https://site.web.api.espn.com/apis/common/v3/sports/basketball/mens-college-basketball/athletes/';
   const posOf = p => { p = String(p || '').toUpperCase(); return /C/.test(p) ? 'C' : /F/.test(p) ? 'F' : 'G'; };
   function parsePlayers(j) {
-    const out = []; for (const grp of ((j.boxscore || {}).players || [])) { const tm = grp.team || {}; let our = null; for (const k of [tm.location, tm.shortDisplayName, tm.displayName, tm.nickname, tm.abbreviation]) if (k && (our = lookup(k))) break; if (!our) continue;
+    const out = []; for (const grp of ((j.boxscore || {}).players || [])) { const tm = grp.team || {}; const our = ourOf(tm); if (!our) continue;
       const c = (grp.statistics || [])[0]; if (!c) continue; const lab = (c.labels || []).map(x => String(x).toUpperCase()), keys = (c.keys || c.names || []).map(String), at = (L, K) => { let k = lab.indexOf(L); if (k < 0 && K) k = keys.indexOf(K); return k; };
       const iMin = at('MIN', 'minutes'), iPts = at('PTS', 'points'), iFg = at('FG'), i3 = at('3PT'), iFt = at('FT'), iOr = at('OREB', 'offensiveRebounds'), iDr = at('DREB', 'defensiveRebounds'), iReb = at('REB', 'rebounds'), iA = at('AST', 'assists'), iS = at('STL', 'steals'), iB = at('BLK', 'blocks'), iTo = at('TO', 'turnovers');
       for (const a of c.athletes || []) { const ath = a.athlete || {}, st = a.stats || []; if (!ath.id || a.didNotPlay || !st.length) continue; const num = k => k >= 0 ? parseFloat(st[k]) || 0 : 0, pr = k => { const m = k >= 0 ? String(st[k]).match(/(\d+)\s*-\s*(\d+)/) : null; return m ? [+m[1], +m[2]] : [0, 0]; };
@@ -3055,7 +3060,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
       const rem = done ? 0 : per <= 2 ? Math.max(0, Math.min(1, ((2 - per) * 1200 + clk) / 2400)) : clk / 2400, now = parsePlayers(J), g = det.M.g;
       let P = null; try { P = bbProj(j); } catch (x) {} const f0 = x => Math.round(x), cs = comp.competitors || [];
       const side = (S2, i) => { const mine = now.filter(x => x.team === teams[i].name), pr = new Map(S2 ? S2.rows.map(x => [x.a, x]) : []), ids = [...new Set([...mine.map(x => x.id), ...(rem > 0 ? [...pr.keys()].filter(a => pr.get(a).min >= 3) : [])])];
-        const c = cs.find(x => { const tm = x.team || {}; return [tm.location, tm.shortDisplayName, tm.displayName].some(k => k && lookup(k) === teams[i].name); }), pts = c ? +c.score || 0 : 0, fin = rem > 0 ? (finO[i] != null ? finO[i] : S2 ? pts + S2.pts * rem : null) : null;
+        const c = cs.find(x => { const tm = x.team || {}; return ourOf(tm) === teams[i].name; }), pts = c ? +c.score || 0 : 0, fin = rem > 0 ? (finO[i] != null ? finO[i] : S2 ? pts + S2.pts * rem : null) : null;
         const rows = ids.map(a => { const x = mine.find(z => z.id === a), q = pr.get(a), s = x ? x.s : new Array(14).fill(0), nm = x ? x.nm : q ? q.nm : a, add = (v, k) => v + (q ? q[k] || 0 : 0) * rem;
           return { a, nm, s, pts: add(s[1], 'pts'), reb: add(s[8] + s[9], 'reb'), ast: add(s[10], 'ast'), tpm: add(s[4], 'tpm'), min: add(s[0], 'min') }; }).sort((x, y) => y.pts - x.pts);
         const ar = (a, b) => rem > 0 ? `${f0(a)} <small class="note">&rarr; ${f0(b)}</small>` : f0(a);
@@ -3066,7 +3071,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
       let p0 = pre0 && pre0.mph != null ? pre0.mph : S.ph[j]; if (isNaN(p0)) p0 = Engine.normCdf(pre / sd);
       const wpAt = (dm, fr) => fr <= 0 ? (dm > 0 ? 1 : dm < 0 ? 0 : 0.5) : Engine.normCdf((dm + pre * fr) / (sd * Math.sqrt(fr)));
       // match ESPN's competitors to our home/away by team, not by ESPN's home/away flag: at neutral sites ESPN's "home" team can be our away team
-      const cOf = i => cs.find(x => { const tm = x.team || {}; return [tm.location, tm.shortDisplayName, tm.displayName].some(k => k && lookup(k) === teams[i].name); });
+      const cOf = i => cs.find(x => { const tm = x.team || {}; return ourOf(tm) === teams[i].name; });
       const cH = cOf(hi) || cs.find(x => x.homeAway === 'home') || {}, cV = cOf(vi) || cs.find(x => x.homeAway === 'away') || {}, swap = cH.homeAway === 'away';
       const hsc = +cH.score || 0, vsc = +cV.score || 0, p = wpAt(hsc - vsc, rem), E = hsc - vsc + pre * rem, Tt = vsc + hsc + (rem > 0 && !isNaN(t0) ? t0 * rem : 0);
       const flow = [[0, p0]]; for (const pl of J.plays || []) { const pn = (pl.period || {}).number || 1, mm = String((pl.clock || {}).displayValue || '').match(/(\d+):(\d+)/); if (!mm || pl.homeScore == null) continue; const c = +mm[1] * 60 + +mm[2], el = pn <= 2 ? ((pn - 1) * 1200 + 1200 - c) / 2400 : 1 + ((pn - 3) * 300 + 300 - c) / 2400; flow.push([el, wpAt((swap ? -1 : 1) * (+pl.homeScore - +pl.awayScore), pn <= 2 ? Math.max(0, 1 - el) : c / 2400)]); }
@@ -3293,10 +3298,11 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
       for (const ev of evs) {
         const c = (ev.competitions || [])[0]; if (!c) continue;
         const h = c.competitors.find(x => x.homeAway === 'home'), v = c.competitors.find(x => x.homeAway === 'away'); if (!h || !v) continue;
-        const nm = t => { const tm = t.team || {}; for (const k of [tm.location, tm.shortDisplayName, tm.displayName, tm.nickname, tm.abbreviation]) if (k && lookup(k)) return k; return tm.location || tm.displayName || '?'; };
+        const nm = t => { const tm = t.team || {}, o = ourOf(tm); if (o) return o; return (tm.displayName || tm.location || '?') + (tm.id != null && ESPNID.size > 300 ? ' (non-D1)' : ''); };
         const st = (c.status || ev.status || {}).type || {}, done = !!st.completed, per = (c.status || ev.status || {}).period || 0;
         const iso = ev.date || c.date || null, local = iso ? new Date(iso) : null;
-        const d = local ? `${local.getFullYear()}-${String(local.getMonth() + 1).padStart(2, '0')}-${String(local.getDate()).padStart(2, '0')}` : null;
+        // game day in US Pacific time no matter where the page runs (the nightly job runs in UTC, which pushed evening games to the next day)
+        const d = local ? (() => { try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit' }).format(local); } catch (e) { return `${local.getFullYear()}-${String(local.getMonth() + 1).padStart(2, '0')}-${String(local.getDate()).padStart(2, '0')}`; } })() : null;
         let odds = null; const od = (c.odds || [])[0];
         if (od) {
           const dt = String(od.details || ''), num = Math.abs(parseFloat((dt.match(/-?\d+(\.\d+)?/) || [])[0])), raw = parseFloat(od.spread);
@@ -3307,6 +3313,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
           if (hsp != null || tot != null) odds = { hsp, tot, mlH: od.homeTeamOdds ? od.homeTeamOdds.moneyLine ?? null : null, mlA: od.awayTeamOdds ? od.awayTeamOdds.moneyLine ?? null : null, prov: (od.provider && od.provider.name) || 'Sportsbook' };
         }
         for (const t of [h, v]) { const tm = t.team || {}, our = lookup(nm(t)), u = tm.logo || (tm.id ? `https://a.espncdn.com/i/teamlogos/ncaa/500/${tm.id}.png` : null); if (our && u && logos[our] !== u) { logos[our] = u; logoDirty = true; } if (our) setColor(our, tm); }
+        { const iv = String((v.team || {}).id || ''), ih = String((h.team || {}).id || ''); if (ev.id && iv && ih && ESPNID.size > 300 && ESPNID.has(iv) !== ESPNID.has(ih)) NOND1.set(String(ev.id), { d1: ESPNID.get(ESPNID.has(iv) ? iv : ih), other: nm(ESPNID.has(iv) ? h : v) }); }
         curId = ev.id || null; curCC = c.conferenceCompetition === true ? 1 : c.conferenceCompetition === false ? 0 : null; curNet = [...new Set([...(c.broadcasts || []).flatMap(b => b.names || []), ...(c.geoBroadcasts || []).map(b => (b.media || {}).shortName).filter(Boolean)])].join(', ') || null;
         push(d, iso, nm(v), nm(h), done ? +v.score : null, done ? +h.score : null, false, !!c.neutralSite, done && per > 2, `${nm(v)} at ${nm(h)}`, odds);
       }
@@ -3328,6 +3335,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
   function applyPaste(text) {
     const P = parsePaste(text); if (P.error) return P.error;
     const eff = effectiveGames(), claimed = new Set(); let scores = 0, dates = 0, nOdds = 0, added = 0; const miss = [], bad = [];
+    { let fx = 0; ADDG.forEach((x, k) => { const r = NOND1.get(String(x[3])); if (!r) return; const q = BASE_N + k, sl = x[1] === r.d1 ? 2 : 1; if (x[sl] === r.other) return; x[sl] = r.other; G[q][sl === 1 ? 1 : 3] = r.other; fx++; }); if (fx) { try { localStorage.setItem('cbb26_addg', JSON.stringify(ADDG)); } catch (e) {} } }
     const rows = P.rows.filter(r => !r.bad && r.A && r.B).sort((x, y) => (x.date || '').localeCompare(y.date || ''));
     for (const r of rows) {
       const cand = []; G.forEach((g, q) => { if (claimed.has(q)) return; if ((g[1] === r.A && g[3] === r.B) || (g[1] === r.B && g[3] === r.A)) cand.push(q); });
