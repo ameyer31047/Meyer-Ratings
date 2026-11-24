@@ -29,7 +29,7 @@ async function eaRatings(UA) {
 (async () => {
   await new Promise(r => server.listen(PORT, r));
   const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36';
-  const browser = await chromium.launch(), page = await (await browser.newContext({ userAgent: UA })).newPage(), start = Date.now();
+  const browser = await chromium.launch(), page = await (await browser.newContext({ userAgent: UA, timezoneId: 'America/Los_Angeles' })).newPage(), start = Date.now();
   // ESPN API calls go through Node instead of the browser: no CORS, a normal Chrome user agent, at most 4 at a time, and retries with backoff
   const stats = {}; let active = 0; const waitq = [], slot = () => active < 4 ? (active++, Promise.resolve()) : new Promise(r => waitq.push(r)), free = () => { const n = waitq.shift(); n ? n() : active--; };
   const BASE = process.env.ESPN_TEST_BASE;
