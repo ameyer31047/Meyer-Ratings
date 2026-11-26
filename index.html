@@ -896,7 +896,10 @@ window.tvGrid = (() => { const ORD = ['ABC', 'CBS', 'NBC', 'FOX', 'ESPN', 'ESPN2
           <label class="f" for="w-pow">Power Rating<span class="rng"><input id="w-pow" type="range" min="0" max="100" step="5" value="0"><b id="w-pow-v"></b></span></label>
           <label class="f" for="s-rpiflip">RPI / Power flip: games until 100% RPI (0 = off)<input id="s-rpiflip" type="number" min="0" max="40" step="1" value="20"><small class="note">The RPI and Power Rating weights are added together; that combined weight starts 100% Power Rating and moves evenly to 100% RPI by this many games played (median D1 team). Season-sim final projections are 100% RPI. SOR and margin don't change.</small></label>
           <label class="f" for="s-slm">SOR loss penalty<span class="rng"><input id="s-slm" type="range" min="1" max="2" step="0.05" value="1.15"><b id="s-slm-v">1.15x</b></span></label>
-          <label class="f" for="s-h2h">Head-to-head<select id="s-h2h"><option value="on" selected>On</option><option value="off">Off</option></select><small class="note">Teams next to each other: better head-to-head win % ranks higher. Groups of 3+ who all played: a team needs over 50% against each of them to move to the top.</small></label></div>
+          <label class="f" for="s-h2h">Head-to-head<select id="s-h2h"><option value="on" selected>On</option><option value="off">Off</option></select><small class="note">A team that won the head-to-head against a team ranked within the range above it moves up to just above that team (never past a team that beat it). The range tapers from the start value to the end value by the game count below (median D1 games played).</small></label>
+          <label class="f" for="s-h2hr0">Head-to-head range: spots at season start<input id="s-h2hr0" type="number" min="1" max="50" step="1" value="15"></label>
+          <label class="f" for="s-h2hr1">Head-to-head range: spots at the end<input id="s-h2hr1" type="number" min="1" max="50" step="1" value="5"></label>
+          <label class="f" for="s-h2hrn">Head-to-head range: games to reach the end value<input id="s-h2hrn" type="number" min="0" max="40" step="1" value="20"></label></div>
         <p class="note">Rank = each ranking (SOR, margin test, RPI, Power Rating) times its weight. SOR = wins minus what the #25 team would expect against the same games; margin test = points per game better than the #25 team would do (each loss a 4-point penalty).</p>
         <label class="f" for="s-loc">Seeding location (Bracket V1)<select id="s-loc"><option value="both">Both</option><option value="city">City only</option><option value="region">Region only</option></select></label>
         <label class="f" for="s-locw">City weight when Both<input id="s-locw" type="number" min="0" max="1" step="0.05" value="0.5"></label>
@@ -1341,7 +1344,7 @@ const Engine = (() => {
     const flip = flipN > 0 ? Math.min(1, medGP / flipN) : null, rkE = rkW && flip != null ? [rkW[0], rkW[1], (rkW[2] + rkW[3]) * flip, (rkW[2] + rkW[3]) * (1 - flip)] : rkW;
     const avg = rkE ? lpr.map((r, i) => rkE[0] * sorRank[i] + rkE[1] * mRank[i] + rkE[2] * rpiRank[i] + rkE[3] * r) : lpr.map((r, i) => r * p.powerWt + rpiRank[i] * (1 - p.powerWt));
     let rank = avg.map((a, i) => { let c = 1; for (let k = 0; k < n; k++) if (avg[k] < a || (avg[k] === a && lpr[k] < lpr[i])) c++; return c; }), h2h = null, h2hWhy = null;
-    if (p.h2h !== 0) { const res = []; for (let j = 0; j < g.n; j++) if (win[j] >= 0 && lose[j] >= 0) res.push([win[j], lose[j]]); for (const e of ex) if (e) res.push(e); const H = h2hRank(rank, res, teams.map(t => t.name)); rank = H.rank; h2h = H.h2h; h2hWhy = H.why; }
+    if (p.h2h !== 0) { const res = []; for (let j = 0; j < g.n; j++) if (win[j] >= 0 && lose[j] >= 0) res.push([win[j], lose[j]]); for (const e of ex) if (e) res.push(e); const h0 = p.h2hR0 != null ? p.h2hR0 : 15, h1 = p.h2hR1 != null ? p.h2hR1 : 5, hN = p.h2hRN != null ? p.h2hRN : 20; var h2hR = Math.round(hN > 0 ? h0 + (h1 - h0) * Math.min(1, medGP / hN) : h1); const H = h2hRank(rank, res, teams.map(t => t.name), h2hR); rank = H.rank; h2h = H.h2h; h2hWhy = H.why; }
     // conference rank
     const cs = teams.map((t, i) => { const gp = CW[i] + CL[i]; return (CW[i] / (gp + (gp === 0 ? 1 : 0))) * 1000 + S.live[i] / 100 + (i + 7) / 1e9; });
     const confRank = teams.map((t, i) => { let c = 1; for (let k = 0; k < n; k++) if (teams[k].conf === t.conf && cs[k] > cs[i]) c++; return c; });
@@ -1357,7 +1360,7 @@ const Engine = (() => {
     const order = [...Array(n).keys()].sort((a, b) => rank[a] - rank[b]);
     let autosAbove = 0;
     for (const i of order) { if (auto[i]) { autosAbove++; continue; } const pos = rank[i] - autosAbove; if (pos <= p.fieldSize - nAuto) atLarge[i] = pos; }
-    return { W, L: Lo, AW, AL, CW, CL, wp, awp, owp, oowp, rpi, rpiRank, lpr, avg, rank, confRank, auto, atLarge, win, lose, sor, mtest, sorRank, mRank, h2h, h2hWhy, rkE, flip, medGP };
+    return { W, L: Lo, AW, AL, CW, CL, wp, awp, owp, oowp, rpi, rpiRank, lpr, avg, rank, confRank, auto, atLarge, win, lose, sor, mtest, sorRank, mRank, h2h, h2hWhy, rkE, flip, medGP, h2hR: typeof h2hR !== 'undefined' ? h2hR : null };
   }
 
   // Expected W/L from game probabilities (DY/DZ, workbook convention)
@@ -1375,11 +1378,19 @@ const Engine = (() => {
   // Walk down the order. Teams next to each other that all played one another form a group:
   //  - 2 teams: the one with the better head-to-head win % (over 50%) ranks higher; a team that drops is checked again against the next team down.
   //  - 3+ teams: a team jumps to the top of the group only with over 50% head-to-head against every other team in it; otherwise the order stands.
-  function h2hRank(rank, res, names) {
+  function h2hRank(rank, res, names, R) {
     const n = rank.length, key = (a, b) => a < b ? a * n + b : b * n + a, H = new Map();
     for (const [w, l] of res) { if (w < 0 || l < 0 || w === l) continue; const k = key(w, l); let r = H.get(k); if (!r) H.set(k, r = [0, 0]); r[w < l ? 0 : 1]++; }
     const pct = (a, b) => { const r = H.get(key(a, b)); if (!r) return null; const [x, y] = a < b ? r : [r[1], r[0]]; return x / (x + y); };
     const ord = [...Array(n).keys()].sort((a, b) => rank[a] - rank[b] || a - b), flag = new Uint8Array(n), why = new Array(n).fill(null), nm = i => names ? names[i] : '#' + i, rec = (a, b) => { const r = H.get(key(a, b)); const [x, y] = a < b ? r : [r[1], r[0]]; return `${x}-${y}`; }, say = (i, t) => (why[i] = why[i] || []).push(t);
+    // range rule (R > 1, college basketball): going down the ranking, a team that won the head-to-head (over 50%) against a team ranked at most R spots above
+    // it moves up to just above the highest such team, but never past a team that beat it head-to-head. Each team moves at most once.
+    if (R > 1) { const moved = new Uint8Array(n);
+      for (let q = 1; q < n; q++) { const t = ord[q]; if (moved[t]) continue; let p = -1;
+        for (let z = q - 1; z >= Math.max(0, q - R); z--) { const o = ord[z], x = pct(t, o); if (x != null && x < 0.5) break; if (x != null && x > 0.5) p = z; }
+        if (p < 0) continue; const over = ord.slice(p, q).filter(o => pct(t, o) > 0.5); ord.splice(q, 1); ord.splice(p, 0, t); moved[t] = flag[t] = 1; over.forEach(o => { flag[o] = 1; say(o, `Below ${nm(t)}: ${rec(o, t)} head-to-head`); });
+        say(t, `Above ${over.map(o => nm(o) + ' (' + rec(t, o) + ')').join(', ')}: head-to-head win within ${R} spots`); }
+      const out = new Int32Array(n); ord.forEach((t, q) => out[t] = q + 1); return { rank: Array.from(out), h2h: flag, why }; }
     let i = 0;
     while (i < n - 1) {
       if (pct(ord[i], ord[i + 1]) == null) { i++; continue; }
@@ -1798,7 +1809,7 @@ const BKUI = (() => {
     p.autoMode = $('automode').value;
     const rw = ['w-sor', 'w-mar', 'w-rpi', 'w-pow'].map(id => { const x = parseFloat($(id).value); return isNaN(x) ? 0 : Math.max(0, x); }), rwS = rw.reduce((a, b) => a + b, 0); p.rankW = rwS ? rw.map(x => x / rwS) : [0, 0, 1, 0]; p.powerWt = p.rankW[3]; p.lossPen = 4; p.h2h = $('s-h2h') && $('s-h2h').value === 'off' ? 0 : 1; p.sorLossMult = $('s-slm') ? Math.max(1, Math.min(2, +$('s-slm').value || 1.15)) : 1.15; // Rank = SOR / Margin / RPI / Power weights
     const num = (id, def, lo, hi) => { const x = parseFloat($(id).value); return isNaN(x) ? def : Math.min(hi, Math.max(lo, x)); };
-    p.rpiFlipN = num('s-rpiflip', 20, 0, 40);
+    p.rpiFlipN = num('s-rpiflip', 20, 0, 40); p.h2hR0 = num('s-h2hr0', 15, 1, 50); p.h2hR1 = num('s-h2hr1', 5, 1, 50); p.h2hRN = num('s-h2hrn', 20, 0, 40);
     p.cap = num('s-cap', 50, 1, 200); p.ptsK = num('s-ptsk', 5, 1, 100); p.sdFactor = num('s-sd', 1.4, 0.3, 4);
     p.homeWin = num('s-hw', 0.7, 0, 3); p.roadWin = num('s-rw', 1.3, 0, 3); p.neutWin = num('s-nw', 1, 0, 3);
     const r1 = num('s-r1', 0.27, 0, 1), r2 = num('s-r2', 0.46, 0, 1), r3 = num('s-r3', 0.27, 0, 1), rs = r1 + r2 + r3 || 1; p.rpiW = [r1 / rs, r2 / rs, r3 / rs];
@@ -1809,7 +1820,7 @@ const BKUI = (() => {
   }
   const vigNow = () => { const x = parseFloat($('s-vig').value); return isNaN(x) || x <= 0 ? DATA.params.vig : x; };
   const gqiW = () => { const x = parseFloat($('s-gqi').value); return isNaN(x) ? 0.65 : Math.min(1, Math.max(0, x)); };
-  const MODEL_SET = ['s-slm', 's-h2h', 's-rpiflip', 's-injtaper', 's-rampa', 's-rampb', 's-stretch', 's-stretcht', 'fade', 'hfa', 'automode', 'w-sor', 'w-mar', 'w-rpi', 'w-pow', 's-cap', 's-ptsk', 's-sd', 's-hw', 's-rw', 's-nw', 's-r1', 's-r2', 's-r3', 's-loc', 's-locw', 's-totm', 's-totk', 's-totsh', 's-totreg', 's-ot', 's-t0', 's-pace', 's-hlo', 's-hhi', 's-rec', 's-recx', 's-luck', 's-luckt', 's-drift', 's-drifth', 's-xpon', 's-xpsr', 's-xpjr', 's-xpso', 's-xpfr'];
+  const MODEL_SET = ['s-slm', 's-h2h', 's-h2hr0', 's-h2hr1', 's-h2hrn', 's-rpiflip', 's-injtaper', 's-rampa', 's-rampb', 's-stretch', 's-stretcht', 'fade', 'hfa', 'automode', 'w-sor', 'w-mar', 'w-rpi', 'w-pow', 's-cap', 's-ptsk', 's-sd', 's-hw', 's-rw', 's-nw', 's-r1', 's-r2', 's-r3', 's-loc', 's-locw', 's-totm', 's-totk', 's-totsh', 's-totreg', 's-ot', 's-t0', 's-pace', 's-hlo', 's-hhi', 's-rec', 's-recx', 's-luck', 's-luckt', 's-drift', 's-drifth', 's-xpon', 's-xpsr', 's-xpjr', 's-xpso', 's-xpfr'];
   const settingsKey = () => JSON.stringify([MODEL_SET.map(id => $(id).value), INJ]);
   const gameTimes = () => G.map((g, j) => { const v = gameDate.get(j); if (!v) return null; const x = Date.parse(v.t || v.d + 'T12:00:00'); return isFinite(x) ? x : null; });
   // Every game played so far (before Nov 24, 2026) between conference mates is a non-conference game; the first Kansas–West Virginia and Houston–Kansas meetings too
@@ -4045,7 +4056,7 @@ onmessage = e => { const { data } = e.data, games = data.games, times = data.tim
   </div>`;
 
   // ---------- settings ----------
-  const SET_IDS = ['s-stretch', 's-stretcht', 's-rpiflip', 's-slm', 's-h2h', 'nsims', 'fade', 'hfa', 'automode', 'w-sor', 'w-mar', 'w-rpi', 'w-pow', 's-cap', 's-ptsk', 's-sd', 's-vig', 's-hw', 's-rw', 's-nw', 's-r1', 's-r2', 's-r3', 's-loc', 's-locw', 's-gqi', 's-theme', 's-totm', 's-totk', 's-totsh', 's-totreg', 's-ot', 's-t0', 's-pace', 's-hlo', 's-hhi', 's-rec', 's-recx', 's-luck', 's-luckt', 's-drift', 's-drifth', 's-xpon', 's-xpsr', 's-xpjr', 's-xpso', 's-xpfr'], SET_DEF = {};
+  const SET_IDS = ['s-stretch', 's-stretcht', 's-rpiflip', 's-h2hr0', 's-h2hr1', 's-h2hrn', 's-slm', 's-h2h', 'nsims', 'fade', 'hfa', 'automode', 'w-sor', 'w-mar', 'w-rpi', 'w-pow', 's-cap', 's-ptsk', 's-sd', 's-vig', 's-hw', 's-rw', 's-nw', 's-r1', 's-r2', 's-r3', 's-loc', 's-locw', 's-gqi', 's-theme', 's-totm', 's-totk', 's-totsh', 's-totreg', 's-ot', 's-t0', 's-pace', 's-hlo', 's-hhi', 's-rec', 's-recx', 's-luck', 's-luckt', 's-drift', 's-drifth', 's-xpon', 's-xpsr', 's-xpjr', 's-xpso', 's-xpfr'], SET_DEF = {};
   SET_IDS.forEach(id => (SET_DEF[id] = $(id).value));
   try { const s = JSON.parse(localStorage.getItem('cbb26_settings') || '{}'); SET_IDS.forEach(id => { if (s[id] != null) $(id).value = s[id]; }); } catch (e) {}
   const saveSettings = () => { const s = {}; SET_IDS.forEach(id => (s[id] = $(id).value)); try { localStorage.setItem('cbb26_settings', JSON.stringify(s)); } catch (e) {} };
